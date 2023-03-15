@@ -41,10 +41,15 @@ void MyTcpServer::slotServerRead(){
     QTcpSocket* socket = (QTcpSocket*)sender();
     int desc = socket->socketDescriptor();
     QByteArray array;
+    QString tmp;
     while(mTcpSocket[desc]->bytesAvailable() > 0)
     {
-        array.append(socket->readLine());
+        array=(socket->readLine());
+        tmp.append(array);
     }
+    array.clear();
+    array.append(tmp.toUtf8());
+    // array.append(parsing(tmp).toUtf8()); when will be func parsing
     socket->write(array);
 }
 
