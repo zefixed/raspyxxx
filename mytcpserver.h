@@ -7,13 +7,9 @@
 #include <QtNetwork>
 #include <QByteArray>
 #include <QDebug>
+#include <QMap>
 
-#include <map>
 #include <iostream>
-#include <string>
-
-using std::map;
-using std::string;
 
 class MyTcpServer : public QObject
 {
@@ -29,7 +25,7 @@ public slots:
     //void slotReadClient();
 private:
     QTcpServer* mTcpServer;
-    map<int, QTcpSocket*> mTcpSocket;
+    QMap<int, QTcpSocket*> mTcpSocket;
     int server_status;
 };
 #endif // MYTCPSERVER_H

@@ -1,11 +1,12 @@
 #include "mytcpserver.h"
+#include "Parser.h"
 #include <QDebug>
 #include <QCoreApplication>
 
 MyTcpServer::~MyTcpServer()
 {
     for (auto Socket : mTcpSocket) {
-        Socket.second->close();
+        Socket->close();
     }
     mTcpServer->close();
     server_status=0;
@@ -42,6 +43,8 @@ void MyTcpServer::slotServerRead(){
     int desc = socket->socketDescriptor();
     QByteArray array;
     QString tmp;
+    Parser test;
+
     while(mTcpSocket[desc]->bytesAvailable() > 0)
     {
         array=(socket->readLine());
@@ -49,13 +52,22 @@ void MyTcpServer::slotServerRead(){
     }
     array.clear();
     array.append(tmp.toUtf8());
+    test.parse(array);
     // array.append(parsing(tmp).toUtf8()); when will be func parsing
     socket->write(array);
 }
 
 void MyTcpServer::slotClientDisconnected(){
+    // closing connection with socket
     QTcpSocket* socket = (QTcpSocket*)sender();
-    int desc = socket->socketDescriptor();
     socket->close();
-    mTcpSocket.erase(desc);
+
+    // deleting socket from qmap
+    QMap<int, QTcpSocket*>::iterator i = mTcpSocket.begin();
+    while(i.value() != socket)
+    {
+        if(i.value() == socket)
+            mTcpSocket.erase(i);
+        i++;
+    }
 }
