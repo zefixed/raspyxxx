@@ -30,11 +30,11 @@ class MyPostgresDB
         ~MyPostgresDB();
         friend class MyPostgresDBDestroyer;
     public:
-
         static MyPostgresDB* getInstance();
 };
 
 MyPostgresDB* MyPostgresDB::p_instance;
 MyPostgresDBDestroyer MyPostgresDB::destroyer;
+//MyPostgresDB* MyPostgresDBDestroyer::p_instance;
 
 #endif // MYPOSTGRESDB_H

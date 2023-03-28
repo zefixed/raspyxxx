@@ -6,7 +6,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    MyTcpServer server;
-    MyPostgresDB test;
+    //MyTcpServer server;
+
+    MyPostgresDB::getInstance();
     return a.exec();
 }

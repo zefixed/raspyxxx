@@ -43,7 +43,6 @@ void MyTcpServer::slotServerRead(){
     int desc = socket->socketDescriptor();
     QByteArray array;
     QString tmp;
-    Parser test;
 
     while(mTcpSocket[desc]->bytesAvailable() > 0)
     {
@@ -52,7 +51,8 @@ void MyTcpServer::slotServerRead(){
     }
     array.clear();
     array.append(tmp.toUtf8());
-    test.parse(array);
+    Parser test(array);
+    test.parse();
     // array.append(parsing(tmp).toUtf8()); when will be func parsing
     socket->write(array);
 }

@@ -6,11 +6,14 @@
 
 class Parser
 {
+private:
+    QStringList qsl;
 public:
     /// Constructor
     Parser();
+    Parser(QString);
 
-    void parse(QString);
+    bool parse();
 
     void reg(QStringList);
 
@@ -20,7 +23,7 @@ public:
 
     void reschedule(QStringList);
 
-    void select_excption(QStringList);
+    void select_exception(QStringList);
 };
 
 #endif // PARSER_H
