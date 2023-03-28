@@ -5,7 +5,6 @@ QT += core \
     sql
 
 
-CONFIG += c++11 console
 CONFIG -= app_bundle
 
 # The following define makes your compiler emit warnings if you use
@@ -23,7 +22,7 @@ SOURCES += \
     MyPostgresDB.cpp \
     main.cpp \
     mytcpserver.cpp \
-    parser.cpp
+    Parser.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -33,4 +32,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     MyPostgresDB.h \
     mytcpserver.h \
-    parser.h
+    Parser.h

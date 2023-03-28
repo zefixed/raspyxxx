@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "MyPostgresDB.h"
 
 Parser::Parser()
 {
@@ -25,6 +26,7 @@ bool Parser::parse()
 /// The function that redirects to the registration function
 void Parser::reg(QStringList qsl)
 {
+    MyPostgresDB::getInstance()->add_user(qsl);
     qDebug() << qsl;
 }
 

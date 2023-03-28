@@ -12,25 +12,31 @@ void MyPostgresDBDestroyer::initialize(MyPostgresDB* p)
 
 MyPostgresDB::MyPostgresDB()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
-    db.setConnectOptions();
-    db.setHostName("localhost");
-    db.setDatabaseName("raspyxxx");
-    db.setUserName("postgres");
-    db.setPassword("root");
+    this->db.setConnectOptions();
+    this->db.setHostName("localhost");
+    this->db.setDatabaseName("raspyxxx");
+    this->db.setUserName("postgres");
+    this->db.setPassword("root");
     if(!db.open())
         qDebug()<<db.lastError().text();
 }
 
 MyPostgresDB::~MyPostgresDB()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
-    db.setConnectOptions();
-    db.setHostName("localhost");
-    db.setDatabaseName("raspyxxx");
-    db.setUserName("postgres");
-    db.setPassword("root");
-    db.close();
+    this->db.close();
+}
+
+bool MyPostgresDB::add_user(QStringList qsl)
+{
+    // Not work very well
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO users (id, login, password, role_id) VALUES (DEFAULT, ?, ?, ?)");
+    query.addBindValue(qsl[1]);
+    query.addBindValue(qsl[2]);
+    query.addBindValue(qsl[3]);
+    query.exec();
+    qDebug() << query.isActive();
+    return true;
 }
 
 MyPostgresDB* MyPostgresDB::getInstance()
@@ -43,4 +49,5 @@ MyPostgresDB* MyPostgresDB::getInstance()
     return p_instance;
 }
 
-
+MyPostgresDB* MyPostgresDB::p_instance;
+MyPostgresDBDestroyer MyPostgresDB::destroyer;

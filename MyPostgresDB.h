@@ -23,6 +23,7 @@ class MyPostgresDB
     private:
         static MyPostgresDB* p_instance;
         static MyPostgresDBDestroyer destroyer;
+        QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     protected:
         MyPostgresDB();
         MyPostgresDB(const MyPostgresDB&);
@@ -31,10 +32,7 @@ class MyPostgresDB
         friend class MyPostgresDBDestroyer;
     public:
         static MyPostgresDB* getInstance();
+        bool add_user(QStringList);
 };
-
-MyPostgresDB* MyPostgresDB::p_instance;
-MyPostgresDBDestroyer MyPostgresDB::destroyer;
-//MyPostgresDB* MyPostgresDBDestroyer::p_instance;
 
 #endif // MYPOSTGRESDB_H
