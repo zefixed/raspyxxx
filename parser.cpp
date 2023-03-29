@@ -26,7 +26,9 @@ bool Parser::parse()
 /// The function that redirects to the registration function
 void Parser::reg(QStringList qsl)
 {
-    MyPostgresDB::getInstance()->add_user(qsl);
+    QString msg = "INSERT INTO users (id, login, password, role_id) VALUES (default, '"  +qsl[1]+"', '"+qsl[2]+"',"+ qsl[3]+")";
+   // msg = "select * from users";
+    MyPostgresDB::getInstance()->sendQuery(msg);
     qDebug() << qsl;
 }
 

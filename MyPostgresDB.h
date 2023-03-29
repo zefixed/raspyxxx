@@ -33,6 +33,8 @@ class MyPostgresDB
     public:
         static MyPostgresDB* getInstance();
         bool add_user(QStringList);
+        bool sendQuery(QString qsl);
+
 };
 
 #endif // MYPOSTGRESDB_H

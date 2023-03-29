@@ -34,8 +34,21 @@ bool MyPostgresDB::add_user(QStringList qsl)
     query.addBindValue(qsl[1]);
     query.addBindValue(qsl[2]);
     query.addBindValue(qsl[3]);
+//    query.prepare("SELECT *  FROM users");
     query.exec();
     qDebug() << query.isActive();
+    return true;
+}
+
+bool MyPostgresDB::sendQuery(QString qsl)
+{
+    // Not work very well
+    QSqlQuery query(db);
+    qDebug()<<qsl;
+    query.exec(qsl);
+    qDebug() << query.lastError();
+    qDebug()<<query.value(0).toString();
+
     return true;
 }
 
