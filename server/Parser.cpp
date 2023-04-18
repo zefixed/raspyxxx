@@ -8,7 +8,8 @@ Parser::Parser()
 
 Parser::Parser(QString str)
 {
-    this->qsl = str.left(str.capacity() - 2).split("&"); // from "str&str&str\r\n" to ("str", "str", "str")
+    // this->qsl = str.left(str.capacity() - 2).split("&"); // from "str&str&str\r\n" to ("str", "str", "str")
+    this->qsl = str.left(str.capacity()).split("&"); // from "str&str&str\r\n" to ("str", "str", "str")
 }
 
 bool Parser::parse()

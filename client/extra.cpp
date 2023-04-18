@@ -20,7 +20,7 @@ Client::~Client() {
 
 bool Client::sendToServer(QString msg) {
     if (socket->write(msg.toUtf8()))
-		return true;
+        return true;
 	else
         return false;
 }

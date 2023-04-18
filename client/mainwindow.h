@@ -6,6 +6,7 @@
 #include "studentwindow.h"
 #include "teacherwindow.h"
 #include "methodistwindow.h"
+#include "Client.h"
 
 
 QT_BEGIN_NAMESPACE

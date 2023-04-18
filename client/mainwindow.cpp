@@ -20,6 +20,10 @@ void MainWindow::on_log_in_button_2_clicked()
     QString login = ui->login_lineedit->text();
     QString password = ui->pass_lineedit->text();
 
+    Client::getInstance()->sendToServer("auth&" + login + "&" + password);
+
+    // The request sends to the server. Need to write a sending to the client
+
     if(login == "student" && password == "student")
     {
         hide();
