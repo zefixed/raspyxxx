@@ -6,7 +6,7 @@ MethodistWindow::MethodistWindow(QWidget *parent) :
     ui(new Ui::MethodistWindow)
 {
     ui->setupUi(this);
-    mainWindow = parent->nativeParentWidget();
+    mainWindow = parent;
 }
 
 MethodistWindow::~MethodistWindow()

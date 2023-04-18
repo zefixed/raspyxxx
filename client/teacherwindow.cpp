@@ -6,7 +6,7 @@ TeacherWindow::TeacherWindow(QWidget *parent) :
     ui(new Ui::TeacherWindow)
 {
     ui->setupUi(this);
-    mainWindow = parent->nativeParentWidget();
+    mainWindow = parent;
 }
 
 TeacherWindow::~TeacherWindow()
