@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../raspyxxx/mytcpserver.h"
+#include "../../server/mytcpserver.h"
 #include <QtNetwork/QSslPreSharedKeyAuthenticator>
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
