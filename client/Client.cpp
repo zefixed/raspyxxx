@@ -26,7 +26,23 @@ bool Client::sendToServer(QString msg) {
 }
 
 void Client::slot_readFromServer() {
-	qDebug() << "readFromServer";
+    QByteArray array;
+    QString tmp;
+
+    while(socket->bytesAvailable() > 0)
+    {
+        array=(socket->readLine());
+        tmp.append(array);
+    }
+    array.clear();
+    QStringList serverAns = tmp.split("&");
+
+    if (serverAns[0] == "reg")
+        emit reg(serverAns[1]);
+    else if (serverAns[0] == "auth")
+        emit auth(serverAns[1]);
+
+    qDebug() << "readFromServer";
 }
 
 

@@ -35,6 +35,8 @@ public:
 protected slots:
 	void slot_readFromServer();
 signals:
+    void auth(QString);
+    void reg(QString);
 };
 
 #endif // Client_H

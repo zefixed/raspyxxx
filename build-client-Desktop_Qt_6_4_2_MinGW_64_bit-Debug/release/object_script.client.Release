@@ -1,9 +1,9 @@
+release/Client.o
 release/main.o
 release/mainwindow.o
 release/methodistwindow.o
 release/studentwindow.o
 release/teacherwindow.o
-release/extra.o
 release/moc_mainwindow.o
 release/moc_methodistwindow.o
 release/moc_studentwindow.o

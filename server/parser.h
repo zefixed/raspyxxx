@@ -16,13 +16,13 @@ public:
     Parser(QString);
 
     /// The parsing function that redirects the request to the required function
-    bool parse();
+    QString parse();
 
     /// The function that redirects to the registration function
     bool reg(QStringList);
 
     /// The function that redirects to the authentication function
-    bool auth(QStringList);
+    QString auth(QStringList);
 
     /// The function that redirects to the schedule view function
     bool check_schedule(QStringList);

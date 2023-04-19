@@ -29,6 +29,8 @@ private slots:
 
     void on_show_pass_button_released();
 
+    void slot_on_auth(QString);
+
 private:
     Ui::MainWindow *ui;
     StudentWindow* SW;

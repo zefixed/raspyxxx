@@ -62,23 +62,23 @@ bool MyPostgresDB::add_user(QStringList reg_data)
     return true;
 }
 
-bool MyPostgresDB::auth_user(QStringList auth_data)
+QString MyPostgresDB::auth_user(QStringList auth_data)
 {
     if(auth_data.size() != 3)
-        return false;
+        return "err&arguments";
 
     QSqlQuery query(db);
-    query.prepare("SELECT password FROM users WHERE login = ?");
+    query.prepare("SELECT * FROM users WHERE login = ?");
     query.addBindValue(auth_data[1]);
     query.exec();
 
     if(!query.next())
-        return false; // login doesn't exist
+        return "err&log"; // login doesn't exist
 
     if(query.value(query.record().indexOf("password")) != auth_data[2])
-        return false; // wrong password
+        return "err&pass"; // wrong password
 
-    return true; // login and password is correct
+    return query.value(query.record().indexOf("role_id")).toString(); // login and password is correct
 }
 
 bool MyPostgresDB::view_schedule(QStringList view_data)

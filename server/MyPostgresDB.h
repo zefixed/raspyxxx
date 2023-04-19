@@ -58,7 +58,7 @@ class MyPostgresDB
         bool add_user(QStringList);
 
         /// Function for checking the correctness of user authentication data entry
-        bool auth_user(QStringList);
+        QString auth_user(QStringList);
 
         /// Function of viewing the schedule by various fields
         bool view_schedule(QStringList);
