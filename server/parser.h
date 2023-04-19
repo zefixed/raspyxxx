@@ -19,19 +19,19 @@ public:
     bool parse();
 
     /// The function that redirects to the registration function
-    void reg(QStringList);
+    bool reg(QStringList);
 
     /// The function that redirects to the authentication function
-    void auth(QStringList);
+    bool auth(QStringList);
 
     /// The function that redirects to the schedule view function
-    void check_schedule(QStringList);
+    bool check_schedule(QStringList);
 
     /// The function that redirects to the schedule change function
-    void reschedule(QStringList);
+    bool reschedule(QStringList);
 
     /// The function that redirects to the exception selection function
-    void select_exception(QStringList);
+    bool select_exception(QStringList);
 };
 
 #endif // PARSER_H

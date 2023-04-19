@@ -8,45 +8,47 @@ Parser::Parser()
 
 Parser::Parser(QString str)
 {
-    // this->qsl = str.left(str.capacity() - 2).split("&"); // from "str&str&str\r\n" to ("str", "str", "str")
-    this->qsl = str.left(str.capacity()).split("&"); // from "str&str&str\r\n" to ("str", "str", "str")
+    // this->qsl = str.left(str.capacity() - 2).split("&"); // from "str&str&str\r\n" to ("str", "str", "str") // from console
+    this->qsl = str.left(str.capacity()).split("&"); // from "str&str&str\r\n" to ("str", "str", "str") // from ui
 }
 
 bool Parser::parse()
 {
     if(this->qsl.empty())
         return false;
-    if(this->qsl[0] == "reg") reg(qsl);
-    else if(this->qsl[0] == "auth") auth(qsl);
-    else if(this->qsl[0] == "viev") check_schedule(qsl);
-    else if(this->qsl[0] == "resch") reschedule(qsl);
-    else if(this->qsl[0] == "excp") select_exception(qsl);
+    if(this->qsl[0] == "reg") return reg(qsl);
+    else if(this->qsl[0] == "auth") return auth(qsl);
+    else if(this->qsl[0] == "viev") return check_schedule(qsl);
+    else if(this->qsl[0] == "resch") return reschedule(qsl);
+    else if(this->qsl[0] == "excp") return select_exception(qsl);
     else return false;
     return true;
 }
 
-void Parser::reg(QStringList reg_data)
+bool Parser::reg(QStringList reg_data)
 {
-    MyPostgresDB::getInstance()->add_user(reg_data);
+    return MyPostgresDB::getInstance()->add_user(reg_data);
 }
 
-void Parser::auth(QStringList auth_data)
+bool Parser::auth(QStringList auth_data)
 {
-    MyPostgresDB::getInstance()->auth_user(auth_data);
+    return MyPostgresDB::getInstance()->auth_user(auth_data);
 }
 
-void Parser::check_schedule(QStringList view_data)
+bool Parser::check_schedule(QStringList view_data)
 {
-    MyPostgresDB::getInstance()->view_schedule(view_data);
+    return MyPostgresDB::getInstance()->view_schedule(view_data);
     qDebug() << view_data;
 }
 
-void Parser::reschedule(QStringList qsl)
+bool Parser::reschedule(QStringList qsl)
 {
     qDebug() << qsl;
+    return true;
 }
 
-void Parser::select_exception(QStringList qsl)
+bool Parser::select_exception(QStringList qsl)
 {
     qDebug() << qsl;
+    return true;
 }

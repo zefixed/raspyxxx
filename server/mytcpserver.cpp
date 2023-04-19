@@ -69,7 +69,7 @@ void MyTcpServer::slotServerRead(){
     array.clear();
     array.append(tmp.toUtf8());
     Parser test(array);
-    test.parse();
+    test.parse(); // return true or false and this answer need to be sent to client
     // array.append(parsing(tmp).toUtf8()); when will be func parsing
     socket->write(array);
 }
