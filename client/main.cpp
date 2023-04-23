@@ -1,4 +1,3 @@
-
 #include "mainwindow.h"
 #include "Client.h"
 
@@ -11,7 +10,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    Client::getInstance()->sendToServer("auth asdd asdf");
+    Client::getInstance()->sendToServer("");
     return a.exec();
 
 

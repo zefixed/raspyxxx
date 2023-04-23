@@ -36,7 +36,7 @@ void Client::slot_readFromServer() {
     }
     array.clear();
     QStringList serverAns = tmp.split("&");
-
+    qDebug() << serverAns;
     if (serverAns[0] == "reg")
         emit reg(serverAns[1]);
     else if (serverAns[0] == "auth")

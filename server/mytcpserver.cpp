@@ -56,6 +56,7 @@ void MyTcpServer::slotClientDisconnected(){
 }
 
 void MyTcpServer::slotServerRead(){
+
     QTcpSocket* socket = (QTcpSocket*)sender();
     int desc = socket->socketDescriptor();
     QByteArray array;
@@ -66,10 +67,12 @@ void MyTcpServer::slotServerRead(){
         array=(socket->readLine());
         tmp.append(array);
     }
+
     array.clear();
     array.append(tmp.toUtf8());
-    Parser test(array);
-    //test.parse(); // return true or false and this answer need to be sent to client
+    Parser test((QString)array);
+
+    //test.parse(); // (rewrite!!!!!!) return true or false and this answer need to be sent to client
     // array.append(parsing(tmp).toUtf8()); when will be func parsing
     socket->write(test.parse().toUtf8());
 }

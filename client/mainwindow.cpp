@@ -27,7 +27,6 @@ void MainWindow::on_log_in_button_2_clicked()
     QString login = ui->login_lineedit->text();
     QString password = ui->pass_lineedit->text();
 
-    qDebug()<<"auth&"+login+"&"+password;
     Client::getInstance()->sendToServer("auth&"+login+"&"+password); // temporary
 
     // The request sends to the server. Need to write a sending to the client
