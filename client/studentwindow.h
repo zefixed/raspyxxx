@@ -14,6 +14,7 @@ class StudentWindow : public QMainWindow
 public:
     explicit StudentWindow(QWidget *parent = nullptr);
     ~StudentWindow();
+    void closeEvent(QCloseEvent *event);
 
 signals:
     void closeMainWindow();
@@ -23,7 +24,6 @@ private slots:
 
 private:
     Ui::StudentWindow *ui;
-    QWidget* mainWindow;
 };
 
 #endif // STUDENTWINDOW_H

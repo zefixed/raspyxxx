@@ -81,13 +81,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>270</x>
       <y>30</y>
       <width>255</width>
-      <height>27</height>
+      <height>30</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -110,7 +110,7 @@
      <x>0</x>
      <y>0</y>
      <width>821</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

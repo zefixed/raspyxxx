@@ -35,7 +35,7 @@ public:
     QLabel *thursday_label;
     QLabel *friday_label;
     QLabel *saturday_label;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *input_group_label;
     QLineEdit *input_group_lineedit;
@@ -88,18 +88,18 @@ public:
 
         horizontalLayout->addWidget(saturday_label);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(270, 30, 255, 27));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(270, 30, 255, 30));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        input_group_label = new QLabel(widget);
+        input_group_label = new QLabel(layoutWidget1);
         input_group_label->setObjectName("input_group_label");
 
         horizontalLayout_2->addWidget(input_group_label);
 
-        input_group_lineedit = new QLineEdit(widget);
+        input_group_lineedit = new QLineEdit(layoutWidget1);
         input_group_lineedit->setObjectName("input_group_lineedit");
 
         horizontalLayout_2->addWidget(input_group_lineedit);
@@ -107,7 +107,7 @@ public:
         StudentWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(StudentWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 821, 23));
+        menubar->setGeometry(QRect(0, 0, 821, 25));
         StudentWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(StudentWindow);
         statusbar->setObjectName("statusbar");

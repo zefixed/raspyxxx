@@ -30,8 +30,6 @@ void MainWindow::on_log_in_button_2_clicked()
     Client::getInstance()->sendToServer("auth&"+login+"&"+password); // temporary
 
     // The request sends to the server. Need to write a sending to the client
-
-
 }
 
 void MainWindow::on_show_pass_button_pressed()
@@ -56,7 +54,7 @@ void MainWindow::slot_on_auth(QString ansFromServ)
         return;
     }
 
-    hide();
+    close();
     if(auth_data[0] == "1") // student
     {
         SW = new StudentWindow(this);

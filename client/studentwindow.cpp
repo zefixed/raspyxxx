@@ -6,7 +6,6 @@ StudentWindow::StudentWindow(QWidget *parent) :
     ui(new Ui::StudentWindow)
 {
     ui->setupUi(this);
-    mainWindow = parent;
 }
 
 StudentWindow::~StudentWindow()
@@ -16,7 +15,11 @@ StudentWindow::~StudentWindow()
 
 void StudentWindow::on_back_from_student_window_button_clicked()
 {
-    close();
-    mainWindow->show();
+    parentWidget()->show();
+    delete this;
 }
 
+void StudentWindow::closeEvent(QCloseEvent *event){
+    delete parentWidget();
+    //delete this;
+}

@@ -13,7 +13,7 @@ void MyPostgresDBDestroyer::initialize(MyPostgresDB* p)
 MyPostgresDB::MyPostgresDB()
 {
     this->db.setConnectOptions();
-    this->db.setHostName("localhost");
+    this->db.setHostName("127.0.0.1");
     this->db.setDatabaseName("raspyxxx");
     this->db.setUserName("postgres");
     this->db.setPassword("root");
