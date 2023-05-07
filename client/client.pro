@@ -10,25 +10,19 @@ CONFIG += c++17
 
 SOURCES += \
     Client.cpp \
+    loginwindow.cpp \
     main.cpp \
-    mainwindow.cpp \
-    methodistwindow.cpp \
-    studentwindow.cpp \
-    teacherwindow.cpp
+    mainwindow.cpp
 
 HEADERS += \
+    loginwindow.h \
     mainwindow.h \
-    methodistwindow.h \
-    studentwindow.h \
-    teacherwindow.h \
     Client.h
 
 
 FORMS += \
-    mainwindow.ui \
-    methodistwindow.ui \
-    studentwindow.ui \
-    teacherwindow.ui
+    loginwindow.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

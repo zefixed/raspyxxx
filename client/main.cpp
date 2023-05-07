@@ -10,8 +10,9 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
+    //LoginWindow l(&w);
+    //l.show();
+
     Client::getInstance()->sendToServer("");
     return a.exec();
-
-
 }

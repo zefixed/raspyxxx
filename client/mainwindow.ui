@@ -6,77 +6,123 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
-    <height>197</height>
+    <width>817</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Raspyxxx</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string/>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="login_label">
-         <property name="text">
-          <string>Логин:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="pass_label">
-         <property name="text">
-          <string>Пароль:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="pass_lineedit">
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="show_pass_button">
-         <property name="text">
-          <string>👁</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="2">
-        <widget class="QLineEdit" name="login_lineedit"/>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QPushButton" name="log_in_button_2">
-        <property name="text">
-         <string>Войти</string>
-        </property>
-        <property name="default">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>771</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="week_Layout">
+     <item>
+      <widget class="QLabel" name="monday_label">
+       <property name="text">
+        <string>Понедельник</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="tuesday_label">
+       <property name="text">
+        <string>Вторник</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="wednesday_label">
+       <property name="text">
+        <string>Среда</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="thursday_label">
+       <property name="text">
+        <string>Четверг</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="friday_label">
+       <property name="text">
+        <string>Пятница</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="saturday_label">
+       <property name="text">
+        <string>Суббота</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="change_schedule_button">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>312</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Изменить расписание</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>0</y>
+      <width>275</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="input_group_label">
+       <property name="text">
+        <string>Введите номер группы:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="input_group_lineedit"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="exceptions_button">
+    <property name="geometry">
+     <rect>
+      <x>24</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Исключения</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>432</width>
+     <width>817</width>
      <height>23</height>
     </rect>
    </property>

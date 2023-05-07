@@ -3,10 +3,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "studentwindow.h"
-#include "teacherwindow.h"
-#include "methodistwindow.h"
 #include "Client.h"
+#include "loginwindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -23,19 +21,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_log_in_button_2_clicked();
+    void on_exceptions_button_clicked();
 
-    void on_show_pass_button_pressed();
-
-    void on_show_pass_button_released();
-
-    void slot_on_auth(QString);
+    void on_change_schedule_button_clicked();
 
 private:
     Ui::MainWindow *ui;
-    StudentWindow* SW;
-    TeacherWindow* TW;
-    MethodistWindow* MW;
+
+    LoginWindow* LW;
 };
 
 #endif // MAINWINDOW_H
