@@ -25,7 +25,7 @@ public:
     QString auth(QStringList);
 
     /// The function that redirects to the schedule view function
-    bool check_schedule(QStringList);
+    QString check_schedule(QStringList);
 
     /// The function that redirects to the schedule change function
     bool reschedule(QStringList);

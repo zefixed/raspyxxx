@@ -41,6 +41,8 @@ void Client::slot_readFromServer() {
         emit reg(serverAns[1]);
     else if (serverAns[0] == "auth")
         emit auth(serverAns[1]);
+    else if (serverAns[0] == "view")
+        emit view(serverAns[1]);
 
     qDebug() << "readFromServer";
 }

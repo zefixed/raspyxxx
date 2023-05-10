@@ -1,5 +1,5 @@
 #include "MyPostgresDB.h"
-
+#include <QNetworkInterface>
 MyPostgresDBDestroyer::~MyPostgresDBDestroyer()
 {
     delete p_instance;
@@ -10,10 +10,40 @@ void MyPostgresDBDestroyer::initialize(MyPostgresDB* p)
     p_instance = p;
 }
 
+QString MyPostgresDB::getIPaddress()
+{
+    QString ipAddress;
+
+    QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
+    foreach (const QNetworkInterface& interface, interfaces) {
+        // Пропускаем интерфейсы, которые не являются активными или не являются IPv4
+        if (!interface.isValid() || !interface.flags().testFlag(QNetworkInterface::IsUp) ||
+            interface.flags().testFlag(QNetworkInterface::IsLoopBack) ||
+            !interface.flags().testFlag(QNetworkInterface::CanBroadcast))
+        {
+            continue;
+        }
+
+        QList<QNetworkAddressEntry> entries = interface.addressEntries();
+        foreach (const QNetworkAddressEntry& entry, entries) {
+            if (entry.ip().protocol() == QAbstractSocket::IPv4Protocol) {
+                ipAddress = entry.ip().toString();
+                break;
+            }
+        }
+
+        if (!ipAddress.isEmpty()) {
+            break;
+        }
+    }
+    return ipAddress;
+
+}
+
 MyPostgresDB::MyPostgresDB()
 {
     this->db.setConnectOptions();
-    this->db.setHostName("127.0.0.1");
+    this->db.setHostName(getIPaddress());
     this->db.setDatabaseName("raspyxxx");
     this->db.setUserName("postgres");
     this->db.setPassword("root");
@@ -81,21 +111,53 @@ QString MyPostgresDB::auth_user(QStringList auth_data)
     return query.value(query.record().indexOf("role_id")).toString(); // login and password is correct
 }
 
-bool MyPostgresDB::view_schedule(QStringList view_data)
+QString MyPostgresDB::view_schedule(QStringList view_data)
 {
     if(view_data.size() != 3)
-        return false;
+        return "false";
 
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM schedule WHERE " + view_data[1] + " = ?");
+    //query.prepare("SELECT * FROM schedule WHERE " + view_data[1] + " = ?");
+    query.prepare("SELECT groups.\"group\" AS \"group\", "
+                  "CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) AS \"teacher\", "
+                  "buildings.building_address AS \"address\", "
+                  "rooms.room_num AS \"audience\", "
+                  "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
+                  "days.day AS \"weekday\", "
+                  "discipline.name AS \"discipline\", "
+                  "discipline_type.name AS \"discipline_type\" "
+                  "FROM schedule "
+                  "JOIN groups ON schedule.group_id = groups.id "
+                  "JOIN teachers ON schedule.teacher_id = teachers.id "
+                  "JOIN rooms ON schedule.room_id = rooms.id "
+                  "JOIN buildings ON rooms.building_id = buildings.id "
+                  "JOIN times ON schedule.pair_id = times.id "
+                  "JOIN days ON schedule.day_id = days.id "
+                  "JOIN discipline ON schedule.discipline_id = discipline.id "
+                  "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
+                  "WHERE groups.\"group\" = '191-711'");
+
     //query.addBindValue(view_data[1]);
     query.addBindValue(view_data[2]);
     query.exec();
 
-    while(query.next())
-        qDebug() << query.value(query.record().indexOf("id"));
+    QString ans;
 
-    return true;
+    while(query.next()){
+        ans += query.value(query.record().indexOf("group")).toString() + '|';
+        ans += query.value(query.record().indexOf("teacher")).toString() + '|';
+        ans += query.value(query.record().indexOf("address")).toString() + '|';
+        ans += query.value(query.record().indexOf("audience")).toString() + '|';
+        ans += query.value(query.record().indexOf("time")).toString() + '|';
+        ans += query.value(query.record().indexOf("weekday")).toString() + '|';
+        ans += query.value(query.record().indexOf("discipline")).toString() + '|';
+        ans += query.value(query.record().indexOf("discipline_type")).toString();
+
+        ans += "&";
+    }
+
+    qDebug() << ans;
+    return ans;
 
 }
 

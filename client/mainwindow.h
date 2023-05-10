@@ -3,6 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 #include "Client.h"
 #include "loginwindow.h"
 
@@ -24,6 +25,8 @@ private slots:
     void on_exceptions_button_clicked();
 
     void on_change_schedule_button_clicked();
+
+    void slot_on_view(QString);
 
 private:
     Ui::MainWindow *ui;

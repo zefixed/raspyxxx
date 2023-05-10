@@ -33,6 +33,8 @@ class MyPostgresDB
         ///Static instance of MyPostgresDBDestroyer class
         static MyPostgresDBDestroyer destroyer;
 
+        QString getIPaddress();
+
         /// Postgres database object
         QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
     protected:
@@ -61,7 +63,7 @@ class MyPostgresDB
         QString auth_user(QStringList);
 
         /// Function of viewing the schedule by various fields
-        bool view_schedule(QStringList);
+        QString view_schedule(QStringList);
 
         /// Function to execute a database query
         bool sendQuery(QString qsl);
