@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2023-05-03 19:48:51
+-- Started on 2023-05-08 15:05:17
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,9 +18,8 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE raspyxxx;
 --
--- TOC entry 3423 (class 1262 OID 16624)
+-- TOC entry 3434 (class 1262 OID 16624)
 -- Name: raspyxxx; Type: DATABASE; Schema: -; Owner: postgres
 --
 
@@ -75,12 +74,49 @@ CREATE SEQUENCE public.buildings_id_seq
 ALTER TABLE public.buildings_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3424 (class 0 OID 0)
+-- TOC entry 3435 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: buildings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.buildings_id_seq OWNED BY public.buildings.id;
+
+
+--
+-- TOC entry 233 (class 1259 OID 16972)
+-- Name: days; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.days (
+    id bigint NOT NULL,
+    day character varying NOT NULL
+);
+
+
+ALTER TABLE public.days OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 16971)
+-- Name: days_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.days_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.days_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3436 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: days_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.days_id_seq OWNED BY public.days.id;
 
 
 --
@@ -112,7 +148,7 @@ CREATE SEQUENCE public.discipline_id_seq
 ALTER TABLE public.discipline_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3425 (class 0 OID 0)
+-- TOC entry 3437 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: discipline_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -149,7 +185,7 @@ CREATE SEQUENCE public.discipline_type_id_seq
 ALTER TABLE public.discipline_type_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3426 (class 0 OID 0)
+-- TOC entry 3438 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: discipline_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -186,7 +222,7 @@ CREATE SEQUENCE public.groups_id_seq
 ALTER TABLE public.groups_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3427 (class 0 OID 0)
+-- TOC entry 3439 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -195,7 +231,7 @@ ALTER SEQUENCE public.groups_id_seq OWNED BY public.groups.id;
 
 
 --
--- TOC entry 231 (class 1259 OID 16895)
+-- TOC entry 229 (class 1259 OID 16895)
 -- Name: roles; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -208,7 +244,7 @@ CREATE TABLE public.roles (
 ALTER TABLE public.roles OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 16894)
+-- TOC entry 228 (class 1259 OID 16894)
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -223,8 +259,8 @@ CREATE SEQUENCE public.roles_id_seq
 ALTER TABLE public.roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3428 (class 0 OID 0)
--- Dependencies: 230
+-- TOC entry 3440 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -261,7 +297,7 @@ CREATE SEQUENCE public.rooms_id_seq
 ALTER TABLE public.rooms_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3429 (class 0 OID 0)
+-- TOC entry 3441 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: rooms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -270,7 +306,7 @@ ALTER SEQUENCE public.rooms_id_seq OWNED BY public.rooms.id;
 
 
 --
--- TOC entry 229 (class 1259 OID 16858)
+-- TOC entry 235 (class 1259 OID 16981)
 -- Name: schedule; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -280,6 +316,7 @@ CREATE TABLE public.schedule (
     teacher_id bigint NOT NULL,
     room_id bigint NOT NULL,
     pair_id bigint NOT NULL,
+    day_id bigint NOT NULL,
     discipline_id bigint NOT NULL,
     discipline_type_id bigint NOT NULL,
     start_date date NOT NULL,
@@ -291,7 +328,7 @@ CREATE TABLE public.schedule (
 ALTER TABLE public.schedule OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 16857)
+-- TOC entry 234 (class 1259 OID 16980)
 -- Name: schedule_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -306,8 +343,8 @@ CREATE SEQUENCE public.schedule_id_seq
 ALTER TABLE public.schedule_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3430 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 3442 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: schedule_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -345,7 +382,7 @@ CREATE SEQUENCE public.teachers_id_seq
 ALTER TABLE public.teachers_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3431 (class 0 OID 0)
+-- TOC entry 3443 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: teachers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -383,7 +420,7 @@ CREATE SEQUENCE public.times_id_seq
 ALTER TABLE public.times_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3432 (class 0 OID 0)
+-- TOC entry 3444 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: times_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -392,7 +429,7 @@ ALTER SEQUENCE public.times_id_seq OWNED BY public.times.id;
 
 
 --
--- TOC entry 233 (class 1259 OID 16904)
+-- TOC entry 231 (class 1259 OID 16904)
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -407,7 +444,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 16903)
+-- TOC entry 230 (class 1259 OID 16903)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -422,8 +459,8 @@ CREATE SEQUENCE public.users_id_seq
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3433 (class 0 OID 0)
--- Dependencies: 232
+-- TOC entry 3445 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -431,7 +468,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 3219 (class 2604 OID 16673)
+-- TOC entry 3224 (class 2604 OID 16673)
 -- Name: buildings id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -439,7 +476,15 @@ ALTER TABLE ONLY public.buildings ALTER COLUMN id SET DEFAULT nextval('public.bu
 
 
 --
--- TOC entry 3223 (class 2604 OID 16805)
+-- TOC entry 3232 (class 2604 OID 16975)
+-- Name: days id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.days ALTER COLUMN id SET DEFAULT nextval('public.days_id_seq'::regclass);
+
+
+--
+-- TOC entry 3228 (class 2604 OID 16805)
 -- Name: discipline id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -447,7 +492,7 @@ ALTER TABLE ONLY public.discipline ALTER COLUMN id SET DEFAULT nextval('public.d
 
 
 --
--- TOC entry 3224 (class 2604 OID 16815)
+-- TOC entry 3229 (class 2604 OID 16815)
 -- Name: discipline_type id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -455,7 +500,7 @@ ALTER TABLE ONLY public.discipline_type ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 3221 (class 2604 OID 16706)
+-- TOC entry 3226 (class 2604 OID 16706)
 -- Name: groups id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -463,7 +508,7 @@ ALTER TABLE ONLY public.groups ALTER COLUMN id SET DEFAULT nextval('public.group
 
 
 --
--- TOC entry 3226 (class 2604 OID 16898)
+-- TOC entry 3230 (class 2604 OID 16898)
 -- Name: roles id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -471,7 +516,7 @@ ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_
 
 
 --
--- TOC entry 3220 (class 2604 OID 16682)
+-- TOC entry 3225 (class 2604 OID 16682)
 -- Name: rooms id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -479,7 +524,7 @@ ALTER TABLE ONLY public.rooms ALTER COLUMN id SET DEFAULT nextval('public.rooms_
 
 
 --
--- TOC entry 3225 (class 2604 OID 16861)
+-- TOC entry 3233 (class 2604 OID 16984)
 -- Name: schedule id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -487,7 +532,7 @@ ALTER TABLE ONLY public.schedule ALTER COLUMN id SET DEFAULT nextval('public.sch
 
 
 --
--- TOC entry 3218 (class 2604 OID 16638)
+-- TOC entry 3223 (class 2604 OID 16638)
 -- Name: teachers id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -495,7 +540,7 @@ ALTER TABLE ONLY public.teachers ALTER COLUMN id SET DEFAULT nextval('public.tea
 
 
 --
--- TOC entry 3222 (class 2604 OID 16756)
+-- TOC entry 3227 (class 2604 OID 16756)
 -- Name: times id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -503,7 +548,7 @@ ALTER TABLE ONLY public.times ALTER COLUMN id SET DEFAULT nextval('public.times_
 
 
 --
--- TOC entry 3227 (class 2604 OID 16907)
+-- TOC entry 3231 (class 2604 OID 16907)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -511,7 +556,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 3401 (class 0 OID 16670)
+-- TOC entry 3410 (class 0 OID 16670)
 -- Dependencies: 217
 -- Data for Name: buildings; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -529,7 +574,21 @@ INSERT INTO public.buildings (id, building_address) VALUES (10, 'Webinar');
 
 
 --
--- TOC entry 3409 (class 0 OID 16802)
+-- TOC entry 3426 (class 0 OID 16972)
+-- Dependencies: 233
+-- Data for Name: days; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.days (id, day) VALUES (1, 'Понедельник');
+INSERT INTO public.days (id, day) VALUES (2, 'Вторник');
+INSERT INTO public.days (id, day) VALUES (3, 'Среда');
+INSERT INTO public.days (id, day) VALUES (4, 'Четверг');
+INSERT INTO public.days (id, day) VALUES (5, 'Пятница');
+INSERT INTO public.days (id, day) VALUES (6, 'Суббота');
+
+
+--
+-- TOC entry 3418 (class 0 OID 16802)
 -- Dependencies: 225
 -- Data for Name: discipline; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -542,7 +601,7 @@ INSERT INTO public.discipline (id, name) VALUES (5, 'Правовое обесп
 
 
 --
--- TOC entry 3411 (class 0 OID 16812)
+-- TOC entry 3420 (class 0 OID 16812)
 -- Dependencies: 227
 -- Data for Name: discipline_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -553,7 +612,7 @@ INSERT INTO public.discipline_type (id, name) VALUES (3, 'Практика');
 
 
 --
--- TOC entry 3405 (class 0 OID 16703)
+-- TOC entry 3414 (class 0 OID 16703)
 -- Dependencies: 221
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -562,8 +621,8 @@ INSERT INTO public.groups (id, "group") VALUES (1, '191-711');
 
 
 --
--- TOC entry 3415 (class 0 OID 16895)
--- Dependencies: 231
+-- TOC entry 3422 (class 0 OID 16895)
+-- Dependencies: 229
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -573,7 +632,7 @@ INSERT INTO public.roles (id, role) VALUES (3, 'Методист');
 
 
 --
--- TOC entry 3403 (class 0 OID 16679)
+-- TOC entry 3412 (class 0 OID 16679)
 -- Dependencies: 219
 -- Data for Name: rooms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -587,34 +646,34 @@ INSERT INTO public.rooms (id, room_num, building_id) VALUES (6, 'Webinar', 10);
 
 
 --
--- TOC entry 3413 (class 0 OID 16858)
--- Dependencies: 229
+-- TOC entry 3428 (class 0 OID 16981)
+-- Dependencies: 235
 -- Data for Name: schedule; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (1, 1, 1, 1, 2, 1, 3, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (2, 1, 1, 1, 3, 1, 3, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (3, 1, 2, 2, 4, 2, 2, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (4, 1, 2, 2, 4, 2, 2, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (5, 1, 3, 5, 1, 3, 1, '2023-03-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (6, 1, 3, 5, 2, 3, 1, '2023-02-06', '2023-03-02', false);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (7, 1, 3, 5, 2, 3, 1, '2023-03-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (8, 1, 4, 6, 3, 1, 1, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (9, 1, 4, 6, 4, 1, 1, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (10, 1, 8, 3, 2, 4, 3, '2023-02-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (11, 1, 8, 3, 3, 4, 3, '2023-02-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (12, 1, 8, 3, 4, 4, 3, '2023-02-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (13, 1, 5, 3, 1, 5, 1, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (14, 1, 5, 3, 2, 5, 1, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (15, 1, 2, 3, 3, 2, 1, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (16, 1, 5, 3, 1, 5, 3, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (17, 1, 5, 3, 2, 5, 3, '2023-02-06', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (18, 1, 7, 4, 3, 3, 3, '2023-02-20', '2023-04-02', true);
-INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (19, 1, 7, 4, 4, 3, 3, '2023-02-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (1, 1, 1, 1, 2, 1, 1, 3, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (2, 1, 1, 1, 3, 1, 1, 3, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (3, 1, 2, 2, 4, 1, 2, 2, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (4, 1, 2, 2, 4, 1, 2, 2, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (5, 1, 3, 5, 1, 2, 3, 1, '2023-03-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (6, 1, 3, 5, 2, 2, 3, 1, '2023-02-06', '2023-03-02', false);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (7, 1, 3, 5, 2, 2, 3, 1, '2023-03-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (8, 1, 4, 6, 3, 2, 1, 1, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (9, 1, 4, 6, 4, 2, 1, 1, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (10, 1, 8, 3, 2, 3, 4, 3, '2023-02-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (11, 1, 8, 3, 3, 3, 4, 3, '2023-02-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (12, 1, 8, 3, 4, 3, 4, 3, '2023-02-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (13, 1, 5, 3, 1, 4, 5, 1, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (14, 1, 5, 3, 2, 4, 5, 1, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (15, 1, 2, 3, 3, 4, 2, 1, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (16, 1, 5, 3, 1, 5, 5, 3, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (17, 1, 5, 3, 2, 5, 5, 3, '2023-02-06', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (18, 1, 7, 4, 3, 5, 3, 3, '2023-02-20', '2023-04-02', true);
+INSERT INTO public.schedule (id, group_id, teacher_id, room_id, pair_id, day_id, discipline_id, discipline_type_id, start_date, end_date, is_active) VALUES (19, 1, 7, 4, 4, 5, 3, 3, '2023-02-20', '2023-04-02', true);
 
 
 --
--- TOC entry 3399 (class 0 OID 16635)
+-- TOC entry 3408 (class 0 OID 16635)
 -- Dependencies: 215
 -- Data for Name: teachers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -629,7 +688,7 @@ INSERT INTO public.teachers (id, last_name, first_name, patronymic) VALUES (8, '
 
 
 --
--- TOC entry 3407 (class 0 OID 16753)
+-- TOC entry 3416 (class 0 OID 16753)
 -- Dependencies: 223
 -- Data for Name: times; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -644,8 +703,8 @@ INSERT INTO public.times (id, start_time, end_time) VALUES (7, '19:30:00', '21:0
 
 
 --
--- TOC entry 3417 (class 0 OID 16904)
--- Dependencies: 233
+-- TOC entry 3424 (class 0 OID 16904)
+-- Dependencies: 231
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -655,7 +714,7 @@ INSERT INTO public.users (id, login, password, role_id) VALUES (1, 'student_logi
 
 
 --
--- TOC entry 3434 (class 0 OID 0)
+-- TOC entry 3446 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: buildings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -664,7 +723,16 @@ SELECT pg_catalog.setval('public.buildings_id_seq', 10, true);
 
 
 --
--- TOC entry 3435 (class 0 OID 0)
+-- TOC entry 3447 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: days_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.days_id_seq', 6, true);
+
+
+--
+-- TOC entry 3448 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: discipline_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -673,7 +741,7 @@ SELECT pg_catalog.setval('public.discipline_id_seq', 5, true);
 
 
 --
--- TOC entry 3436 (class 0 OID 0)
+-- TOC entry 3449 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: discipline_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -682,7 +750,7 @@ SELECT pg_catalog.setval('public.discipline_type_id_seq', 3, true);
 
 
 --
--- TOC entry 3437 (class 0 OID 0)
+-- TOC entry 3450 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -691,8 +759,8 @@ SELECT pg_catalog.setval('public.groups_id_seq', 1, true);
 
 
 --
--- TOC entry 3438 (class 0 OID 0)
--- Dependencies: 230
+-- TOC entry 3451 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -700,7 +768,7 @@ SELECT pg_catalog.setval('public.roles_id_seq', 1, false);
 
 
 --
--- TOC entry 3439 (class 0 OID 0)
+-- TOC entry 3452 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: rooms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -709,16 +777,16 @@ SELECT pg_catalog.setval('public.rooms_id_seq', 6, true);
 
 
 --
--- TOC entry 3440 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 3453 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: schedule_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.schedule_id_seq', 19, true);
+SELECT pg_catalog.setval('public.schedule_id_seq', 1, false);
 
 
 --
--- TOC entry 3441 (class 0 OID 0)
+-- TOC entry 3454 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: teachers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -727,7 +795,7 @@ SELECT pg_catalog.setval('public.teachers_id_seq', 8, true);
 
 
 --
--- TOC entry 3442 (class 0 OID 0)
+-- TOC entry 3455 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: times_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -736,8 +804,8 @@ SELECT pg_catalog.setval('public.times_id_seq', 7, true);
 
 
 --
--- TOC entry 3443 (class 0 OID 0)
--- Dependencies: 232
+-- TOC entry 3456 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -745,7 +813,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --
--- TOC entry 3231 (class 2606 OID 16677)
+-- TOC entry 3237 (class 2606 OID 16677)
 -- Name: buildings buildings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -754,7 +822,16 @@ ALTER TABLE ONLY public.buildings
 
 
 --
--- TOC entry 3239 (class 2606 OID 16809)
+-- TOC entry 3253 (class 2606 OID 16979)
+-- Name: days days_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.days
+    ADD CONSTRAINT days_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3245 (class 2606 OID 16809)
 -- Name: discipline discipline_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -763,7 +840,7 @@ ALTER TABLE ONLY public.discipline
 
 
 --
--- TOC entry 3241 (class 2606 OID 16819)
+-- TOC entry 3247 (class 2606 OID 16819)
 -- Name: discipline_type discipline_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -772,7 +849,7 @@ ALTER TABLE ONLY public.discipline_type
 
 
 --
--- TOC entry 3235 (class 2606 OID 16710)
+-- TOC entry 3241 (class 2606 OID 16710)
 -- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -781,7 +858,7 @@ ALTER TABLE ONLY public.groups
 
 
 --
--- TOC entry 3245 (class 2606 OID 16902)
+-- TOC entry 3249 (class 2606 OID 16902)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -790,7 +867,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3233 (class 2606 OID 16686)
+-- TOC entry 3239 (class 2606 OID 16686)
 -- Name: rooms rooms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -799,7 +876,7 @@ ALTER TABLE ONLY public.rooms
 
 
 --
--- TOC entry 3243 (class 2606 OID 16863)
+-- TOC entry 3255 (class 2606 OID 16986)
 -- Name: schedule schedule_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -808,7 +885,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3229 (class 2606 OID 16642)
+-- TOC entry 3235 (class 2606 OID 16642)
 -- Name: teachers teachers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -817,7 +894,7 @@ ALTER TABLE ONLY public.teachers
 
 
 --
--- TOC entry 3237 (class 2606 OID 16758)
+-- TOC entry 3243 (class 2606 OID 16758)
 -- Name: times times_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -826,7 +903,7 @@ ALTER TABLE ONLY public.times
 
 
 --
--- TOC entry 3247 (class 2606 OID 16911)
+-- TOC entry 3251 (class 2606 OID 16911)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -835,7 +912,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3248 (class 2606 OID 16687)
+-- TOC entry 3256 (class 2606 OID 16687)
 -- Name: rooms fk_building; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -844,7 +921,16 @@ ALTER TABLE ONLY public.rooms
 
 
 --
--- TOC entry 3249 (class 2606 OID 16884)
+-- TOC entry 3258 (class 2606 OID 16987)
+-- Name: schedule fk_day; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.schedule
+    ADD CONSTRAINT fk_day FOREIGN KEY (day_id) REFERENCES public.days(id);
+
+
+--
+-- TOC entry 3259 (class 2606 OID 16992)
 -- Name: schedule fk_discipline; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -853,7 +939,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3250 (class 2606 OID 16889)
+-- TOC entry 3260 (class 2606 OID 16997)
 -- Name: schedule fk_discipline_type; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -862,7 +948,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3251 (class 2606 OID 16864)
+-- TOC entry 3261 (class 2606 OID 17002)
 -- Name: schedule fk_group; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -871,7 +957,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3252 (class 2606 OID 16879)
+-- TOC entry 3262 (class 2606 OID 17007)
 -- Name: schedule fk_pair; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -880,7 +966,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3255 (class 2606 OID 16912)
+-- TOC entry 3257 (class 2606 OID 16912)
 -- Name: users fk_role; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -889,7 +975,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3253 (class 2606 OID 16874)
+-- TOC entry 3263 (class 2606 OID 17012)
 -- Name: schedule fk_room; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -898,7 +984,7 @@ ALTER TABLE ONLY public.schedule
 
 
 --
--- TOC entry 3254 (class 2606 OID 16869)
+-- TOC entry 3264 (class 2606 OID 17017)
 -- Name: schedule fk_teacher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -906,7 +992,7 @@ ALTER TABLE ONLY public.schedule
     ADD CONSTRAINT fk_teacher FOREIGN KEY (teacher_id) REFERENCES public.teachers(id);
 
 
--- Completed on 2023-05-03 19:48:52
+-- Completed on 2023-05-08 15:05:17
 
 --
 -- PostgreSQL database dump complete

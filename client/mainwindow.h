@@ -28,6 +28,8 @@ private slots:
 
     void slot_on_view(QString);
 
+    void on_input_group_lineedit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 

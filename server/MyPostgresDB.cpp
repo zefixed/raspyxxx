@@ -135,10 +135,8 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
                   "JOIN days ON schedule.day_id = days.id "
                   "JOIN discipline ON schedule.discipline_id = discipline.id "
                   "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
-                  "WHERE groups.\"group\" = '191-711'");
+                  "WHERE groups.\"group\" = \'" + view_data[2] + "'");
 
-    //query.addBindValue(view_data[1]);
-    query.addBindValue(view_data[2]);
     query.exec();
 
     QString ans;

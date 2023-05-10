@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     connect(Client::getInstance(), &Client::view,
-            this, &MainWindow::slot_on_view);
+            this, &MainWindow::on_input_group_lineedit_returnPressed);
 
     ui->setupUi(this);
 
@@ -29,7 +29,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_exceptions_button_clicked()
 {
-    Client::getInstance()->sendToServer("view&group_id&191-711"); // temporary
+
 }
 
 
@@ -38,8 +38,19 @@ void MainWindow::on_change_schedule_button_clicked()
 
 }
 
-void MainWindow::slot_on_view(QString data)
+void MainWindow::slot_on_view(QString)
 {
+    // Unnecessary
+}
 
+
+void MainWindow::on_input_group_lineedit_returnPressed()
+{
+    QString group = ui->input_group_lineedit->text();
+    if (!group.isEmpty())
+    {
+        Client::getInstance()->sendToServer("view&group_id&" + group);
+        ui->input_group_lineedit->clear();
+    }
 }
 

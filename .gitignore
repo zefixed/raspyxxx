@@ -396,9 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-# builds
-build-client-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
-build-client-Desktop_Qt_6_4_2_MSVC2019_64bit-Debug
-build-echoServer-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
-build-echoServer-Desktop_Qt_6_4_2_MSVC2019_64bit-Debug
