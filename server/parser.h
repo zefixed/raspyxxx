@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QCoreApplication>
 
+#include "MyPostgresDB.h"
+
 class Parser
 {
 private:

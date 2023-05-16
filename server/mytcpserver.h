@@ -11,6 +11,8 @@
 
 #include <iostream>
 
+#include "Parser.h"
+
 class MyTcpServer : public QObject
 {
     Q_OBJECT
