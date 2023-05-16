@@ -38,6 +38,7 @@ signals:
     void auth(QString);
     void reg(QString);
     void view(QString);
+    void err(QString);
 };
 
 #endif // Client_H

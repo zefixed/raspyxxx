@@ -20,9 +20,8 @@ QString Parser::parse()
     else if(this->qsl[0] == "auth") return "auth&" + auth(qsl);
     else if(this->qsl[0] == "view") return "view&" +  check_schedule(qsl);
     /* else if(this->qsl[0] == "resch") return reschedule(qsl);
-    else if(this->qsl[0] == "excp") return select_exception(qsl);
-    else return false;
-    return true;*/
+    else if(this->qsl[0] == "excp") return select_exception(qsl);*/
+    else return "err&parse";
 }
 
 bool Parser::reg(QStringList reg_data)

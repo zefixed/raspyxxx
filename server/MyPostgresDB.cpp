@@ -154,7 +154,6 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
         ans += "&";
     }
 
-    qDebug() << ans;
     return ans;
 
 }
@@ -163,7 +162,7 @@ bool MyPostgresDB::sendQuery(QString qsl)
 {
     // Not work very well
     QSqlQuery query(db);
-    qDebug()<<qsl;
+    qDebug() << qsl;
     query.exec(qsl);
     qDebug() << query.lastError();
     qDebug()<<query.value(0).toString();

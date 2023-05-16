@@ -1,15 +1,14 @@
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
 
     connect(Client::getInstance(), &Client::view,
             this, &MainWindow::on_input_group_lineedit_returnPressed);
+    connect(Client::getInstance(), &Client::err,
+            this, &MainWindow::err_slot);
 
     ui->setupUi(this);
 
@@ -38,9 +37,9 @@ void MainWindow::on_change_schedule_button_clicked()
 
 }
 
-void MainWindow::slot_on_view(QString)
+void MainWindow::err_slot(QString err)
 {
-    // Unnecessary
+    qDebug() << err;
 }
 
 

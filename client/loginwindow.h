@@ -26,7 +26,7 @@ private slots:
     void slot_on_auth(QString);
 
 private:
-    Ui::LoginWindow *ui;
+    Ui::LoginWindow* ui;
 
     QWidget* MW;
 
