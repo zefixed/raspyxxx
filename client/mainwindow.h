@@ -18,16 +18,23 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    /// Default constructor
     MainWindow(QWidget *parent = nullptr);
+
+    /// Destructor
     ~MainWindow();
 
 private slots:
+    /// Slot triggered by pressing an exception button
     void on_exceptions_button_clicked();
 
+    /// Slot triggered by pressing a change schedule button
     void on_change_schedule_button_clicked();
 
+    /// Slot triggered by pressing a change schedule button
     void err_slot(QString);
 
+    /// Slot triggered by pressing return in lineedit
     void on_input_group_lineedit_returnPressed();
 
 private:

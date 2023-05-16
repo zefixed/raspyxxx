@@ -30,9 +30,10 @@ class MyPostgresDB
         /// Static instance of MyPostgresDB class
         static MyPostgresDB* p_instance;
 
-        ///Static instance of MyPostgresDBDestroyer class
+        /// Static instance of MyPostgresDBDestroyer class
         static MyPostgresDBDestroyer destroyer;
 
+        /// Function to get the current ip address of the NIC
         QString getIPaddress();
 
         /// Postgres database object
