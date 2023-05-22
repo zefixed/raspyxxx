@@ -10,17 +10,20 @@ CONFIG += c++17
 
 SOURCES += \
     Client.cpp \
+    exceptionswindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    exceptionswindow.h \
     loginwindow.h \
     mainwindow.h \
     Client.h
 
 
 FORMS += \
+    exceptionswindow.ui \
     loginwindow.ui \
     mainwindow.ui
 

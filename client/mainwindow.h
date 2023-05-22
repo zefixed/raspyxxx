@@ -6,6 +6,7 @@
 #include <QDebug>
 #include "Client.h"
 #include "loginwindow.h"
+#include "exceptionswindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -41,6 +42,7 @@ private:
     Ui::MainWindow* ui;
 
     LoginWindow* LW;
+    ExceptionsWindow* EW;
 };
 
 #endif // MAINWINDOW_H

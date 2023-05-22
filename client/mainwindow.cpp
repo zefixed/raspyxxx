@@ -28,7 +28,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_exceptions_button_clicked()
 {
-
+    EW = new ExceptionsWindow(this);
+    EW->show();
 }
 
 
