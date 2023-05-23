@@ -25,6 +25,8 @@ private:
     static Client* p_instance;
     static ClientDestroyer destroyer;
 	QTcpSocket* socket;
+    qint64 account_id;
+    // qwe
 protected:
     /// Default constructor
     explicit Client();
