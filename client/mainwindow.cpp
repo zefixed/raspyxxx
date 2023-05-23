@@ -67,83 +67,50 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
 
     // group|teacher|address|audience|time|weekday|discipline|discipline_type,
 
-    // QList<QString> weekday_buttons = {"monday_schedule_label", "tuesday_schedule_label", "wednesday_schedule_label", "thursday_schedule_label", "friday_schedule_label", "saturday_schedule_label"};
+        // QList<QString> weekday_buttons = {"monday_schedule_label", "tuesday_schedule_label", "wednesday_schedule_label", "thursday_schedule_label", "friday_schedule_label", "saturday_schedule_label"};
 
-    for (int i = 0; i < transformed_list.length(); i++)
+        for (int i = 0; i < transformed_list.length(); i++)
     {
         QList lesson = transformed_list.at(i);
+
+        QString boofer = ui->monday_schedule_label->text();
+
+        QString add_text = boofer       +"\n\n" +   // boofer
+                           lesson.at(4) + '\n'  +   // time
+                           lesson.at(3) + '\n'  +   // audience
+                           lesson.at(6) + " ("  +   // discipline
+                           lesson.at(7) + ")\n" +   // discipline_type
+                           lesson.at(1) + '\n';     // teacher
 
         /// Set monday schedule
         if(lesson.at(5) == "monday")
         {
-            QString boofer = ui->monday_schedule_label->text();
-            ui->monday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->monday_schedule_label->setText(add_text);
         }
         /// Set tuesday schedule
         else if(lesson.at(5) == "tuesday")
         {
-            QString boofer = ui->tuesday_schedule_label->text();
-            ui->tuesday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->tuesday_schedule_label->setText(add_text);
         }
         /// Set wednesday schedule
         else if(lesson.at(5) == "wednesday")
         {
-            QString boofer = ui->wednesday_schedule_label->text();
-            ui->wednesday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->wednesday_schedule_label->setText(add_text);
         }
         /// Set thursday schedule
         else if(lesson.at(5) == "thursday")
         {
-            QString boofer = ui->thursday_schedule_label->text();
-            ui->thursday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->thursday_schedule_label->setText(add_text);
         }
         /// Set friday schedule
         else if(lesson.at(5) == "friday")
         {
-            QString boofer = ui->friday_schedule_label->text();
-            ui->friday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->friday_schedule_label->setText(add_text);
         }
         /// Set saturday schedule
         else if(lesson.at(5) == "saturday")
         {
-            QString boofer = ui->saturday_schedule_label->text();
-            ui->saturday_schedule_label->setText(
-                boofer       +"\n\n" +
-                lesson.at(4) + '\n'  +   // time
-                lesson.at(3) + '\n'  +   // audience
-                lesson.at(6) + " ("  +   // discipline
-                lesson.at(7) + ")\n" +   // discipline_type
-                lesson.at(1) + '\n');    // teacher
+            ui->saturday_schedule_label->setText(add_text);
         }
     }
 }

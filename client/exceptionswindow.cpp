@@ -15,7 +15,7 @@ ExceptionsWindow::~ExceptionsWindow()
 
 void ExceptionsWindow::on_ok_button_clicked()
 {
-
+    /// Data sending
 }
 
 
@@ -35,11 +35,19 @@ void ExceptionsWindow::colorSwitch()
     /// Button color сhanging
     if (currentStyle.contains("background-color: rgb(255, 98, 101)"))
     {
-        button->setStyleSheet("background-color: rgb(132, 255, 105);color: rgb(0, 0, 0);font-family: Arial;font-size: 17px;border: 1px solid rgb(0, 0, 0);");
+        button->setStyleSheet("background-color: rgb(132, 255, 105);"
+                              "color: rgb(0, 0, 0);"
+                              "font-family: Arial;"
+                              "font-size: 17px;"
+                              "border: 1px solid rgb(0, 0, 0);");
     }
     else
     {
-        button->setStyleSheet("background-color: rgb(255, 98, 101);color: rgb(0, 0, 0);font-family: Arial;font-size: 17px;border: 1px solid rgb(0, 0, 0);");
+        button->setStyleSheet("background-color: rgb(255, 98, 101);"
+                              "color: rgb(0, 0, 0);"
+                              "font-family: Arial;"
+                              "font-size: 17px;"
+                              "border: 1px solid rgb(0, 0, 0);");
     }
 }
 
