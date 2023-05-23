@@ -40,6 +40,14 @@ public:
     QLabel *input_group_label;
     QLineEdit *input_group_lineedit;
     QPushButton *exceptions_button;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QLabel *monday_schedule_label;
+    QLabel *tuesday_schedule_label;
+    QLabel *wednesday_schedule_label;
+    QLabel *thursday_schedule_label;
+    QLabel *friday_schedule_label;
+    QLabel *saturday_schedule_label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -47,12 +55,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(817, 415);
+        MainWindow->resize(879, 601);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(30, 30, 771, 31));
+        layoutWidget->setGeometry(QRect(30, 30, 821, 31));
         week_Layout = new QHBoxLayout(layoutWidget);
         week_Layout->setObjectName("week_Layout");
         week_Layout->setContentsMargins(0, 0, 0, 0);
@@ -88,10 +96,10 @@ public:
 
         change_schedule_button = new QPushButton(centralwidget);
         change_schedule_button->setObjectName("change_schedule_button");
-        change_schedule_button->setGeometry(QRect(25, 312, 151, 41));
+        change_schedule_button->setGeometry(QRect(30, 500, 151, 41));
         layoutWidget_2 = new QWidget(centralwidget);
         layoutWidget_2->setObjectName("layoutWidget_2");
-        layoutWidget_2->setGeometry(QRect(280, 0, 275, 30));
+        layoutWidget_2->setGeometry(QRect(310, 0, 275, 30));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget_2);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -107,11 +115,47 @@ public:
 
         exceptions_button = new QPushButton(centralwidget);
         exceptions_button->setObjectName("exceptions_button");
-        exceptions_button->setGeometry(QRect(24, 310, 111, 41));
+        exceptions_button->setGeometry(QRect(10, 480, 111, 41));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(30, 80, 821, 381));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        monday_schedule_label = new QLabel(widget);
+        monday_schedule_label->setObjectName("monday_schedule_label");
+
+        horizontalLayout->addWidget(monday_schedule_label);
+
+        tuesday_schedule_label = new QLabel(widget);
+        tuesday_schedule_label->setObjectName("tuesday_schedule_label");
+
+        horizontalLayout->addWidget(tuesday_schedule_label);
+
+        wednesday_schedule_label = new QLabel(widget);
+        wednesday_schedule_label->setObjectName("wednesday_schedule_label");
+
+        horizontalLayout->addWidget(wednesday_schedule_label);
+
+        thursday_schedule_label = new QLabel(widget);
+        thursday_schedule_label->setObjectName("thursday_schedule_label");
+
+        horizontalLayout->addWidget(thursday_schedule_label);
+
+        friday_schedule_label = new QLabel(widget);
+        friday_schedule_label->setObjectName("friday_schedule_label");
+
+        horizontalLayout->addWidget(friday_schedule_label);
+
+        saturday_schedule_label = new QLabel(widget);
+        saturday_schedule_label->setObjectName("saturday_schedule_label");
+
+        horizontalLayout->addWidget(saturday_schedule_label);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 817, 23));
+        menubar->setGeometry(QRect(0, 0, 879, 23));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -134,6 +178,12 @@ public:
         change_schedule_button->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\200\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
         input_group_label->setText(QCoreApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\275\320\276\320\274\320\265\321\200 \320\263\321\200\321\203\320\277\320\277\321\213:", nullptr));
         exceptions_button->setText(QCoreApplication::translate("MainWindow", "\320\230\321\201\320\272\320\273\321\216\321\207\320\265\320\275\320\270\321\217", nullptr));
+        monday_schedule_label->setText(QString());
+        tuesday_schedule_label->setText(QString());
+        wednesday_schedule_label->setText(QString());
+        thursday_schedule_label->setText(QString());
+        friday_schedule_label->setText(QString());
+        saturday_schedule_label->setText(QString());
     } // retranslateUi
 
 };
