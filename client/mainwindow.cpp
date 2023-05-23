@@ -54,3 +54,96 @@ void MainWindow::on_input_group_lineedit_returnPressed()
     }
 }
 
+void MainWindow::slot_on_idk(QList<QString> ansFromServ)
+{
+    /// Converting the server response into a normalized list of lists
+    QList<QStringList> transformed_list;
+
+    foreach(const QString& element, ansFromServ)
+    {
+        QStringList splittedElements = element.split('|');
+        transformed_list.append(splittedElements);
+    }
+
+    // group|teacher|address|audience|time|weekday|discipline|discipline_type,
+
+    // QList<QString> weekday_buttons = {"monday_schedule_label", "tuesday_schedule_label", "wednesday_schedule_label", "thursday_schedule_label", "friday_schedule_label", "saturday_schedule_label"};
+
+    for (int i = 0; i < transformed_list.length(); i++)
+    {
+        QList lesson = transformed_list.at(i);
+
+        /// Set monday schedule
+        if(lesson.at(5) == "monday")
+        {
+            QString boofer = ui->monday_schedule_label->text();
+            ui->monday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+        /// Set tuesday schedule
+        else if(lesson.at(5) == "tuesday")
+        {
+            QString boofer = ui->tuesday_schedule_label->text();
+            ui->tuesday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+        /// Set wednesday schedule
+        else if(lesson.at(5) == "wednesday")
+        {
+            QString boofer = ui->wednesday_schedule_label->text();
+            ui->wednesday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+        /// Set thursday schedule
+        else if(lesson.at(5) == "thursday")
+        {
+            QString boofer = ui->thursday_schedule_label->text();
+            ui->thursday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+        /// Set friday schedule
+        else if(lesson.at(5) == "friday")
+        {
+            QString boofer = ui->friday_schedule_label->text();
+            ui->friday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+        /// Set saturday schedule
+        else if(lesson.at(5) == "saturday")
+        {
+            QString boofer = ui->saturday_schedule_label->text();
+            ui->saturday_schedule_label->setText(
+                boofer       +"\n\n" +
+                lesson.at(4) + '\n'  +   // time
+                lesson.at(3) + '\n'  +   // audience
+                lesson.at(6) + " ("  +   // discipline
+                lesson.at(7) + ")\n" +   // discipline_type
+                lesson.at(1) + '\n');    // teacher
+        }
+    }
+}

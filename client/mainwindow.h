@@ -43,6 +43,8 @@ private:
 
     LoginWindow* LW;
     ExceptionsWindow* EW;
+
+    void slot_on_idk(QList<QString> ansFromServ);
 };
 
 #endif // MAINWINDOW_H
