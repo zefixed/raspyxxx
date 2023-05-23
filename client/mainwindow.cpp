@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
             this, &MainWindow::on_input_group_lineedit_returnPressed);
     connect(Client::getInstance(), &Client::err,
             this, &MainWindow::err_slot);
-
+    //connect(Client::getInstance(), &Client::exc,
+    //        this, &MainWindow::slot_on_idk);
     ui->setupUi(this);
 
     ui->exceptions_button->hide();
@@ -83,32 +84,32 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
                            lesson.at(1) + '\n';     // teacher
 
         /// Set monday schedule
-        if(lesson.at(5) == "monday")
+        if(lesson.at(5) == "Понедельник")
         {
             ui->monday_schedule_label->setText(add_text);
         }
         /// Set tuesday schedule
-        else if(lesson.at(5) == "tuesday")
+        else if(lesson.at(5) == "Вторник")
         {
             ui->tuesday_schedule_label->setText(add_text);
         }
         /// Set wednesday schedule
-        else if(lesson.at(5) == "wednesday")
+        else if(lesson.at(5) == "Среда")
         {
             ui->wednesday_schedule_label->setText(add_text);
         }
         /// Set thursday schedule
-        else if(lesson.at(5) == "thursday")
+        else if(lesson.at(5) == "Четверг")
         {
             ui->thursday_schedule_label->setText(add_text);
         }
         /// Set friday schedule
-        else if(lesson.at(5) == "friday")
+        else if(lesson.at(5) == "Пятница")
         {
             ui->friday_schedule_label->setText(add_text);
         }
         /// Set saturday schedule
-        else if(lesson.at(5) == "saturday")
+        else if(lesson.at(5) == "Суббота")
         {
             ui->saturday_schedule_label->setText(add_text);
         }

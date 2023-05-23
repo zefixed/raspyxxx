@@ -26,7 +26,6 @@ private:
     static ClientDestroyer destroyer;
 	QTcpSocket* socket;
     qint64 account_id;
-    // qwe
 protected:
     /// Default constructor
     explicit Client();
@@ -43,7 +42,9 @@ public:
     static Client* getInstance();
 
     /// Data sending dunction
-	bool sendToServer(QString);
+    bool sendToServer(QString);
+
+    void set_account_id(QString id);
 protected slots:
     /// Slot triggered when receiving data from the server
 	void slot_readFromServer();
@@ -59,6 +60,8 @@ signals:
 
     /// Signal err
     void err(QString);
+
+    void exc(QString);
 };
 
 #endif // Client_H

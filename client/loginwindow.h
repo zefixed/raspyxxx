@@ -35,6 +35,8 @@ private:
 
     QWidget* MW;
 
+    void set_account_id(QString id);
+
     //StudentWindow* SW;
     //TeacherWindow* TW;
     //MethodistWindow* MW;

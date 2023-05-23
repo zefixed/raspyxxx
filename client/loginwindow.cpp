@@ -51,6 +51,8 @@ void LoginWindow::slot_on_auth(QString ansFromServ)
         return;
     }
 
+    Client::getInstance()->set_account_id(auth_data[1]);
+
     close();
     if(auth_data[0] == "1") // student
     {

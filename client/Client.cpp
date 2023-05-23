@@ -18,11 +18,18 @@ Client::~Client() {
 	socket->close();
 }
 
+
+
 bool Client::sendToServer(QString msg) {
     if (socket->write(msg.toUtf8()))
         return true;
 	else
         return false;
+}
+
+void Client::set_account_id(QString id)
+{
+    this->account_id = id.toInt();
 }
 
 void Client::slot_readFromServer() {
@@ -45,10 +52,11 @@ void Client::slot_readFromServer() {
         emit view(serverAns[1]);
     else if (serverAns[0] == "err")
         emit err(serverAns[1]);
+    else if (serverAns[0] == "exc")
+        emit exc(serverAns[1]);
 
     qDebug() << "readFromServer";
 }
-
 
 Client* Client::p_instance;
 ClientDestroyer Client::destroyer;
