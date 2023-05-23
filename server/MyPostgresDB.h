@@ -66,6 +66,12 @@ class MyPostgresDB
         /// Function of viewing the schedule by various fields
         QString view_schedule(QStringList);
 
+        /// Function of viewing the exception by teacher id
+        QString view_exception(QStringList);
+
+        /// Function of adding an exception by teacher id
+        QString add_exception(QStringList);
+
         /// Function to execute a database query
         bool sendQuery(QString qsl);
 };

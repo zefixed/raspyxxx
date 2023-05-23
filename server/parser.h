@@ -33,7 +33,7 @@ public:
     bool reschedule(QStringList);
 
     /// The function that redirects to the exception selection function
-    bool select_exception(QStringList);
+    QString exceptions(QStringList);
 };
 
 #endif // PARSER_H

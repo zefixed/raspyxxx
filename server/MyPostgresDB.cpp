@@ -108,7 +108,8 @@ QString MyPostgresDB::auth_user(QStringList auth_data)
     if(query.value(query.record().indexOf("password")) != auth_data[2])
         return "err&pass"; // wrong password
 
-    return query.value(query.record().indexOf("role_id")).toString(); // login and password is correct
+    return query.value(query.record().indexOf("role_id")).toString() + "&" + \
+           query.value(query.record().indexOf("id")).toString(); // login and password is correct
 }
 
 QString MyPostgresDB::view_schedule(QStringList view_data)
@@ -156,6 +157,45 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
 
     return ans;
 
+}
+
+QString MyPostgresDB::view_exception(QStringList view_exc_data)
+{
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM exceptions WHERE teacher_id = ?");
+    query.addBindValue(view_exc_data[2]);
+    query.exec();
+
+    QString teacher_id = "";
+    if(query.next())
+        teacher_id = query.value(query.record().indexOf("teacher_id")).toString();
+
+    if(teacher_id != "")
+        return query.value(query.record().indexOf("exception")).toString();
+    else
+        return "err";
+}
+
+QString MyPostgresDB::add_exception(QStringList add_exc_data)
+{
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM exceptions WHERE teacher_id = ?");
+    query.addBindValue(add_exc_data[2]);
+    query.exec();
+
+    QString teacher_id = "";
+    if(query.next())
+        teacher_id = query.value(query.record().indexOf("teacher_id")).toString();
+
+    if(teacher_id == "")
+    {
+        query.prepare("INSERT INTO exceptions (id, teacher_id, exception) VALUES (DEFAULT, ?, ?)");
+        query.addBindValue(add_exc_data[2]);
+        query.addBindValue(add_exc_data[3]);
+        query.exec();
+    }
+
+    return "successful";
 }
 
 bool MyPostgresDB::sendQuery(QString qsl)
