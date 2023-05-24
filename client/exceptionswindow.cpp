@@ -7,7 +7,7 @@ ExceptionsWindow::ExceptionsWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    if(data == "err")
+    if(data == "")
         data = "1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1";
     qDebug()<<"////////////////////////"<<data;
     pair_buttons = {ui->mon_1_lesson_button, ui->mon_2_lesson_button, ui->mon_3_lesson_button, ui->mon_4_lesson_button, ui->mon_5_lesson_button, ui->mon_6_lesson_button, ui->mon_7_lesson_button,
@@ -21,7 +21,6 @@ ExceptionsWindow::ExceptionsWindow(QWidget *parent) :
 
     for(int i = 0; i < data.size(); i++)
     {
-        qDebug()<<data.size();
         QChar c = data[i];
         if(c != ' ' && c != '|')
         {
@@ -63,6 +62,7 @@ void ExceptionsWindow::on_ok_button_clicked()
 {
     /// Data sending
     Client::getInstance()->sendToServer("exc&add&" + QString::number(Client::getInstance()->get_account_id()) + "&" +  data);
+    qDebug() << "exc&add&" + QString::number(Client::getInstance()->get_account_id()) + "&" +  data;
     close();
 }
 

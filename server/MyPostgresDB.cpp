@@ -194,6 +194,13 @@ QString MyPostgresDB::add_exception(QStringList add_exc_data)
         query.addBindValue(add_exc_data[3]);
         query.exec();
     }
+    else
+    {
+        query.prepare("UPDATE exceptions SET exception = ? WHERE teacher_id = ?");
+        query.addBindValue(add_exc_data[3]);
+        query.addBindValue(add_exc_data[2]);
+        query.exec();
+    }
 
     return "successful";
 }

@@ -47,9 +47,11 @@ void MainWindow::err_slot(QString err)
 void MainWindow::exc_slot(QString dataFromServ)
 {
     EW = new ExceptionsWindow(this);
-    EW->set_data(dataFromServ);
+    qDebug() << dataFromServ << "00000000000000000";
+    if(dataFromServ != "err" && dataFromServ != "successful")
+        EW->set_data(dataFromServ);
 
-    //EW->show();
+    EW->show();
 }
 
 
