@@ -33,6 +33,11 @@ void Client::set_account_id(QString id)
     qDebug()<<account_id;
 }
 
+qint64 Client::get_account_id()
+{
+    return this->account_id;
+}
+
 void Client::slot_readFromServer() {
     QByteArray array;
     QString tmp;

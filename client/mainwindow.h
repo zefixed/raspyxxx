@@ -40,6 +40,8 @@ private slots:
 
     void slot_on_idk(QList<QString> ansFromServ);
 
+    void exc_slot(QString dataFromServ);
+
 private:
     Ui::MainWindow* ui;
 

@@ -7,13 +7,45 @@ ExceptionsWindow::ExceptionsWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    data = "1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1";
+    if(data == "err")
+        data = "1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1";
+    qDebug()<<"////////////////////////"<<data;
     pair_buttons = {ui->mon_1_lesson_button, ui->mon_2_lesson_button, ui->mon_3_lesson_button, ui->mon_4_lesson_button, ui->mon_5_lesson_button, ui->mon_6_lesson_button, ui->mon_7_lesson_button,
                     ui->tue_1_lesson_button, ui->tue_2_lesson_button, ui->tue_3_lesson_button, ui->tue_4_lesson_button, ui->tue_5_lesson_button, ui->tue_6_lesson_button, ui->tue_7_lesson_button,
                     ui->wed_1_lesson_button, ui->wed_2_lesson_button, ui->wed_3_lesson_button, ui->wed_4_lesson_button, ui->wed_5_lesson_button, ui->wed_6_lesson_button, ui->wed_7_lesson_button,
                     ui->thu_1_lesson_button, ui->thu_2_lesson_button, ui->thu_3_lesson_button, ui->thu_4_lesson_button, ui->thu_5_lesson_button, ui->thu_6_lesson_button, ui->thu_7_lesson_button,
                     ui->fri_1_lesson_button, ui->fri_2_lesson_button, ui->fri_3_lesson_button, ui->fri_4_lesson_button, ui->fri_5_lesson_button, ui->fri_6_lesson_button, ui->fri_7_lesson_button,
                     ui->sat_1_lesson_button, ui->sat_2_lesson_button, ui->sat_3_lesson_button, ui->sat_4_lesson_button, ui->sat_5_lesson_button, ui->sat_6_lesson_button, ui->sat_7_lesson_button};
+
+    qint8 numberCounter = 0;
+
+    for(int i = 0; i < data.size(); i++)
+    {
+        qDebug()<<data.size();
+        QChar c = data[i];
+        if(c != ' ' && c != '|')
+        {
+            if(c == '1')
+            {
+                pair_buttons.at(numberCounter)->setStyleSheet("background-color: rgb(132, 255, 105);"
+                                    "color: rgb(0, 0, 0);"
+                                    "font-family: Arial;"
+                                    "font-size: 17px;"
+                                    "border: 1px solid rgb(0, 0, 0);");
+            }
+
+            else
+            {
+                pair_buttons.at(numberCounter)->setStyleSheet("background-color: rgb(255, 98, 101);"
+                                    "color: rgb(0, 0, 0);"
+                                    "font-family: Arial;"
+                                    "font-size: 17px;"
+                                    "border: 1px solid rgb(0, 0, 0);");
+            }
+            numberCounter++;
+        }
+
+    }
 }
 
 ExceptionsWindow::~ExceptionsWindow()
@@ -21,12 +53,18 @@ ExceptionsWindow::~ExceptionsWindow()
     delete ui;
 }
 
+void ExceptionsWindow::set_data(QString dataFromServ)
+{
+    this->data = dataFromServ;
+    qDebug()<<"qqqqqqqqqqqqqqqqqqqqqqqq"<<data;
+}
+
 void ExceptionsWindow::on_ok_button_clicked()
 {
     /// Data sending
-
+    Client::getInstance()->sendToServer("exc&add&" + QString::number(Client::getInstance()->get_account_id()) + "&" +  data);
+    close();
 }
-
 
 void ExceptionsWindow::on_cancel_button_clicked()
 {

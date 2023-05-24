@@ -14,14 +14,14 @@ Parser::Parser(QString str)
 
 QString Parser::parse()
 {
+    qDebug()<<"////////////////////////////"<<qsl;
     if(this->qsl.empty())
         return "err";
     if(this->qsl[0] == "reg") return "reg&" + QString::number(reg(qsl));
     else if(this->qsl[0] == "auth") return "auth&" + auth(qsl);
     else if(this->qsl[0] == "view") return "view&" +  check_schedule(qsl);
     else if(this->qsl[0] == "exc") return "exc&" + exceptions(qsl);
-    /* else if(this->qsl[0] == "resch") return reschedule(qsl);
-    */
+    /* else if(this->qsl[0] == "resch") return reschedule(qsl);*/
     else return "err&parse";
 }
 
@@ -48,6 +48,7 @@ bool Parser::reschedule(QStringList qsl)
 
 QString Parser::exceptions(QStringList exc_data)
 {
+    qDebug() << exc_data;
     if(exc_data[1] == "view")
         return MyPostgresDB::getInstance()->view_exception(exc_data);
     else if (exc_data[1] == "add")

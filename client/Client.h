@@ -45,6 +45,7 @@ public:
     bool sendToServer(QString);
 
     void set_account_id(QString id);
+    qint64 get_account_id();
 protected slots:
     /// Slot triggered when receiving data from the server
 	void slot_readFromServer();

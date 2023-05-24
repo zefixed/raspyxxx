@@ -2,6 +2,7 @@
 #define EXCEPTIONSWINDOW_H
 
 #include <QDialog>
+#include "Client.h"
 
 namespace Ui {
 class ExceptionsWindow;
@@ -14,6 +15,8 @@ class ExceptionsWindow : public QDialog
 public:
     explicit ExceptionsWindow(QWidget *parent = nullptr);
     ~ExceptionsWindow();
+
+    void set_data(QString dataFromServ);
 
 private slots:
     void on_ok_button_clicked();

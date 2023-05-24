@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
             this, &MainWindow::slot_on_idk);
     connect(Client::getInstance(), &Client::err,
             this, &MainWindow::err_slot);
-    //connect(Client::getInstance(), &Client::exc,
-    //        this, &MainWindow::);
+    connect(Client::getInstance(), &Client::exc,
+            this, &MainWindow::exc_slot);
     ui->setupUi(this);
 
     ui->exceptions_button->hide();
@@ -29,8 +29,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_exceptions_button_clicked()
 {
-    EW = new ExceptionsWindow(this);
-    EW->show();
+
+    Client::getInstance()->sendToServer("exc&view&" + QString::number(Client::getInstance()->get_account_id()));
 }
 
 
@@ -42,6 +42,14 @@ void MainWindow::on_change_schedule_button_clicked()
 void MainWindow::err_slot(QString err)
 {
     qDebug() << err;
+}
+
+void MainWindow::exc_slot(QString dataFromServ)
+{
+    EW = new ExceptionsWindow(this);
+    EW->set_data(dataFromServ);
+
+    //EW->show();
 }
 
 
@@ -68,7 +76,7 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
     }
     transformed_list.removeFirst();
     transformed_list.removeLast();
-    qDebug()<<"/////////////////////////////////\n"<<transformed_list;
+    //qDebug()<<"/////////////////////////////////\n"<<transformed_list;
 
     // group|teacher|address|audience|time|weekday|discipline|discipline_type,
 
