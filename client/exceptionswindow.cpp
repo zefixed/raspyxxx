@@ -1,15 +1,16 @@
 #include "exceptionswindow.h"
 #include "ui_exceptionswindow.h"
 
-ExceptionsWindow::ExceptionsWindow(QWidget *parent) :
+ExceptionsWindow::ExceptionsWindow(QWidget *parent, QString data_from_serv) :
     QDialog(parent),
     ui(new Ui::ExceptionsWindow)
 {
     ui->setupUi(this);
 
+    data = data_from_serv;
+
     if(data == "")
         data = "1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1";
-    qDebug()<<"////////////////////////"<<data;
     pair_buttons = {ui->mon_1_lesson_button, ui->mon_2_lesson_button, ui->mon_3_lesson_button, ui->mon_4_lesson_button, ui->mon_5_lesson_button, ui->mon_6_lesson_button, ui->mon_7_lesson_button,
                     ui->tue_1_lesson_button, ui->tue_2_lesson_button, ui->tue_3_lesson_button, ui->tue_4_lesson_button, ui->tue_5_lesson_button, ui->tue_6_lesson_button, ui->tue_7_lesson_button,
                     ui->wed_1_lesson_button, ui->wed_2_lesson_button, ui->wed_3_lesson_button, ui->wed_4_lesson_button, ui->wed_5_lesson_button, ui->wed_6_lesson_button, ui->wed_7_lesson_button,
@@ -55,14 +56,12 @@ ExceptionsWindow::~ExceptionsWindow()
 void ExceptionsWindow::set_data(QString dataFromServ)
 {
     this->data = dataFromServ;
-    qDebug()<<"qqqqqqqqqqqqqqqqqqqqqqqq"<<data;
 }
 
 void ExceptionsWindow::on_ok_button_clicked()
 {
     /// Data sending
     Client::getInstance()->sendToServer("exc&add&" + QString::number(Client::getInstance()->get_account_id()) + "&" +  data);
-    qDebug() << "exc&add&" + QString::number(Client::getInstance()->get_account_id()) + "&" +  data;
     close();
 }
 
@@ -105,10 +104,10 @@ void ExceptionsWindow::dataToGreen(qint8 id)
     for(int i = 0; i < data.size(); i++)
     {
         QChar c = data[i];
-        if(c != ' ' && c != '|')
-            numberCounter++;
         if(c != ' ' && c != '|' && id == numberCounter)
             data[i] = '1';
+        if(c != ' ' && c != '|')
+            numberCounter++;
     }
 }
 
@@ -119,10 +118,10 @@ void ExceptionsWindow::dataToRed(qint8 id)
     for(int i = 0; i < data.size(); i++)
     {
         QChar c = data[i];
-        if(c != ' ' && c != '|')
-            numberCounter++;
         if(c != ' ' && c != '|' && id == numberCounter)
             data[i] = '0';
+        if(c != ' ' && c != '|')
+            numberCounter++;
     }
 }
 

@@ -39,10 +39,12 @@ public:
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName("LoginWindow");
         LoginWindow->resize(427, 153);
+        LoginWindow->setFocusPolicy(Qt::TabFocus);
         verticalLayout = new QVBoxLayout(LoginWindow);
         verticalLayout->setObjectName("verticalLayout");
         groupBox = new QGroupBox(LoginWindow);
         groupBox->setObjectName("groupBox");
+        groupBox->setFocusPolicy(Qt::NoFocus);
         gridLayout = new QGridLayout(groupBox);
         gridLayout->setObjectName("gridLayout");
         login_label = new QLabel(groupBox);
@@ -57,17 +59,20 @@ public:
 
         pass_lineedit = new QLineEdit(groupBox);
         pass_lineedit->setObjectName("pass_lineedit");
+        pass_lineedit->setFocusPolicy(Qt::TabFocus);
         pass_lineedit->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(pass_lineedit, 1, 1, 1, 1);
 
         show_pass_button = new QPushButton(groupBox);
         show_pass_button->setObjectName("show_pass_button");
+        show_pass_button->setFocusPolicy(Qt::TabFocus);
 
         gridLayout->addWidget(show_pass_button, 1, 2, 1, 1);
 
         login_lineedit = new QLineEdit(groupBox);
         login_lineedit->setObjectName("login_lineedit");
+        login_lineedit->setFocusPolicy(Qt::StrongFocus);
 
         gridLayout->addWidget(login_lineedit, 0, 1, 1, 2);
 
@@ -76,9 +81,13 @@ public:
 
         log_in_button = new QPushButton(LoginWindow);
         log_in_button->setObjectName("log_in_button");
+        log_in_button->setFocusPolicy(Qt::TabFocus);
 
         verticalLayout->addWidget(log_in_button);
 
+        QWidget::setTabOrder(login_lineedit, pass_lineedit);
+        QWidget::setTabOrder(pass_lineedit, show_pass_button);
+        QWidget::setTabOrder(show_pass_button, log_in_button);
 
         retranslateUi(LoginWindow);
 

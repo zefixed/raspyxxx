@@ -62,8 +62,11 @@ signals:
     /// Signal err
     void err(QString);
 
-    /// Signal exc
-    void exc(QString);
+    /// Signal exc_add
+    void exc_add(QString);
+
+     /// Signal exc_view
+    void exc_view(QString);
 };
 
 #endif // Client_H

@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
             this, &MainWindow::slot_on_idk);
     connect(Client::getInstance(), &Client::err,
             this, &MainWindow::err_slot);
-    connect(Client::getInstance(), &Client::exc,
+    connect(Client::getInstance(), &Client::exc_view,
             this, &MainWindow::exc_slot);
     ui->setupUi(this);
 
@@ -29,8 +29,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_exceptions_button_clicked()
 {
-
     Client::getInstance()->sendToServer("exc&view&" + QString::number(Client::getInstance()->get_account_id()));
+    qDebug() << "MainWindow::on_exceptions_button_clicked\t" << "exc&view&" + QString::number(Client::getInstance()->get_account_id());
 }
 
 
@@ -46,11 +46,8 @@ void MainWindow::err_slot(QString err)
 
 void MainWindow::exc_slot(QString dataFromServ)
 {
-    EW = new ExceptionsWindow(this);
-    qDebug() << dataFromServ << "00000000000000000";
-    if(dataFromServ != "err" && dataFromServ != "successful")
-        EW->set_data(dataFromServ);
-
+    EW = new ExceptionsWindow(this, dataFromServ);
+    EW->set_data(dataFromServ);
     EW->show();
 }
 

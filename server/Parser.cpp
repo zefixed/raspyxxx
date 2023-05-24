@@ -14,7 +14,6 @@ Parser::Parser(QString str)
 
 QString Parser::parse()
 {
-    qDebug()<<"////////////////////////////"<<qsl;
     if(this->qsl.empty())
         return "err";
     if(this->qsl[0] == "reg") return "reg&" + QString::number(reg(qsl));

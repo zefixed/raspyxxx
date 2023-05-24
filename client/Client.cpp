@@ -49,7 +49,7 @@ void Client::slot_readFromServer() {
     }
     array.clear();
     QStringList serverAns = tmp.split("&");
-    qDebug() << serverAns;
+    qDebug() << "Client::slot_readFromServer\t" << serverAns;
     if (serverAns[0] == "reg")
         emit reg(serverAns[1]);
     else if (serverAns[0] == "auth")
@@ -59,9 +59,14 @@ void Client::slot_readFromServer() {
     else if (serverAns[0] == "err")
         emit err(serverAns[1]);
     else if (serverAns[0] == "exc")
-        emit exc(serverAns[1]);
+    {
+        if(serverAns[1] == "add")
+            emit exc_add(serverAns[2]);
+        else if(serverAns[1] == "view")
+            emit exc_view(serverAns[2]);
+    }
 
-    qDebug() << "readFromServer";
+
 }
 
 Client* Client::p_instance;

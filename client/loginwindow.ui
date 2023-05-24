@@ -10,12 +10,18 @@
     <height>153</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="title">
       <string/>
      </property>
@@ -36,6 +42,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="pass_lineedit">
+        <property name="focusPolicy">
+         <enum>Qt::TabFocus</enum>
+        </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
@@ -43,19 +52,29 @@
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="show_pass_button">
+        <property name="focusPolicy">
+         <enum>Qt::TabFocus</enum>
+        </property>
         <property name="text">
          <string>👁</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" colspan="2">
-       <widget class="QLineEdit" name="login_lineedit"/>
+       <widget class="QLineEdit" name="login_lineedit">
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="log_in_button">
+     <property name="focusPolicy">
+      <enum>Qt::TabFocus</enum>
+     </property>
      <property name="text">
       <string>Войти</string>
      </property>
@@ -66,6 +85,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>login_lineedit</tabstop>
+  <tabstop>pass_lineedit</tabstop>
+  <tabstop>show_pass_button</tabstop>
+  <tabstop>log_in_button</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -69,6 +69,7 @@ void MyTcpServer::slotServerRead(){
 
     array.clear();
     array.append(tmp.toUtf8());
+    qDebug() << "MyTcpServer::slotServerRead()\t" << array;
     Parser test((QString)array);
 
     //test.parse(); // (rewrite!!!!!!) return true or false and this answer need to be sent to client

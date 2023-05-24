@@ -33,74 +33,14 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="change_schedule_button">
       <property name="text">
        <string>Изменить расписание</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="input_group_label">
-        <property name="text">
-         <string>Введите номер группы:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="input_group_lineedit"/>
-      </item>
-     </layout>
-    </item>
     <item row="1" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="week_Layout">
-      <item>
-       <widget class="QLabel" name="monday_label">
-        <property name="text">
-         <string>Понедельник</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="tuesday_label">
-        <property name="text">
-         <string>Вторник</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="wednesday_label">
-        <property name="text">
-         <string>Среда</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="thursday_label">
-        <property name="text">
-         <string>Четверг</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="friday_label">
-        <property name="text">
-         <string>Пятница</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="saturday_label">
-        <property name="text">
-         <string>Суббота</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
@@ -118,55 +58,228 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabel" name="monday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="monday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="monday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Понедельник</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="monday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="tuesday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="tuesday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="tuesday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Вторник</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tuesday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="wednesday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="wednesday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="wednesday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Среда</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="wednesday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="thursday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="thursday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="thursday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Четверг</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="thursday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="friday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="friday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="friday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Пятница</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="friday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="saturday_schedule_label">
-        <property name="text">
-         <string/>
+       <layout class="QVBoxLayout" name="saturday_Layout">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="saturday_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Суббота</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="saturday_schedule_label">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
-    <item row="4" column="0">
+    <item row="3" column="0">
      <widget class="QPushButton" name="exceptions_button">
       <property name="text">
        <string>Исключения</string>
       </property>
      </widget>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="input_group_label">
+        <property name="text">
+         <string>Введите номер группы:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="input_group_lineedit"/>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -176,7 +289,7 @@
      <x>0</x>
      <y>0</y>
      <width>931</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

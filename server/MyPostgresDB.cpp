@@ -16,7 +16,7 @@ QString MyPostgresDB::getIPaddress()
 
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
     foreach (const QNetworkInterface& interface, interfaces) {
-        // Пропускаем интерфейсы, которые не являются активными или не являются IPv4
+        // Skip interfaces that are not active or are not IPv4
         if (!interface.isValid() || !interface.flags().testFlag(QNetworkInterface::IsUp) ||
             interface.flags().testFlag(QNetworkInterface::IsLoopBack) ||
             !interface.flags().testFlag(QNetworkInterface::CanBroadcast))
@@ -171,9 +171,14 @@ QString MyPostgresDB::view_exception(QStringList view_exc_data)
         teacher_id = query.value(query.record().indexOf("teacher_id")).toString();
 
     if(teacher_id != "")
-        return query.value(query.record().indexOf("exception")).toString();
+        return "view&" + query.value(query.record().indexOf("exception")).toString();
     else
-        return "err";
+    {
+        query.prepare("INSERT INTO exceptions (id, teacher_id, exception) VALUES (DEFAULT, ?, 1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1");
+        query.addBindValue(view_exc_data[2]);
+        query.exec();
+        return "view&1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1|1 1 1 1 1 1 1";
+    }
 }
 
 QString MyPostgresDB::add_exception(QStringList add_exc_data)
@@ -202,7 +207,7 @@ QString MyPostgresDB::add_exception(QStringList add_exc_data)
         query.exec();
     }
 
-    return "successful";
+    return "add&successful";
 }
 
 bool MyPostgresDB::sendQuery(QString qsl)

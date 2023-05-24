@@ -13,7 +13,7 @@ class ExceptionsWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ExceptionsWindow(QWidget *parent = nullptr);
+    explicit ExceptionsWindow(QWidget *parent = nullptr, QString data = "");
     ~ExceptionsWindow();
 
     void set_data(QString dataFromServ);
