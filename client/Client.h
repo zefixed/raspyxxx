@@ -50,17 +50,18 @@ protected slots:
 	void slot_readFromServer();
 signals:
     /// Signal auth
-    void auth(QString);
+    void auth(QStringList);
 
     /// Signal reg
     void reg(QString);
 
     /// Signal view
-    void view(QString);
+    void view(QList<QString>);
 
     /// Signal err
     void err(QString);
 
+    /// Signal exc
     void exc(QString);
 };
 

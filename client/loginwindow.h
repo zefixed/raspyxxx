@@ -28,14 +28,12 @@ private slots:
     void on_show_pass_button_released();
 
     /// Slot triggered by auth signal
-    void slot_on_auth(QString);
+    void slot_on_auth(QStringList);
 
 private:
     Ui::LoginWindow* ui;
 
     QWidget* MW;
-
-    void set_account_id(QString id);
 
     //StudentWindow* SW;
     //TeacherWindow* TW;

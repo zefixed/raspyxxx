@@ -38,13 +38,15 @@ private slots:
     /// Slot triggered by pressing return in lineedit
     void on_input_group_lineedit_returnPressed();
 
+    void slot_on_idk(QList<QString> ansFromServ);
+
 private:
     Ui::MainWindow* ui;
 
     LoginWindow* LW;
     ExceptionsWindow* EW;
 
-    void slot_on_idk(QList<QString> ansFromServ);
+
 };
 
 #endif // MAINWINDOW_H

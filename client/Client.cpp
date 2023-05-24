@@ -30,6 +30,7 @@ bool Client::sendToServer(QString msg) {
 void Client::set_account_id(QString id)
 {
     this->account_id = id.toInt();
+    qDebug()<<account_id;
 }
 
 void Client::slot_readFromServer() {
@@ -47,9 +48,9 @@ void Client::slot_readFromServer() {
     if (serverAns[0] == "reg")
         emit reg(serverAns[1]);
     else if (serverAns[0] == "auth")
-        emit auth(serverAns[1]);
+        emit auth(serverAns);
     else if (serverAns[0] == "view")
-        emit view(serverAns[1]);
+        emit view(serverAns);
     else if (serverAns[0] == "err")
         emit err(serverAns[1]);
     else if (serverAns[0] == "exc")

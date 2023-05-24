@@ -6,103 +6,162 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>879</width>
-    <height>601</height>
+    <width>915</width>
+    <height>560</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Raspyxxx</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>821</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="week_Layout">
-     <item>
-      <widget class="QLabel" name="monday_label">
-       <property name="text">
-        <string>Понедельник</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="tuesday_label">
-       <property name="text">
-        <string>Вторник</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="wednesday_label">
-       <property name="text">
-        <string>Среда</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="thursday_label">
-       <property name="text">
-        <string>Четверг</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="friday_label">
-       <property name="text">
-        <string>Пятница</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="saturday_label">
-       <property name="text">
-        <string>Суббота</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="change_schedule_button">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>500</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Изменить расписание</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>0</y>
-      <width>275</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="input_group_label">
-       <property name="text">
-        <string>Введите номер группы:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="input_group_lineedit"/>
-     </item>
-    </layout>
-   </widget>
+   <property name="minimumSize">
+    <size>
+     <width>917</width>
+     <height>515</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1920</width>
+     <height>1080</height>
+    </size>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="input_group_label">
+        <property name="text">
+         <string>Введите номер группы:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="input_group_lineedit"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="week_Layout">
+      <item>
+       <widget class="QLabel" name="monday_label">
+        <property name="text">
+         <string>Понедельник</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="tuesday_label">
+        <property name="text">
+         <string>Вторник</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="wednesday_label">
+        <property name="text">
+         <string>Среда</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="thursday_label">
+        <property name="text">
+         <string>Четверг</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="friday_label">
+        <property name="text">
+         <string>Пятница</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="saturday_label">
+        <property name="text">
+         <string>Суббота</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="monday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="tuesday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="wednesday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="thursday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="friday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="saturday_schedule_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="change_schedule_button">
+      <property name="text">
+       <string>Изменить расписание</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
    <widget class="QPushButton" name="exceptions_button">
     <property name="geometry">
      <rect>
@@ -116,67 +175,13 @@
      <string>Исключения</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>821</width>
-      <height>381</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="monday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="tuesday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="wednesday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="thursday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="friday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="saturday_schedule_label">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>879</width>
+     <width>915</width>
      <height>23</height>
     </rect>
    </property>
