@@ -108,55 +108,118 @@ QString MyPostgresDB::auth_user(QStringList auth_data)
     if(query.value(query.record().indexOf("password")) != auth_data[2])
         return "err&pass"; // wrong password
 
-    return query.value(query.record().indexOf("role_id")).toString() + "&" + \
-           query.value(query.record().indexOf("id")).toString(); // login and password is correct
+    QString role_id = query.value(query.record().indexOf("role_id")).toString();
+    QString id = query.value(query.record().indexOf("id")).toString();
+
+    query.prepare("SELECT * FROM groups");
+    query.exec();
+
+    QString groups;
+    while(query.next())
+    {
+        groups += query.value(query.record().indexOf("group")).toString() + "|";
+    }
+    groups.chop(1);
+
+    query.prepare("SELECT * FROM teachers");
+    query.exec();
+
+    QString teachers;
+    while(query.next())
+    {
+        teachers += query.value(query.record().indexOf("last_name")).toString() + " ";
+        teachers += query.value(query.record().indexOf("first_name")).toString() + " ";
+        teachers += query.value(query.record().indexOf("patronymic")).toString() + "|";
+    }
+    teachers.chop(1);
+
+    return role_id + "&" + id + "&" + groups + "&" + teachers; // login and password is correct
 }
 
 QString MyPostgresDB::view_schedule(QStringList view_data)
 {
     if(view_data.size() != 3)
         return "false";
-
     QSqlQuery query(db);
-    //query.prepare("SELECT * FROM schedule WHERE " + view_data[1] + " = ?");
-    query.prepare("SELECT groups.\"group\" AS \"group\", "
-                  "CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) AS \"teacher\", "
-                  "buildings.building_address AS \"address\", "
-                  "rooms.room_num AS \"audience\", "
-                  "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
-                  "days.day AS \"weekday\", "
-                  "discipline.name AS \"discipline\", "
-                  "discipline_type.name AS \"discipline_type\" "
-                  "FROM schedule "
-                  "JOIN groups ON schedule.group_id = groups.id "
-                  "JOIN teachers ON schedule.teacher_id = teachers.id "
-                  "JOIN rooms ON schedule.room_id = rooms.id "
-                  "JOIN buildings ON rooms.building_id = buildings.id "
-                  "JOIN times ON schedule.pair_id = times.id "
-                  "JOIN days ON schedule.day_id = days.id "
-                  "JOIN discipline ON schedule.discipline_id = discipline.id "
-                  "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
-                  "WHERE groups.\"group\" = \'" + view_data[2] + "'");
 
-    query.exec();
+    if(view_data[1] == "group_id")
+    {
+        //query.prepare("SELECT * FROM schedule WHERE " + view_data[1] + " = ?");
+        query.prepare("SELECT groups.\"group\" AS \"group\", "
+                      "CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) AS \"teacher\", "
+                      "buildings.building_address AS \"address\", "
+                      "rooms.room_num AS \"audience\", "
+                      "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
+                      "days.day AS \"weekday\", "
+                      "discipline.name AS \"discipline\", "
+                      "discipline_type.name AS \"discipline_type\" "
+                      "FROM schedule "
+                      "JOIN groups ON schedule.group_id = groups.id "
+                      "JOIN teachers ON schedule.teacher_id = teachers.id "
+                      "JOIN rooms ON schedule.room_id = rooms.id "
+                      "JOIN buildings ON rooms.building_id = buildings.id "
+                      "JOIN times ON schedule.pair_id = times.id "
+                      "JOIN days ON schedule.day_id = days.id "
+                      "JOIN discipline ON schedule.discipline_id = discipline.id "
+                      "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
+                      "WHERE groups.\"group\" = \'" + view_data[2] + "'");
+        query.exec();
 
-    QString ans;
+        QString ans;
+        while(query.next())
+        {
+            ans += query.value(query.record().indexOf("group")).toString() + '|';
+            ans += query.value(query.record().indexOf("teacher")).toString() + '|';
+            ans += query.value(query.record().indexOf("address")).toString() + '|';
+            ans += query.value(query.record().indexOf("audience")).toString() + '|';
+            ans += query.value(query.record().indexOf("time")).toString() + '|';
+            ans += query.value(query.record().indexOf("weekday")).toString() + '|';
+            ans += query.value(query.record().indexOf("discipline")).toString() + '|';
+            ans += query.value(query.record().indexOf("discipline_type")).toString();
 
-    while(query.next()){
-        ans += query.value(query.record().indexOf("group")).toString() + '|';
-        ans += query.value(query.record().indexOf("teacher")).toString() + '|';
-        ans += query.value(query.record().indexOf("address")).toString() + '|';
-        ans += query.value(query.record().indexOf("audience")).toString() + '|';
-        ans += query.value(query.record().indexOf("time")).toString() + '|';
-        ans += query.value(query.record().indexOf("weekday")).toString() + '|';
-        ans += query.value(query.record().indexOf("discipline")).toString() + '|';
-        ans += query.value(query.record().indexOf("discipline_type")).toString();
+            ans += "&";
+        }
 
-        ans += "&";
+        return "group&" + ans;
     }
+    else if(view_data[1] == "teacher_id")
+    {
+        query.prepare("SELECT groups.\"group\" AS \"group\", "
+                      "CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) AS \"teacher\", "
+                      "buildings.building_address AS \"address\", "
+                      "rooms.room_num AS \"audience\", "
+                      "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
+                      "days.day AS \"weekday\", "
+                      "discipline.name AS \"discipline\", "
+                      "discipline_type.name AS \"discipline_type\" "
+                      "FROM schedule "
+                      "JOIN groups ON schedule.group_id = groups.id "
+                      "JOIN teachers ON schedule.teacher_id = teachers.id "
+                      "JOIN rooms ON schedule.room_id = rooms.id "
+                      "JOIN buildings ON rooms.building_id = buildings.id "
+                      "JOIN times ON schedule.pair_id = times.id "
+                      "JOIN days ON schedule.day_id = days.id "
+                      "JOIN discipline ON schedule.discipline_id = discipline.id "
+                      "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
+                      "WHERE CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) = '" + view_data[2] + "'");
+        query.exec();
 
-    return ans;
+        QString ans;
+        while(query.next())
+        {
+            ans += query.value(query.record().indexOf("group")).toString() + '|';
+            ans += query.value(query.record().indexOf("teacher")).toString() + '|';
+            ans += query.value(query.record().indexOf("address")).toString() + '|';
+            ans += query.value(query.record().indexOf("audience")).toString() + '|';
+            ans += query.value(query.record().indexOf("time")).toString() + '|';
+            ans += query.value(query.record().indexOf("weekday")).toString() + '|';
+            ans += query.value(query.record().indexOf("discipline")).toString() + '|';
+            ans += query.value(query.record().indexOf("discipline_type")).toString();
 
+            ans += "&";
+        }
+        return "teacher&" + ans;
+    }
 }
 
 QString MyPostgresDB::view_exception(QStringList view_exc_data)

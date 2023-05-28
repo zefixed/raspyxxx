@@ -23,7 +23,6 @@ void LoginWindow::on_log_in_button_clicked()
 
 
     Client::getInstance()->sendToServer("auth&"+login+"&"+password); // temporary
-
     // The request sends to the server. Need to write a sending to the client
 }
 

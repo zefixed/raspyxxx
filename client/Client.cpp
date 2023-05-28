@@ -55,7 +55,12 @@ void Client::slot_readFromServer() {
     else if (serverAns[0] == "auth")
         emit auth(serverAns);
     else if (serverAns[0] == "view")
-        emit view(serverAns);
+    {
+        if(serverAns[1] == "group")
+            emit view_group(serverAns);
+        else if(serverAns[1] == "teacher")
+            emit view_teacher(serverAns);
+    }
     else if (serverAns[0] == "err")
         emit err(serverAns[1]);
     else if (serverAns[0] == "exc")

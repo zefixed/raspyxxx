@@ -29,6 +29,13 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *group_horizontalLayout;
+    QLabel *input_group_label;
+    QLineEdit *input_group_lineedit;
+    QHBoxLayout *teacher_horizontalLayout;
+    QLabel *input_teacher_label;
+    QLineEdit *input_teacher_lineedit;
     QPushButton *change_schedule_button;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *monday_Layout;
@@ -50,9 +57,7 @@ public:
     QLabel *saturday_label;
     QLabel *saturday_schedule_label;
     QPushButton *exceptions_button;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *input_group_label;
-    QLineEdit *input_group_lineedit;
+    QLabel *group_doesnt_exist_label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -60,33 +65,77 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(931, 630);
+        MainWindow->resize(1039, 622);
         MainWindow->setMinimumSize(QSize(0, 0));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
+        centralwidget->setSizePolicy(sizePolicy);
         centralwidget->setMinimumSize(QSize(917, 515));
         centralwidget->setMaximumSize(QSize(1920, 1080));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName("gridLayout");
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
+        verticalLayout_2->setContentsMargins(-1, -1, -1, 0);
+        group_horizontalLayout = new QHBoxLayout();
+        group_horizontalLayout->setObjectName("group_horizontalLayout");
+        group_horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        input_group_label = new QLabel(centralwidget);
+        input_group_label->setObjectName("input_group_label");
+
+        group_horizontalLayout->addWidget(input_group_label);
+
+        input_group_lineedit = new QLineEdit(centralwidget);
+        input_group_lineedit->setObjectName("input_group_lineedit");
+
+        group_horizontalLayout->addWidget(input_group_lineedit);
+
+
+        verticalLayout_2->addLayout(group_horizontalLayout);
+
+        teacher_horizontalLayout = new QHBoxLayout();
+        teacher_horizontalLayout->setObjectName("teacher_horizontalLayout");
+        teacher_horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        input_teacher_label = new QLabel(centralwidget);
+        input_teacher_label->setObjectName("input_teacher_label");
+
+        teacher_horizontalLayout->addWidget(input_teacher_label);
+
+        input_teacher_lineedit = new QLineEdit(centralwidget);
+        input_teacher_lineedit->setObjectName("input_teacher_lineedit");
+
+        teacher_horizontalLayout->addWidget(input_teacher_lineedit);
+
+
+        verticalLayout_2->addLayout(teacher_horizontalLayout);
+
+
+        gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
+
         change_schedule_button = new QPushButton(centralwidget);
         change_schedule_button->setObjectName("change_schedule_button");
 
-        gridLayout->addWidget(change_schedule_button, 2, 0, 1, 1);
+        gridLayout->addWidget(change_schedule_button, 5, 0, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         monday_Layout = new QVBoxLayout();
         monday_Layout->setObjectName("monday_Layout");
         monday_Layout->setContentsMargins(0, -1, -1, -1);
         monday_label = new QLabel(centralwidget);
         monday_label->setObjectName("monday_label");
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(monday_label->sizePolicy().hasHeightForWidth());
-        monday_label->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(monday_label->sizePolicy().hasHeightForWidth());
+        monday_label->setSizePolicy(sizePolicy1);
 
         monday_Layout->addWidget(monday_label);
 
@@ -104,8 +153,8 @@ public:
         tuesday_Layout->setContentsMargins(0, -1, -1, -1);
         tuesday_label = new QLabel(centralwidget);
         tuesday_label->setObjectName("tuesday_label");
-        sizePolicy.setHeightForWidth(tuesday_label->sizePolicy().hasHeightForWidth());
-        tuesday_label->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(tuesday_label->sizePolicy().hasHeightForWidth());
+        tuesday_label->setSizePolicy(sizePolicy1);
         tuesday_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         tuesday_Layout->addWidget(tuesday_label);
@@ -124,8 +173,8 @@ public:
         wednesday_Layout->setContentsMargins(0, -1, -1, -1);
         wednesday_label = new QLabel(centralwidget);
         wednesday_label->setObjectName("wednesday_label");
-        sizePolicy.setHeightForWidth(wednesday_label->sizePolicy().hasHeightForWidth());
-        wednesday_label->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(wednesday_label->sizePolicy().hasHeightForWidth());
+        wednesday_label->setSizePolicy(sizePolicy1);
 
         wednesday_Layout->addWidget(wednesday_label);
 
@@ -143,8 +192,8 @@ public:
         thursday_Layout->setContentsMargins(0, -1, -1, -1);
         thursday_label = new QLabel(centralwidget);
         thursday_label->setObjectName("thursday_label");
-        sizePolicy.setHeightForWidth(thursday_label->sizePolicy().hasHeightForWidth());
-        thursday_label->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(thursday_label->sizePolicy().hasHeightForWidth());
+        thursday_label->setSizePolicy(sizePolicy1);
 
         thursday_Layout->addWidget(thursday_label);
 
@@ -162,8 +211,8 @@ public:
         friday_Layout->setContentsMargins(0, -1, -1, -1);
         friday_label = new QLabel(centralwidget);
         friday_label->setObjectName("friday_label");
-        sizePolicy.setHeightForWidth(friday_label->sizePolicy().hasHeightForWidth());
-        friday_label->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(friday_label->sizePolicy().hasHeightForWidth());
+        friday_label->setSizePolicy(sizePolicy1);
 
         friday_Layout->addWidget(friday_label);
 
@@ -181,8 +230,8 @@ public:
         saturday_Layout->setContentsMargins(0, -1, -1, -1);
         saturday_label = new QLabel(centralwidget);
         saturday_label->setObjectName("saturday_label");
-        sizePolicy.setHeightForWidth(saturday_label->sizePolicy().hasHeightForWidth());
-        saturday_label->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(saturday_label->sizePolicy().hasHeightForWidth());
+        saturday_label->setSizePolicy(sizePolicy1);
 
         saturday_Layout->addWidget(saturday_label);
 
@@ -196,32 +245,33 @@ public:
         horizontalLayout->addLayout(saturday_Layout);
 
 
-        gridLayout->addLayout(horizontalLayout, 1, 0, 1, 2);
+        gridLayout->addLayout(horizontalLayout, 2, 0, 1, 1);
 
         exceptions_button = new QPushButton(centralwidget);
         exceptions_button->setObjectName("exceptions_button");
 
-        gridLayout->addWidget(exceptions_button, 3, 0, 1, 1);
+        gridLayout->addWidget(exceptions_button, 6, 0, 1, 1);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        input_group_label = new QLabel(centralwidget);
-        input_group_label->setObjectName("input_group_label");
+        group_doesnt_exist_label = new QLabel(centralwidget);
+        group_doesnt_exist_label->setObjectName("group_doesnt_exist_label");
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(group_doesnt_exist_label->sizePolicy().hasHeightForWidth());
+        group_doesnt_exist_label->setSizePolicy(sizePolicy2);
+        group_doesnt_exist_label->setMinimumSize(QSize(0, 0));
+        group_doesnt_exist_label->setMaximumSize(QSize(16777215, 25));
+        QFont font;
+        font.setPointSize(14);
+        group_doesnt_exist_label->setFont(font);
+        group_doesnt_exist_label->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_2->addWidget(input_group_label);
-
-        input_group_lineedit = new QLineEdit(centralwidget);
-        input_group_lineedit->setObjectName("input_group_lineedit");
-
-        horizontalLayout_2->addWidget(input_group_lineedit);
-
-
-        gridLayout->addLayout(horizontalLayout_2, 0, 1, 1, 1);
+        gridLayout->addWidget(group_doesnt_exist_label, 1, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 931, 21));
+        menubar->setGeometry(QRect(0, 0, 1039, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -235,6 +285,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Raspyxxx", nullptr));
+        input_group_label->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\274\320\265\321\200 \320\263\321\200\321\203\320\277\320\277\321\213:", nullptr));
+        input_teacher_label->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\265\320\277\320\276\320\264\320\260\320\262\320\260\321\202\320\265\320\273\321\214", nullptr));
         change_schedule_button->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\200\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
         monday_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\275\320\265\320\264\320\265\320\273\321\214\320\275\320\270\320\272", nullptr));
         monday_schedule_label->setText(QString());
@@ -249,7 +301,7 @@ public:
         saturday_label->setText(QCoreApplication::translate("MainWindow", "\320\241\321\203\320\261\320\261\320\276\321\202\320\260", nullptr));
         saturday_schedule_label->setText(QString());
         exceptions_button->setText(QCoreApplication::translate("MainWindow", "\320\230\321\201\320\272\320\273\321\216\321\207\320\265\320\275\320\270\321\217", nullptr));
-        input_group_label->setText(QCoreApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\275\320\276\320\274\320\265\321\200 \320\263\321\200\321\203\320\277\320\277\321\213:", nullptr));
+        group_doesnt_exist_label->setText(QString());
     } // retranslateUi
 
 };

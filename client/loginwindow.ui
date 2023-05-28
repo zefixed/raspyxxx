@@ -43,7 +43,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="pass_lineedit">
         <property name="focusPolicy">
-         <enum>Qt::TabFocus</enum>
+         <enum>Qt::StrongFocus</enum>
         </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>

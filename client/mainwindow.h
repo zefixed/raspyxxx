@@ -1,9 +1,10 @@
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QCompleter>
+
 #include "Client.h"
 #include "loginwindow.h"
 #include "exceptionswindow.h"
@@ -38,17 +39,24 @@ private slots:
     /// Slot triggered by pressing return in lineedit
     void on_input_group_lineedit_returnPressed();
 
+    void on_input_teacher_lineedit_returnPressed();
+
     void slot_on_idk(QList<QString> ansFromServ);
 
     void exc_slot(QString dataFromServ);
 
 private:
     Ui::MainWindow* ui;
-
     LoginWindow* LW;
     ExceptionsWindow* EW;
+    QCompleter* group_completer = new QCompleter;
+    QCompleter* teacher_completer = new QCompleter;
 
+    QString txt_for_pair(QStringList);
 
+private slots:
+    void set_group_completer(QStringList);
+    void set_teacher_completer(QStringList);
 };
 
 #endif // MAINWINDOW_H

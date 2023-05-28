@@ -65,8 +65,12 @@ signals:
     /// Signal exc_add
     void exc_add(QString);
 
-     /// Signal exc_view
+    /// Signal exc_view
     void exc_view(QString);
+
+    void view_group(QStringList);
+
+    void view_teacher(QStringList);
 };
 
 #endif // Client_H

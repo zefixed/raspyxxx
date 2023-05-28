@@ -59,7 +59,7 @@ public:
 
         pass_lineedit = new QLineEdit(groupBox);
         pass_lineedit->setObjectName("pass_lineedit");
-        pass_lineedit->setFocusPolicy(Qt::TabFocus);
+        pass_lineedit->setFocusPolicy(Qt::StrongFocus);
         pass_lineedit->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(pass_lineedit, 1, 1, 1, 1);
