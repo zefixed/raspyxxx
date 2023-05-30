@@ -72,6 +72,14 @@ class MyPostgresDB
         /// Function of adding an exception by teacher id
         QString add_exception(QStringList);
 
+        QString get();
+
+        QString add(QStringList);
+
+        QString updt(QStringList);
+
+        QString dlt(QStringList);
+
         /// Function to execute a database query
         bool sendQuery(QString qsl);
 };

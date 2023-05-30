@@ -151,7 +151,7 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
                       "rooms.room_num AS \"audience\", "
                       "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
                       "days.day AS \"weekday\", "
-                      "discipline.name AS \"discipline\", "
+                      "disciplines.discipline AS \"discipline\", "
                       "discipline_type.name AS \"discipline_type\" "
                       "FROM schedule "
                       "JOIN groups ON schedule.group_id = groups.id "
@@ -160,7 +160,7 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
                       "JOIN buildings ON rooms.building_id = buildings.id "
                       "JOIN times ON schedule.pair_id = times.id "
                       "JOIN days ON schedule.day_id = days.id "
-                      "JOIN discipline ON schedule.discipline_id = discipline.id "
+                      "JOIN disciplines ON schedule.discipline_id = disciplines.id "
                       "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
                       "WHERE groups.\"group\" = \'" + view_data[2] + "'");
         query.exec();
@@ -179,7 +179,6 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
 
             ans += "&";
         }
-
         return "group&" + ans;
     }
     else if(view_data[1] == "teacher_id")
@@ -190,7 +189,7 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
                       "rooms.room_num AS \"audience\", "
                       "CONCAT(times.start_time, ' - ', times.end_time) AS \"time\", "
                       "days.day AS \"weekday\", "
-                      "discipline.name AS \"discipline\", "
+                      "disciplines.discipline AS \"discipline\", "
                       "discipline_type.name AS \"discipline_type\" "
                       "FROM schedule "
                       "JOIN groups ON schedule.group_id = groups.id "
@@ -199,7 +198,7 @@ QString MyPostgresDB::view_schedule(QStringList view_data)
                       "JOIN buildings ON rooms.building_id = buildings.id "
                       "JOIN times ON schedule.pair_id = times.id "
                       "JOIN days ON schedule.day_id = days.id "
-                      "JOIN discipline ON schedule.discipline_id = discipline.id "
+                      "JOIN disciplines ON schedule.discipline_id = disciplines.id "
                       "JOIN discipline_type ON schedule.discipline_type_id = discipline_type.id "
                       "WHERE CONCAT(teachers.last_name, ' ', teachers.first_name, ' ', teachers.patronymic) = '" + view_data[2] + "'");
         query.exec();
@@ -271,6 +270,151 @@ QString MyPostgresDB::add_exception(QStringList add_exc_data)
     }
 
     return "add&successful";
+}
+
+QString MyPostgresDB::get()
+{
+    QSqlQuery query(db);
+    QString teachers;
+
+    query.prepare("SELECT * FROM teachers");
+    query.exec();
+    while(query.next())
+    {
+        teachers += query.value(query.record().indexOf("last_name")).toString() + " ";
+        teachers += query.value(query.record().indexOf("first_name")).toString() + " ";
+        teachers += query.value(query.record().indexOf("patronymic")).toString() + "|";
+    }
+    teachers.chop(1);
+
+
+    query.prepare("SELECT * FROM groups");
+    query.exec();
+
+    QString groups;
+    while(query.next())
+    {
+        groups += query.value(query.record().indexOf("group")).toString() + "|";
+    }
+    groups.chop(1);
+
+
+    query.prepare("SELECT * FROM disciplines");
+    query.exec();
+
+    QString disciplines;
+    while(query.next())
+    {
+        disciplines += query.value(query.record().indexOf("discipline")).toString() + "|";
+    }
+    disciplines.chop(1);
+
+    return teachers + "&" + groups + "&" + disciplines;
+}
+
+QString MyPostgresDB::add(QStringList add_data)
+{
+    QSqlQuery query(db);
+
+    if(add_data[1] == "teachers")
+    {
+        QStringList tmp= add_data[2].split(" ");
+        query.prepare("INSERT INTO teachers (id, last_name, first_name, patronymic) VALUES (DEFAULT, ?, ?, ?)");
+        query.addBindValue(tmp[0]);
+        query.addBindValue(tmp[1]);
+        query.addBindValue(tmp[2]);
+        query.exec();
+    }
+    else if(add_data[1] == "groups")
+    {
+        query.prepare("INSERT INTO groups (id, \"group\") VALUES (DEFAULT, ?)");
+        query.addBindValue(add_data[2]);
+        query.exec();
+    }
+    else if(add_data[1] == "disciplines")
+    {
+        query.prepare("INSERT INTO disciplines (id, discipline) VALUES (DEFAULT, ?)");
+        query.addBindValue(add_data[2]);
+        query.exec();
+    }
+    qDebug() << "MyPostgresDB::add" << query.lastQuery() << query.lastError();
+
+    if(query.isActive())
+        return "successful";
+    else
+        return "failed";
+}
+
+QString MyPostgresDB::updt(QStringList update_data)
+{
+    QSqlQuery query(db);
+
+    if(update_data[1] == "teachers")
+    {
+        QStringList tmp = update_data[2].split(" ");
+        QStringList tmp2 = update_data[3].split(" ");
+        query.prepare("UPDATE teachers SET last_name = ? AND first_name = ? AND patronymic = ? WHERE last_name = ? AND first_name = ? AND patronymic = ?");
+        query.addBindValue(tmp2[0]);
+        query.addBindValue(tmp2[1]);
+        query.addBindValue(tmp2[2]);
+        query.addBindValue(tmp[0]);
+        query.addBindValue(tmp[1]);
+        query.addBindValue(tmp[2]);
+        query.exec();
+    }
+    else if(update_data[1] == "groups")
+    {
+        query.prepare("UPDATE groups SET \"group\" = ? WHERE \"group\" = ?");
+        query.addBindValue(update_data[3]);
+        query.addBindValue(update_data[2]);
+        query.exec();
+    }
+    else if(update_data[1] == "disciplines")
+    {
+        query.prepare("UPDATE disciplines SET discipline = ? WHERE discipline = ?");
+        query.addBindValue(update_data[3]);
+        query.addBindValue(update_data[2]);
+        query.exec();
+    }
+    qDebug() << "MyPostgresDB::updt" << query.lastQuery() << query.lastError();
+
+    if(query.isActive())
+        return "successful";
+    else
+        return "failed";
+}
+
+QString MyPostgresDB::dlt(QStringList delete_data)
+{
+    QSqlQuery query(db);
+
+    if(delete_data[1] == "teachers")
+    {
+        QStringList tmp= delete_data[2].split(" ");
+        query.prepare("DELETE FROM teachers WHERE last_name = ? AND first_name = ? AND patronymic = ?");
+        query.addBindValue(tmp[0]);
+        query.addBindValue(tmp[1]);
+        query.addBindValue(tmp[2]);
+        query.exec();
+    }
+    else if(delete_data[1] == "groups")
+    {
+        query.prepare("DELETE FROM groups WHERE \"group\" = ?");
+        query.addBindValue(delete_data[2]);
+        query.exec();
+    }
+    else if(delete_data[1] == "disciplines")
+    {
+        query.prepare("DELETE FROM disciplines WHERE discipline = ?");
+        query.addBindValue(delete_data[2]);
+        query.exec();
+    }
+    qDebug() << "MyPostgresDB::dlt" << query.lastQuery() << query.lastError();
+
+    if(query.isActive())
+        return "successful";
+    else
+        return "failed";
 }
 
 bool MyPostgresDB::sendQuery(QString qsl)

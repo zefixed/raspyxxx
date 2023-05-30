@@ -34,6 +34,14 @@ public:
 
     /// The function that redirects to the exception selection function
     QString exceptions(QStringList);
+
+    QString get();
+
+    QString add(QStringList);
+
+    QString updt(QStringList);
+
+    QString dlt(QStringList);
 };
 
 #endif // PARSER_H

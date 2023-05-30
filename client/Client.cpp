@@ -70,8 +70,11 @@ void Client::slot_readFromServer() {
         else if(serverAns[1] == "view")
             emit exc_view(serverAns[2]);
     }
-
-
+    else if (serverAns[0] == "get")
+    {
+        serverAns.removeFirst();
+        emit get(serverAns);
+    }
 }
 
 Client* Client::p_instance;

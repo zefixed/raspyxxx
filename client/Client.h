@@ -71,6 +71,8 @@ signals:
     void view_group(QStringList);
 
     void view_teacher(QStringList);
+
+    void get(QStringList);
 };
 
 #endif // Client_H

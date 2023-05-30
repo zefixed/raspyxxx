@@ -15,8 +15,11 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
             this, &MainWindow::exc_slot);
     connect(Client::getInstance(), &Client::auth,
             this, &MainWindow::set_group_completer);
-    connect(Client::getInstance(), &Client::auth,
-            this, &MainWindow::set_teacher_completer);
+    //connect(Client::getInstance(), &Client::auth,
+    //        this, &MainWindow::set_teacher_completer);
+    connect(Client::getInstance(), &Client::get,
+            this, &MainWindow::set);
+
     ui->setupUi(this);
 
     ui->exceptions_button->hide();
@@ -24,12 +27,9 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     //ui->input_group_label->hide();
     //ui->input_group_lineedit->hide();
 
+    Client::getInstance()->sendToServer("get");
+
     set_textedit_style();
-
-
-
-
-
 
     LW = new LoginWindow(this);
     LW->show();
@@ -39,6 +39,7 @@ MainWindow::~MainWindow()
 {
     delete group_completer;
     delete teacher_completer;
+    delete discipline_completer;
     delete ui;
 }
 
@@ -116,30 +117,41 @@ void MainWindow::set_textedit_style()
     }
 }
 
-void MainWindow::set_group_completer(QStringList data)
+void MainWindow::set_group_completer()
 {
-    if(data[1] != "err")
-    {
-        QStringList groups = data[3].split("|");
-        QStringListModel* model = new QStringListModel(groups, group_completer);
-        group_completer->setCaseSensitivity(Qt::CaseInsensitive);
-        group_completer->setFilterMode(Qt::MatchContains);
-        group_completer->setModel(model);
-        ui->input_group_lineedit->setCompleter(group_completer);
-    }
+    QStringListModel* model = new QStringListModel(this->groups, group_completer);
+    group_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    group_completer->setFilterMode(Qt::MatchContains);
+    group_completer->setModel(model);
+    ui->input_group_lineedit->setCompleter(group_completer);
 }
 
-void MainWindow::set_teacher_completer(QStringList data)
+void MainWindow::set_discipline_completer()
 {
-    if(data[1] != "err")
-    {
-        QStringList teachers = data[4].split("|");
-        QStringListModel* model = new QStringListModel(teachers, teacher_completer);
-        teacher_completer->setCaseSensitivity(Qt::CaseInsensitive);
-        teacher_completer->setFilterMode(Qt::MatchContains);
-        teacher_completer->setModel(model);
-        ui->input_teacher_lineedit->setCompleter(teacher_completer);
-    }
+    QStringListModel* model = new QStringListModel(this->disciplines, discipline_completer);
+    discipline_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    discipline_completer->setFilterMode(Qt::MatchContains);
+    discipline_completer->setModel(model);
+    //ui->input_group_lineedit->setCompleter(discipline_completer);
+}
+
+void MainWindow::set_teacher_completer()
+{
+    QStringListModel* model = new QStringListModel(this->teachers, teacher_completer);
+    teacher_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    teacher_completer->setFilterMode(Qt::MatchContains);
+    teacher_completer->setModel(model);
+    ui->input_teacher_lineedit->setCompleter(teacher_completer);
+}
+
+void MainWindow::set(QStringList set_data)
+{
+    this->teachers = set_data[0].split('|');
+    this->groups = set_data[1].split('|');
+    this->disciplines = set_data[2].split('|');
+    set_teacher_completer();
+    set_group_completer();
+    set_discipline_completer();
 }
 
 void MainWindow::on_input_group_lineedit_returnPressed()
@@ -242,22 +254,32 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
     }
 }
 
-
 void MainWindow::on_edit_teachers_button_clicked()
 {
-    EdW = new EditWindow(this);
+    Client::getInstance()->sendToServer("get");
+    QStringList teachers_for_edw = this->teachers;
+    teachers_for_edw.prepend("teachers");
+    EdW = new EditWindow(this, teachers_for_edw);
+    EdW->resize(400, 120);
     EdW->show();
 }
 
-
 void MainWindow::on_edit_groups_button_clicked()
 {
-
+    Client::getInstance()->sendToServer("get");
+    QStringList groups_for_edw = this->groups;
+    groups_for_edw.prepend("groups");
+    EdW = new EditWindow(this, groups_for_edw);
+    EdW->resize(400, 120);
+    EdW->show();
 }
-
 
 void MainWindow::on_edit_disciplines_button_clicked()
 {
-
+    Client::getInstance()->sendToServer("get");
+    QStringList disciplines_for_edw = this->disciplines;
+    disciplines_for_edw.prepend("disciplines");
+    EdW = new EditWindow(this, disciplines_for_edw);
+    EdW->resize(400, 120);
+    EdW->show();
 }
-

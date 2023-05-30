@@ -47,9 +47,7 @@ private slots:
 
     void exc_slot(QString dataFromServ);
 
-    void set_group_completer(QStringList);
-
-    void set_teacher_completer(QStringList);
+    void set(QStringList);
 
     void on_edit_teachers_button_clicked();
 
@@ -62,11 +60,22 @@ private:
     LoginWindow* LW;
     ExceptionsWindow* EW;
     EditWindow* EdW;
+    QStringList teachers;
+    QStringList groups;
+    QStringList disciplines;
     QCompleter* group_completer = new QCompleter;
     QCompleter* teacher_completer = new QCompleter;
+    QCompleter* discipline_completer = new QCompleter;
 
     QString txt_for_pair(QStringList);
+
     void set_textedit_style();
+
+    void set_teacher_completer();
+
+    void set_group_completer();
+
+    void set_discipline_completer();
 };
 
 #endif // MAINWINDOW_H
