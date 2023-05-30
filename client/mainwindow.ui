@@ -39,6 +39,55 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="8" column="0">
+     <widget class="QPushButton" name="exceptions_button">
+      <property name="text">
+       <string>Исключения</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="change_schedule_button">
+        <property name="text">
+         <string>Изменить расписание (В разработке)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="edit_teachers_button">
+          <property name="text">
+           <string>Редактировать преподавателей</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="edit_groups_button">
+          <property name="text">
+           <string>Редактировать группы</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="edit_disciplines_button">
+          <property name="text">
+           <string>Редактировать дисциплины</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
       <property name="sizeConstraint">
@@ -83,13 +132,6 @@
       </item>
      </layout>
     </item>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="change_schedule_button">
-      <property name="text">
-       <string>Изменить расписание</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="sizeConstraint">
@@ -126,14 +168,17 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="monday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
+         <widget class="QTextEdit" name="monday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="text">
+          <property name="lineWrapMode">
+           <enum>QTextEdit::WidgetWidth</enum>
+          </property>
+          <property name="markdown">
            <string/>
           </property>
          </widget>
@@ -162,15 +207,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="tuesday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
+         <widget class="QTextEdit" name="tuesday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -195,15 +237,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="wednesday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
+         <widget class="QTextEdit" name="wednesday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -228,15 +267,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="thursday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
+         <widget class="QTextEdit" name="thursday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -261,15 +297,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="friday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
+         <widget class="QTextEdit" name="friday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -294,28 +327,18 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="saturday_schedule_label">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
+         <widget class="QTextEdit" name="saturday_schedule_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
        </layout>
       </item>
      </layout>
-    </item>
-    <item row="6" column="0">
-     <widget class="QPushButton" name="exceptions_button">
-      <property name="text">
-       <string>Исключения</string>
-      </property>
-     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="group_doesnt_exist_label">

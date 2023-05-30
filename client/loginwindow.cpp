@@ -56,6 +56,8 @@ void LoginWindow::slot_on_auth(QStringList ansFromServ)
         MW->show();
         MW->findChild<QWidget*>("input_group_label")->show();
         MW->findChild<QWidget*>("input_group_lineedit")->show();
+        MW->findChild<QWidget*>("input_teacher_label")->hide();
+        MW->findChild<QWidget*>("input_teacher_lineedit")->hide();
     }
     else if(auth_data[1] == "2") // teacher
     {

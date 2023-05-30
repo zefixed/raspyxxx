@@ -4,10 +4,12 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QCompleter>
+#include <QTextEdit>
 
 #include "Client.h"
 #include "loginwindow.h"
 #include "exceptionswindow.h"
+#include "EditWindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -45,18 +47,26 @@ private slots:
 
     void exc_slot(QString dataFromServ);
 
+    void set_group_completer(QStringList);
+
+    void set_teacher_completer(QStringList);
+
+    void on_edit_teachers_button_clicked();
+
+    void on_edit_groups_button_clicked();
+
+    void on_edit_disciplines_button_clicked();
+
 private:
     Ui::MainWindow* ui;
     LoginWindow* LW;
     ExceptionsWindow* EW;
+    EditWindow* EdW;
     QCompleter* group_completer = new QCompleter;
     QCompleter* teacher_completer = new QCompleter;
 
     QString txt_for_pair(QStringList);
-
-private slots:
-    void set_group_completer(QStringList);
-    void set_teacher_completer(QStringList);
+    void set_textedit_style();
 };
 
 #endif // MAINWINDOW_H

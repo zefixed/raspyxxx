@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     Client.cpp \
+    EditWindow.cpp \
     exceptionswindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    EditWindow.h \
     exceptionswindow.h \
     loginwindow.h \
     mainwindow.h \
@@ -23,6 +25,7 @@ HEADERS += \
 
 
 FORMS += \
+    EditWindow.ui \
     exceptionswindow.ui \
     loginwindow.ui \
     mainwindow.ui

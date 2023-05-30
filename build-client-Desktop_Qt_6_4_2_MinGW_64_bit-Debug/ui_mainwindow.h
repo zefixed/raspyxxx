@@ -19,6 +19,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -29,6 +30,13 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
+    QPushButton *exceptions_button;
+    QVBoxLayout *verticalLayout;
+    QPushButton *change_schedule_button;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *edit_teachers_button;
+    QPushButton *edit_groups_button;
+    QPushButton *edit_disciplines_button;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *group_horizontalLayout;
     QLabel *input_group_label;
@@ -36,27 +44,25 @@ public:
     QHBoxLayout *teacher_horizontalLayout;
     QLabel *input_teacher_label;
     QLineEdit *input_teacher_lineedit;
-    QPushButton *change_schedule_button;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *monday_Layout;
     QLabel *monday_label;
-    QLabel *monday_schedule_label;
+    QTextEdit *monday_schedule_label;
     QVBoxLayout *tuesday_Layout;
     QLabel *tuesday_label;
-    QLabel *tuesday_schedule_label;
+    QTextEdit *tuesday_schedule_label;
     QVBoxLayout *wednesday_Layout;
     QLabel *wednesday_label;
-    QLabel *wednesday_schedule_label;
+    QTextEdit *wednesday_schedule_label;
     QVBoxLayout *thursday_Layout;
     QLabel *thursday_label;
-    QLabel *thursday_schedule_label;
+    QTextEdit *thursday_schedule_label;
     QVBoxLayout *friday_Layout;
     QLabel *friday_label;
-    QLabel *friday_schedule_label;
+    QTextEdit *friday_schedule_label;
     QVBoxLayout *saturday_Layout;
     QLabel *saturday_label;
-    QLabel *saturday_schedule_label;
-    QPushButton *exceptions_button;
+    QTextEdit *saturday_schedule_label;
     QLabel *group_doesnt_exist_label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -78,6 +84,43 @@ public:
         centralwidget->setMaximumSize(QSize(1920, 1080));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName("gridLayout");
+        exceptions_button = new QPushButton(centralwidget);
+        exceptions_button->setObjectName("exceptions_button");
+
+        gridLayout->addWidget(exceptions_button, 8, 0, 1, 1);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(-1, 0, -1, -1);
+        change_schedule_button = new QPushButton(centralwidget);
+        change_schedule_button->setObjectName("change_schedule_button");
+
+        verticalLayout->addWidget(change_schedule_button);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
+        edit_teachers_button = new QPushButton(centralwidget);
+        edit_teachers_button->setObjectName("edit_teachers_button");
+
+        horizontalLayout_2->addWidget(edit_teachers_button);
+
+        edit_groups_button = new QPushButton(centralwidget);
+        edit_groups_button->setObjectName("edit_groups_button");
+
+        horizontalLayout_2->addWidget(edit_groups_button);
+
+        edit_disciplines_button = new QPushButton(centralwidget);
+        edit_disciplines_button->setObjectName("edit_disciplines_button");
+
+        horizontalLayout_2->addWidget(edit_disciplines_button);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+
+        gridLayout->addLayout(verticalLayout, 6, 0, 1, 1);
+
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
@@ -117,11 +160,6 @@ public:
 
         gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
 
-        change_schedule_button = new QPushButton(centralwidget);
-        change_schedule_button->setObjectName("change_schedule_button");
-
-        gridLayout->addWidget(change_schedule_button, 5, 0, 1, 1);
-
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
@@ -139,9 +177,14 @@ public:
 
         monday_Layout->addWidget(monday_label);
 
-        monday_schedule_label = new QLabel(centralwidget);
+        monday_schedule_label = new QTextEdit(centralwidget);
         monday_schedule_label->setObjectName("monday_schedule_label");
-        monday_schedule_label->setMinimumSize(QSize(0, 0));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(monday_schedule_label->sizePolicy().hasHeightForWidth());
+        monday_schedule_label->setSizePolicy(sizePolicy2);
+        monday_schedule_label->setLineWrapMode(QTextEdit::WidgetWidth);
 
         monday_Layout->addWidget(monday_schedule_label);
 
@@ -159,9 +202,10 @@ public:
 
         tuesday_Layout->addWidget(tuesday_label);
 
-        tuesday_schedule_label = new QLabel(centralwidget);
+        tuesday_schedule_label = new QTextEdit(centralwidget);
         tuesday_schedule_label->setObjectName("tuesday_schedule_label");
-        tuesday_schedule_label->setMinimumSize(QSize(0, 0));
+        sizePolicy2.setHeightForWidth(tuesday_schedule_label->sizePolicy().hasHeightForWidth());
+        tuesday_schedule_label->setSizePolicy(sizePolicy2);
 
         tuesday_Layout->addWidget(tuesday_schedule_label);
 
@@ -178,9 +222,10 @@ public:
 
         wednesday_Layout->addWidget(wednesday_label);
 
-        wednesday_schedule_label = new QLabel(centralwidget);
+        wednesday_schedule_label = new QTextEdit(centralwidget);
         wednesday_schedule_label->setObjectName("wednesday_schedule_label");
-        wednesday_schedule_label->setMinimumSize(QSize(0, 0));
+        sizePolicy2.setHeightForWidth(wednesday_schedule_label->sizePolicy().hasHeightForWidth());
+        wednesday_schedule_label->setSizePolicy(sizePolicy2);
 
         wednesday_Layout->addWidget(wednesday_schedule_label);
 
@@ -197,9 +242,10 @@ public:
 
         thursday_Layout->addWidget(thursday_label);
 
-        thursday_schedule_label = new QLabel(centralwidget);
+        thursday_schedule_label = new QTextEdit(centralwidget);
         thursday_schedule_label->setObjectName("thursday_schedule_label");
-        thursday_schedule_label->setMinimumSize(QSize(0, 0));
+        sizePolicy2.setHeightForWidth(thursday_schedule_label->sizePolicy().hasHeightForWidth());
+        thursday_schedule_label->setSizePolicy(sizePolicy2);
 
         thursday_Layout->addWidget(thursday_schedule_label);
 
@@ -216,9 +262,10 @@ public:
 
         friday_Layout->addWidget(friday_label);
 
-        friday_schedule_label = new QLabel(centralwidget);
+        friday_schedule_label = new QTextEdit(centralwidget);
         friday_schedule_label->setObjectName("friday_schedule_label");
-        friday_schedule_label->setMinimumSize(QSize(0, 0));
+        sizePolicy2.setHeightForWidth(friday_schedule_label->sizePolicy().hasHeightForWidth());
+        friday_schedule_label->setSizePolicy(sizePolicy2);
 
         friday_Layout->addWidget(friday_schedule_label);
 
@@ -235,9 +282,10 @@ public:
 
         saturday_Layout->addWidget(saturday_label);
 
-        saturday_schedule_label = new QLabel(centralwidget);
+        saturday_schedule_label = new QTextEdit(centralwidget);
         saturday_schedule_label->setObjectName("saturday_schedule_label");
-        saturday_schedule_label->setMinimumSize(QSize(0, 0));
+        sizePolicy2.setHeightForWidth(saturday_schedule_label->sizePolicy().hasHeightForWidth());
+        saturday_schedule_label->setSizePolicy(sizePolicy2);
 
         saturday_Layout->addWidget(saturday_schedule_label);
 
@@ -247,18 +295,13 @@ public:
 
         gridLayout->addLayout(horizontalLayout, 2, 0, 1, 1);
 
-        exceptions_button = new QPushButton(centralwidget);
-        exceptions_button->setObjectName("exceptions_button");
-
-        gridLayout->addWidget(exceptions_button, 6, 0, 1, 1);
-
         group_doesnt_exist_label = new QLabel(centralwidget);
         group_doesnt_exist_label->setObjectName("group_doesnt_exist_label");
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(group_doesnt_exist_label->sizePolicy().hasHeightForWidth());
-        group_doesnt_exist_label->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(group_doesnt_exist_label->sizePolicy().hasHeightForWidth());
+        group_doesnt_exist_label->setSizePolicy(sizePolicy3);
         group_doesnt_exist_label->setMinimumSize(QSize(0, 0));
         group_doesnt_exist_label->setMaximumSize(QSize(16777215, 25));
         QFont font;
@@ -285,22 +328,20 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Raspyxxx", nullptr));
+        exceptions_button->setText(QCoreApplication::translate("MainWindow", "\320\230\321\201\320\272\320\273\321\216\321\207\320\265\320\275\320\270\321\217", nullptr));
+        change_schedule_button->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\200\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265 (\320\222 \321\200\320\260\320\267\321\200\320\260\320\261\320\276\321\202\320\272\320\265)", nullptr));
+        edit_teachers_button->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\277\321\200\320\265\320\277\320\276\320\264\320\260\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
+        edit_groups_button->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\263\321\200\321\203\320\277\320\277\321\213", nullptr));
+        edit_disciplines_button->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\264\320\270\321\201\321\206\320\270\320\277\320\273\320\270\320\275\321\213", nullptr));
         input_group_label->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\274\320\265\321\200 \320\263\321\200\321\203\320\277\320\277\321\213:", nullptr));
         input_teacher_label->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\265\320\277\320\276\320\264\320\260\320\262\320\260\321\202\320\265\320\273\321\214", nullptr));
-        change_schedule_button->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\200\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
         monday_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\275\320\265\320\264\320\265\320\273\321\214\320\275\320\270\320\272", nullptr));
-        monday_schedule_label->setText(QString());
+        monday_schedule_label->setMarkdown(QString());
         tuesday_label->setText(QCoreApplication::translate("MainWindow", "\320\222\321\202\320\276\321\200\320\275\320\270\320\272", nullptr));
-        tuesday_schedule_label->setText(QString());
         wednesday_label->setText(QCoreApplication::translate("MainWindow", "\320\241\321\200\320\265\320\264\320\260", nullptr));
-        wednesday_schedule_label->setText(QString());
         thursday_label->setText(QCoreApplication::translate("MainWindow", "\320\247\320\265\321\202\320\262\320\265\321\200\320\263", nullptr));
-        thursday_schedule_label->setText(QString());
         friday_label->setText(QCoreApplication::translate("MainWindow", "\320\237\321\217\321\202\320\275\320\270\321\206\320\260", nullptr));
-        friday_schedule_label->setText(QString());
         saturday_label->setText(QCoreApplication::translate("MainWindow", "\320\241\321\203\320\261\320\261\320\276\321\202\320\260", nullptr));
-        saturday_schedule_label->setText(QString());
-        exceptions_button->setText(QCoreApplication::translate("MainWindow", "\320\230\321\201\320\272\320\273\321\216\321\207\320\265\320\275\320\270\321\217", nullptr));
         group_doesnt_exist_label->setText(QString());
     } // retranslateUi
 

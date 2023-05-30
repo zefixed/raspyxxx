@@ -24,6 +24,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     //ui->input_group_label->hide();
     //ui->input_group_lineedit->hide();
 
+    set_textedit_style();
+
+
+
+
+
 
     LW = new LoginWindow(this);
     LW->show();
@@ -45,7 +51,24 @@ void MainWindow::on_exceptions_button_clicked()
 
 void MainWindow::on_change_schedule_button_clicked()
 {
-
+    if(ui->monday_schedule_label->isReadOnly())
+    {
+        ui->monday_schedule_label->setReadOnly(false);
+        ui->tuesday_schedule_label->setReadOnly(false);
+        ui->wednesday_schedule_label->setReadOnly(false);
+        ui->thursday_schedule_label->setReadOnly(false);
+        ui->friday_schedule_label->setReadOnly(false);
+        ui->saturday_schedule_label->setReadOnly(false);
+    }
+    else
+    {
+        ui->monday_schedule_label->setReadOnly(true);
+        ui->tuesday_schedule_label->setReadOnly(true);
+        ui->wednesday_schedule_label->setReadOnly(true);
+        ui->thursday_schedule_label->setReadOnly(true);
+        ui->friday_schedule_label->setReadOnly(true);
+        ui->saturday_schedule_label->setReadOnly(true);
+    }
 }
 
 void MainWindow::err_slot(QString err)
@@ -70,24 +93,53 @@ QString MainWindow::txt_for_pair(QStringList lesson)
     return add_text;
 }
 
+void MainWindow::set_textedit_style()
+{
+    QList<QTextEdit*> text_edits;
+    text_edits << ui->monday_schedule_label
+               << ui->tuesday_schedule_label
+               << ui->wednesday_schedule_label
+               << ui->thursday_schedule_label
+               << ui->friday_schedule_label
+               << ui->saturday_schedule_label;
+
+    for(auto text_edit : text_edits)
+    {
+        text_edit->setFrameStyle(QFrame::NoFrame);
+        text_edit->setStyleSheet("background-color: transparent");
+        text_edit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        text_edit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        text_edit->setReadOnly(true);
+        text_edit->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+        text_edit->setTextColor(Qt::black);
+        text_edit->setFont(QFont("Arial", 10));
+    }
+}
+
 void MainWindow::set_group_completer(QStringList data)
 {
-    QStringList groups = data[3].split("|");
-    QStringListModel* model = new QStringListModel(groups, group_completer);
-    group_completer->setCaseSensitivity(Qt::CaseInsensitive);
-    group_completer->setFilterMode(Qt::MatchContains);
-    group_completer->setModel(model);
-    ui->input_group_lineedit->setCompleter(group_completer);
+    if(data[1] != "err")
+    {
+        QStringList groups = data[3].split("|");
+        QStringListModel* model = new QStringListModel(groups, group_completer);
+        group_completer->setCaseSensitivity(Qt::CaseInsensitive);
+        group_completer->setFilterMode(Qt::MatchContains);
+        group_completer->setModel(model);
+        ui->input_group_lineedit->setCompleter(group_completer);
+    }
 }
 
 void MainWindow::set_teacher_completer(QStringList data)
 {
-    QStringList teachers = data[4].split("|");
-    QStringListModel* model = new QStringListModel(teachers, teacher_completer);
-    teacher_completer->setCaseSensitivity(Qt::CaseInsensitive);
-    teacher_completer->setFilterMode(Qt::MatchContains);
-    teacher_completer->setModel(model);
-    ui->input_teacher_lineedit->setCompleter(teacher_completer);
+    if(data[1] != "err")
+    {
+        QStringList teachers = data[4].split("|");
+        QStringListModel* model = new QStringListModel(teachers, teacher_completer);
+        teacher_completer->setCaseSensitivity(Qt::CaseInsensitive);
+        teacher_completer->setFilterMode(Qt::MatchContains);
+        teacher_completer->setModel(model);
+        ui->input_teacher_lineedit->setCompleter(teacher_completer);
+    }
 }
 
 void MainWindow::on_input_group_lineedit_returnPressed()
@@ -154,39 +206,58 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
         // Set monday schedule
         if(lesson.at(5) == "Понедельник")
         {
-            QString boofer = ui->monday_schedule_label->text();
+            QString boofer = ui->monday_schedule_label->toPlainText();
             ui->monday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
         // Set tuesday schedule
         else if(lesson.at(5) == "Вторник")
         {
-            QString boofer = ui->tuesday_schedule_label->text();
+            QString boofer = ui->tuesday_schedule_label->toPlainText();
             ui->tuesday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
         // Set wednesday schedule
         else if(lesson.at(5) == "Среда")
         {
-            QString boofer = ui->wednesday_schedule_label->text();
+            QString boofer = ui->wednesday_schedule_label->toPlainText();
             ui->wednesday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
         // Set thursday schedule
         else if(lesson.at(5) == "Четверг")
         {
-            QString boofer = ui->thursday_schedule_label->text();
+            QString boofer = ui->thursday_schedule_label->toPlainText();
             ui->thursday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
         // Set friday schedule
         else if(lesson.at(5) == "Пятница")
         {
-            QString boofer = ui->friday_schedule_label->text();
+            QString boofer = ui->friday_schedule_label->toPlainText();
             ui->friday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
         // Set saturday schedule
         else if(lesson.at(5) == "Суббота")
         {
-            QString boofer = ui->saturday_schedule_label->text();
+            QString boofer = ui->saturday_schedule_label->toPlainText();
             ui->saturday_schedule_label->setText(boofer + "\n\n" + txt_for_pair(lesson));
         }
     }
+}
+
+
+void MainWindow::on_edit_teachers_button_clicked()
+{
+    EdW = new EditWindow(this);
+    EdW->show();
+}
+
+
+void MainWindow::on_edit_groups_button_clicked()
+{
+
+}
+
+
+void MainWindow::on_edit_disciplines_button_clicked()
+{
+
 }
 
