@@ -260,7 +260,7 @@ void MainWindow::slot_on_idk(QList<QString> ansFromServ)
 
 void MainWindow::on_edit_teachers_button_clicked()
 {
-    Client::getInstance()->sendToServer("get");
+    Client::getInstance()->sendToServer("get"); // Need to fix this by using "wait for answer"
     QStringList teachers_for_edw = this->teachers;
     teachers_for_edw.prepend("teachers");
     EdW = new EditWindow(this, teachers_for_edw);
