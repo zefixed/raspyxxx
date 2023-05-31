@@ -24,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     ui->exceptions_button->hide();
     ui->change_schedule_button->hide();
+    ui->edit_teachers_button->hide();
+    ui->edit_groups_button->hide();
+    ui->edit_disciplines_button->hide();
+
     //ui->input_group_label->hide();
     //ui->input_group_lineedit->hide();
 

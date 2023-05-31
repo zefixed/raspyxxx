@@ -84,4 +84,5 @@ class MyPostgresDB
         bool sendQuery(QString qsl);
 };
 
+
 #endif // MYPOSTGRESDB_H

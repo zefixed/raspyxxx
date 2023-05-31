@@ -353,13 +353,14 @@ QString MyPostgresDB::updt(QStringList update_data)
     {
         QStringList tmp = update_data[2].split(" ");
         QStringList tmp2 = update_data[3].split(" ");
-        query.prepare("UPDATE teachers SET last_name = ? AND first_name = ? AND patronymic = ? WHERE last_name = ? AND first_name = ? AND patronymic = ?");
+        query.prepare("UPDATE teachers SET last_name = ?, first_name = ?, patronymic = ? WHERE last_name = ? AND first_name = ? AND patronymic = ?");
         query.addBindValue(tmp2[0]);
         query.addBindValue(tmp2[1]);
         query.addBindValue(tmp2[2]);
         query.addBindValue(tmp[0]);
         query.addBindValue(tmp[1]);
         query.addBindValue(tmp[2]);
+
         query.exec();
     }
     else if(update_data[1] == "groups")

@@ -68,5 +68,8 @@ void LoginWindow::slot_on_auth(QStringList ansFromServ)
     {
         MW->show();
         MW->findChild<QWidget*>("change_schedule_button")->show();
+        MW->findChild<QWidget*>("edit_teachers_button")->show();
+        MW->findChild<QWidget*>("edit_groups_button")->show();
+        MW->findChild<QWidget*>("edit_disciplines_button")->show();
     }
 }

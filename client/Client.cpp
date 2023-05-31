@@ -18,8 +18,6 @@ Client::~Client() {
 	socket->close();
 }
 
-
-
 bool Client::sendToServer(QString msg) {
     if (socket->write(msg.toUtf8()))
         return true;
