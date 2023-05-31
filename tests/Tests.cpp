@@ -18,3 +18,8 @@ void Tests::test_Petrochenko()
 {
     QVERIFY(MyPostgresDB::getInstance()->auth_user(QStringList() << "auth" << "2" << "1") == "err&pass");
 }
+
+void Tests::test_Savinkin()
+{
+    QVERIFY(MyPostgresDB::getInstance()->view_schedule(QStringList() << "view" << "group_id") == "false");
+}

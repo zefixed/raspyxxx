@@ -16,5 +16,6 @@ public:
 private slots:
     void test_Gerasenkov();
     void test_Petrochenko();
+    void test_Savinkin();
 };
 #endif // TESTS_H
