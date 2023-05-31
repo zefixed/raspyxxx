@@ -12,7 +12,7 @@ void MyPostgresDBDestroyer::initialize(MyPostgresDB* p)
 
 QString MyPostgresDB::getIPaddress()
 {
-    QString ipAddress;
+    /*QString ipAddress;
 
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
     foreach (const QNetworkInterface& interface, interfaces) {
@@ -36,8 +36,23 @@ QString MyPostgresDB::getIPaddress()
             break;
         }
     }
-    return ipAddress;
+    return ipAddress;*/
 
+    QFile file("../server/ip/ip_addr");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QString errorString = file.errorString();
+        qDebug() << "Error opening file: " << errorString;
+        qDebug() << "Failed to open file at path: " << QFileInfo(file).absoluteFilePath();
+        return "0.0.0.0";
+    }
+
+    QTextStream in(&file);
+    QString ip_addr = in.readAll();
+
+    file.close();
+
+    return ip_addr;
 }
 
 MyPostgresDB::MyPostgresDB()

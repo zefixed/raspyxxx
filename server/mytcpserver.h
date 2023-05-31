@@ -43,6 +43,11 @@ private:
 
     /// Status of the server
     int server_status;
+
+    QString ip_addr;
+
+    /// Function to get the current ip address of the NIC
+    void getIPaddress();
 };
 #endif // MYTCPSERVER_H
 

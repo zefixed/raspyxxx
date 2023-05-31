@@ -6,6 +6,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlRecord>
+#include <QFile>
+#include <QTextStream>
+#include <QFileInfo>
 
 class MyPostgresDB;
 
@@ -72,6 +75,7 @@ class MyPostgresDB
         /// Function of adding an exception by teacher id
         QString add_exception(QStringList);
 
+        ///
         QString get();
 
         QString add(QStringList);
