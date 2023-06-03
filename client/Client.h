@@ -14,7 +14,7 @@ private:
 public:
     ~ClientDestroyer() { delete p_instance; }
 
-    /// Instance initialization function
+    /// Instance initialization function that takes a pointer to an instance
     void initialize(Client* p) { p_instance = p; }
 };
 
@@ -31,47 +31,54 @@ protected:
     explicit Client();
     Client(const Client&) = delete;
 
-    /// Operator overload equals
+    /// Prohibit the use of the assignment operator for this class
     Client& operator = (Client&) = delete;
 
     /// Destructor
     ~Client();
     friend class ClientDestroyer;
 public:
-    /// Get instance function
+    /// Get class instance function that returns a pointer to an instance of the class
     static Client* getInstance();
 
-    /// Data sending dunction
+    /// A function to send content to the server that accepts a QString to send and returns the result of sending true or false
     bool sendToServer(QString);
 
+    /// Function for assigning a value to the account_id property
     void set_account_id(QString id);
+
+    /// Function for getting the value of account_id property
     qint64 get_account_id();
+
 protected slots:
-    /// Slot triggered when receiving data from the server
+    // Slot triggered when receiving data from the server
 	void slot_readFromServer();
 signals:
-    /// Signal auth
+    // Signal auth
     void auth(QStringList);
 
-    /// Signal reg
+    // Signal reg
     void reg(QString);
 
-    /// Signal view
+    // Signal view
     void view(QList<QString>);
 
-    /// Signal err
+    // Signal err
     void err(QString);
 
-    /// Signal exc_add
+    // Signal exc_add
     void exc_add(QString);
 
-    /// Signal exc_view
+    // Signal exc_view
     void exc_view(QString);
 
+    // Signal view_group
     void view_group(QStringList);
 
+    // Signal view_teacher
     void view_teacher(QStringList);
 
+    // Signal get
     void get(QStringList);
 };
 

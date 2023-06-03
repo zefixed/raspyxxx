@@ -15,28 +15,26 @@ class MyPostgresDB;
 class MyPostgresDBDestroyer
 {
     private:
-        ///  Pointer to an instance of MyPostgresDB class
+        //  Pointer to an instance of MyPostgresDB class
         MyPostgresDB* p_instance;
     public:
-        /// The destructor of MyPostgresDBDestroyer class,
-        /// which deletes a single instance of MyPostgresDB class
+        /// The destructor of MyPostgresDBDestroyer class, which deletes a single instance of MyPostgresDB class
         ~MyPostgresDBDestroyer();
 
-        /// Initializing MyPostgresDBDestroyer by assigning p_instance
-        /// pointer to MyPostgresDB
+        /// Initializing MyPostgresDBDestroyer by assigning p_instance pointer to MyPostgresDB
         void initialize(MyPostgresDB* p);
 };
 
 class MyPostgresDB
 {
     private:
-        /// Static instance of MyPostgresDB class
+        // Static instance of MyPostgresDB class
         static MyPostgresDB* p_instance;
 
-        /// Static instance of MyPostgresDBDestroyer class
+        // Static instance of MyPostgresDBDestroyer class
         static MyPostgresDBDestroyer destroyer;
 
-        /// Function to get the current ip address of the NIC
+        /// Function that gets ip address from file and returns it
         QString getIPaddress();
 
         /// Postgres database object
@@ -45,46 +43,49 @@ class MyPostgresDB
         /// Default constructor
         MyPostgresDB();
 
-        /// Сopy constructor
+        /// Copy constructor taking reference to MyPostgresDB
         MyPostgresDB(const MyPostgresDB&);
 
-        /// Operator overload =
+        /// Overloading the assignment operator for MyPostgresDB that takes a reference to the current instance of MyPostgresDB and returns a reference to a new instance of MyPostgresDB, allowing the operation "a = b = c"
         MyPostgresDB& operator = (MyPostgresDB &);
 
-        /// Destructor
+        /// Default destructor
         ~MyPostgresDB();
 
-        /// Friend class
+        // Friend class
         friend class MyPostgresDBDestroyer;
     public:
-        /// Function to get a database instance
+        /// Get database instance function that returns a pointer to MyPostgresDB
         static MyPostgresDB* getInstance();
 
-        /// Function to add a user to the database
+        /// Function for adding a user to the database, taking a QStringList of the form ("add", "login", "password", "role_id") and returning the result of adding true or false
         bool add_user(QStringList);
 
-        /// Function for checking the correctness of user authentication data entry
+        /// User authorization function taking QStringList of the form ("auth", "login", "password") and returning QString "role_id&id&groups&teachers" if authorization is successful or ("err&arguments", "err&log", "err&pass") if it fails
         QString auth_user(QStringList);
 
-        /// Function of viewing the schedule by various fields
+        /// Function to view the schedule for different fields that takes a QStringList of the form ("view", "field", "field_id") (field_id may contains "group_id" or "teacher_id") and returns a QString of the form "field&schedule" if successful and "false" if unsuccessful
         QString view_schedule(QStringList);
 
-        /// Function of viewing the exception by teacher id
+        /// Teacher exception view function that takes a QStringList of the form ("exc", "viev", "teacher_id") and returns a QString of the form "view&exceptions"
         QString view_exception(QStringList);
 
-        /// Function of adding an exception by teacher id
+        /// Function for assigning exceptions to a teacher that takes a QStringList of the form ("exc", "add", "teacher_id", "exceptions") and returns a QString "add&successful"
         QString add_exception(QStringList);
 
-        ///
-        QString get();
+        /// Get teachers, groups and disciplines function that returns a QString like "teachers&groups&disciplines"
+        QString met_get();
 
-        QString add(QStringList);
+        /// Function to add teachers, groups or disciplines that takes a QStringList of the form ("add", "field", "data") and that returns a QString "successful" or "failed"
+        QString met_add(QStringList);
 
-        QString updt(QStringList);
+        /// Function to update teachers, groups or disciplines that takes a QStringList of the form ("update", "field", "data") and returns a QString "successful" or "failed".
+        QString met_updt(QStringList);
 
-        QString dlt(QStringList);
+        /// Function to delete teachers, groups or disciplines that takes a QStringList of the form ("delete", "field", "data") and returns a QString "successful" or "failed".
+        QString met_dlt(QStringList);
 
-        /// Function to execute a database query
+        /// Obsolete function
         bool sendQuery(QString qsl);
 };
 

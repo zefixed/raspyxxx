@@ -287,7 +287,7 @@ QString MyPostgresDB::add_exception(QStringList add_exc_data)
     return "add&successful";
 }
 
-QString MyPostgresDB::get()
+QString MyPostgresDB::met_get()
 {
     QSqlQuery query(db);
     QString teachers;
@@ -327,7 +327,7 @@ QString MyPostgresDB::get()
     return teachers + "&" + groups + "&" + disciplines;
 }
 
-QString MyPostgresDB::add(QStringList add_data)
+QString MyPostgresDB::met_add(QStringList add_data)
 {
     QSqlQuery query(db);
 
@@ -360,7 +360,7 @@ QString MyPostgresDB::add(QStringList add_data)
         return "failed";
 }
 
-QString MyPostgresDB::updt(QStringList update_data)
+QString MyPostgresDB::met_updt(QStringList update_data)
 {
     QSqlQuery query(db);
 
@@ -400,7 +400,7 @@ QString MyPostgresDB::updt(QStringList update_data)
         return "failed";
 }
 
-QString MyPostgresDB::dlt(QStringList delete_data)
+QString MyPostgresDB::met_dlt(QStringList delete_data)
 {
     QSqlQuery query(db);
 

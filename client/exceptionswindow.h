@@ -13,9 +13,13 @@ class ExceptionsWindow : public QDialog
     Q_OBJECT
 
 public:
+    /// An explicit сonstructor takes a pointer to a parent QWidget and a QString that stores the data from the server
     explicit ExceptionsWindow(QWidget *parent = nullptr, QString data = "");
+
+    /// Default destructor
     ~ExceptionsWindow();
 
+    /// Function for assigning a value to the data property
     void set_data(QString dataFromServ);
 
 private slots:
@@ -74,9 +78,16 @@ private slots:
 private:
     Ui::ExceptionsWindow *ui;
 
+    /// The color change function of the time slot button when you press it
     void colorSwitch();
+
+    /// Function redirecting to dataToGreen or dataToRed depending on the current state of the time slot button taking the id of the time slot button
     void dataChange(qint8 id);
+
+    /// Function to change the data property when the state of the button changes from red to green, taking the id of the time slot button
     void dataToGreen(qint8 id);
+
+    /// Function to change the data property when the state of the button changes from green to red, taking the id of the time slot button
     void dataToRed(qint8 id);
 
     QString data;

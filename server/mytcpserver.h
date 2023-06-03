@@ -17,36 +17,37 @@ class MyTcpServer : public QObject
 {
     Q_OBJECT
 public:
-    /// Default constructor
+    /// An explicit сonstructor takes a pointer to a parent QWidget
     explicit MyTcpServer(QObject* parent = nullptr);
 
-    /// Destructor
+    /// Default destructor
     ~MyTcpServer();
 public slots:
 
-    /// Slot triggered when a new client connects
+    // Slot slotNewConnection
     void slotNewConnection();
 
-    /// Slot triggered when a client disconnects
+    // Slot slotClientDisconnected
     void slotClientDisconnected();
 
-    /// The slot is triggered when the client sends something to the server
+    // Slot slotServerRead
     void slotServerRead();
 
     //void slotReadClient();
 private:
-    /// The server
+    // The server
     QTcpServer* mTcpServer;
 
-    /// Qmap with sockets
+    // Qmap with sockets
     QMap<int, QTcpSocket*> mTcpSocket;
 
-    /// Status of the server
+    // Status of the server
     int server_status;
 
+    // ip address of pc
     QString ip_addr;
 
-    /// Function to get the current ip address of the NIC
+    /// Function that gets ip address from file and returns it
     void getIPaddress();
 };
 #endif // MYTCPSERVER_H
