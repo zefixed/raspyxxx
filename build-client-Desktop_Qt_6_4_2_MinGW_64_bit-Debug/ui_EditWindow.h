@@ -141,6 +141,9 @@ public:
 
         teacher_lineEdit = new QLineEdit(EditWindow);
         teacher_lineEdit->setObjectName("teacher_lineEdit");
+        teacher_lineEdit->setStyleSheet(QString::fromUtf8("border: 2px solid gray;\n"
+"border-radius: 5px;\n"
+"backgroung-color: white;"));
 
         horizontalLayout->addWidget(teacher_lineEdit);
 
@@ -158,6 +161,9 @@ public:
 
         group_lineEdit = new QLineEdit(EditWindow);
         group_lineEdit->setObjectName("group_lineEdit");
+        group_lineEdit->setStyleSheet(QString::fromUtf8("border: 2px solid gray;\n"
+"border-radius: 5px;\n"
+"backgroung-color: white;"));
 
         horizontalLayout_8->addWidget(group_lineEdit);
 
@@ -175,6 +181,9 @@ public:
 
         discipline_lineEdit = new QLineEdit(EditWindow);
         discipline_lineEdit->setObjectName("discipline_lineEdit");
+        discipline_lineEdit->setStyleSheet(QString::fromUtf8("border: 2px solid gray;\n"
+"border-radius: 5px;\n"
+"backgroung-color: white;"));
 
         horizontalLayout_9->addWidget(discipline_lineEdit);
 

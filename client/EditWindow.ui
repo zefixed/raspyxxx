@@ -123,7 +123,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="teacher_lineEdit"/>
+        <widget class="QLineEdit" name="teacher_lineEdit">
+         <property name="styleSheet">
+          <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -143,7 +149,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="group_lineEdit"/>
+        <widget class="QLineEdit" name="group_lineEdit">
+         <property name="styleSheet">
+          <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -163,7 +175,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="discipline_lineEdit"/>
+        <widget class="QLineEdit" name="discipline_lineEdit">
+         <property name="styleSheet">
+          <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

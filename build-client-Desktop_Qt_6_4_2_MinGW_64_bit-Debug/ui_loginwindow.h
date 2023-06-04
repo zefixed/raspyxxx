@@ -60,6 +60,9 @@ public:
         pass_lineedit = new QLineEdit(groupBox);
         pass_lineedit->setObjectName("pass_lineedit");
         pass_lineedit->setFocusPolicy(Qt::StrongFocus);
+        pass_lineedit->setStyleSheet(QString::fromUtf8("border: 2px solid gray;\n"
+"border-radius: 5px;\n"
+"backgroung-color: white;"));
         pass_lineedit->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(pass_lineedit, 1, 1, 1, 1);
@@ -73,6 +76,9 @@ public:
         login_lineedit = new QLineEdit(groupBox);
         login_lineedit->setObjectName("login_lineedit");
         login_lineedit->setFocusPolicy(Qt::StrongFocus);
+        login_lineedit->setStyleSheet(QString::fromUtf8("border: 2px solid gray;\n"
+"border-radius: 5px;\n"
+"backgroung-color: white;"));
 
         gridLayout->addWidget(login_lineedit, 0, 1, 1, 2);
 

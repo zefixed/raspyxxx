@@ -45,6 +45,11 @@
         <property name="focusPolicy">
          <enum>Qt::StrongFocus</enum>
         </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+        </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
@@ -64,6 +69,11 @@
        <widget class="QLineEdit" name="login_lineedit">
         <property name="focusPolicy">
          <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
         </property>
        </widget>
       </item>

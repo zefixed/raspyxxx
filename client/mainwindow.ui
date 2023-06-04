@@ -103,13 +103,31 @@
         </property>
         <item>
          <widget class="QLabel" name="input_group_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Номер группы:</string>
+           <string>Номер группы</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="input_group_lineedit"/>
+         <widget class="QLineEdit" name="input_group_lineedit">
+          <property name="styleSheet">
+           <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -120,13 +138,25 @@
         </property>
         <item>
          <widget class="QLabel" name="input_teacher_label">
+          <property name="minimumSize">
+           <size>
+            <width>90</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
            <string>Преподаватель</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="input_teacher_lineedit"/>
+         <widget class="QLineEdit" name="input_teacher_lineedit">
+          <property name="styleSheet">
+           <string notr="true">border: 2px solid gray;
+border-radius: 5px;
+backgroung-color: white;</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -163,7 +193,10 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Понедельник</string>
+           <string> Понедельник</string>
+          </property>
+          <property name="margin">
+           <number>0</number>
           </property>
          </widget>
         </item>
@@ -199,7 +232,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Вторник</string>
+           <string> Вторник</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -232,7 +265,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Среда</string>
+           <string> Среда</string>
           </property>
          </widget>
         </item>
@@ -262,7 +295,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Четверг</string>
+           <string> Четверг</string>
           </property>
          </widget>
         </item>
@@ -292,7 +325,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Пятница</string>
+           <string> Пятница</string>
           </property>
          </widget>
         </item>
@@ -322,7 +355,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Суббота</string>
+           <string> Суббота</string>
           </property>
          </widget>
         </item>
