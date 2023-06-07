@@ -1,0 +1,5 @@
+Ссылка: https://hub.docker.com/r/zzzef/hallserver
+
+Команды:
+docker build -t zzzef/hallserver .	# собрать
+docker run <image_id>			# запустить

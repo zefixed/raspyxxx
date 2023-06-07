@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18.04
 
 LABEL author="Gerasenkov Ilya 221-352"
 
