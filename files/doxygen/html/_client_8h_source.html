@@ -116,46 +116,53 @@ $(function() {
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_client.html#a5b3dca4d9bc051bef944ecd0272f45f1">sendToServer</a>(QString);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> set_account_id(QString <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    qint64 get_account_id();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">protected</span> slots:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_client.html#a74788270d5f5c4f5224b0df773c5aac0">slot_readFromServer</a>();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>signals:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_client.html#ae38774e05d0ca96d97d6f7470233cc70">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#ae38774e05d0ca96d97d6f7470233cc70">auth</a>(QStringList);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_client.html#a67157f7d6f7e246f73153d14a70e9474">   57</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#a67157f7d6f7e246f73153d14a70e9474">reg</a>(QString);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_client.html#a1e2ca693a46aabc36c1ad7b1c70a7b83">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#a1e2ca693a46aabc36c1ad7b1c70a7b83">view</a>(QList&lt;QString&gt;);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_client.html#aa90f8a8035116d70045996ec0352db26">   63</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#aa90f8a8035116d70045996ec0352db26">err</a>(QString);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_client.html#a190e15a8cfebb30e03dadb3caff36196">   66</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#a190e15a8cfebb30e03dadb3caff36196">exc_add</a>(QString);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_client.html#a4b1bc917dc927fb770db6c2b7e6d24c2">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_client.html#a4b1bc917dc927fb770db6c2b7e6d24c2">exc_view</a>(QString);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> view_group(QStringList);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> view_teacher(QStringList);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_client.html#aa96cc6e96ef9495a636ee7be0ad3a7ff">set_account_id</a>(QString <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    qint64 <a class="code hl_function" href="class_client.html#a8570ae304bd5ba896657004ede9eb5c4">get_account_id</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">protected</span> slots:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Slot triggered when receiving data from the server</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> slot_readFromServer();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>signals:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Signal auth</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> auth(QStringList);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Signal reg</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> reg(QString);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Signal view</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> view(QList&lt;QString&gt;);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// Signal err</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> err(QString);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Signal exc_add</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> exc_add(QString);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Signal exc_view</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> exc_view(QString);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> get(QStringList);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Signal view_group</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> view_group(QStringList);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif </span><span class="comment">// Client_H</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// Signal view_teacher</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> view_teacher(QStringList);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Signal get</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> get(QStringList);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>};</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif </span><span class="comment">// Client_H</span></div>
 <div class="ttc" id="aclass_client_destroyer_html"><div class="ttname"><a href="class_client_destroyer.html">ClientDestroyer</a></div><div class="ttdef"><b>Definition:</b> Client.h:11</div></div>
-<div class="ttc" id="aclass_client_destroyer_html_a67eeeb3ac617a1db81d5e0221a5edb4b"><div class="ttname"><a href="class_client_destroyer.html#a67eeeb3ac617a1db81d5e0221a5edb4b">ClientDestroyer::initialize</a></div><div class="ttdeci">void initialize(Client *p)</div><div class="ttdoc">Instance initialization function.</div><div class="ttdef"><b>Definition:</b> Client.h:18</div></div>
+<div class="ttc" id="aclass_client_destroyer_html_a67eeeb3ac617a1db81d5e0221a5edb4b"><div class="ttname"><a href="class_client_destroyer.html#a67eeeb3ac617a1db81d5e0221a5edb4b">ClientDestroyer::initialize</a></div><div class="ttdeci">void initialize(Client *p)</div><div class="ttdoc">Instance initialization function that takes a pointer to an instance.</div><div class="ttdef"><b>Definition:</b> Client.h:18</div></div>
 <div class="ttc" id="aclass_client_html"><div class="ttname"><a href="class_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> Client.h:22</div></div>
-<div class="ttc" id="aclass_client_html_a190e15a8cfebb30e03dadb3caff36196"><div class="ttname"><a href="class_client.html#a190e15a8cfebb30e03dadb3caff36196">Client::exc_add</a></div><div class="ttdeci">void exc_add(QString)</div><div class="ttdoc">Signal exc_add.</div></div>
-<div class="ttc" id="aclass_client_html_a1e2ca693a46aabc36c1ad7b1c70a7b83"><div class="ttname"><a href="class_client.html#a1e2ca693a46aabc36c1ad7b1c70a7b83">Client::view</a></div><div class="ttdeci">void view(QList&lt; QString &gt;)</div><div class="ttdoc">Signal view.</div></div>
-<div class="ttc" id="aclass_client_html_a4b1bc917dc927fb770db6c2b7e6d24c2"><div class="ttname"><a href="class_client.html#a4b1bc917dc927fb770db6c2b7e6d24c2">Client::exc_view</a></div><div class="ttdeci">void exc_view(QString)</div><div class="ttdoc">Signal exc_view.</div></div>
-<div class="ttc" id="aclass_client_html_a5b3dca4d9bc051bef944ecd0272f45f1"><div class="ttname"><a href="class_client.html#a5b3dca4d9bc051bef944ecd0272f45f1">Client::sendToServer</a></div><div class="ttdeci">bool sendToServer(QString)</div><div class="ttdoc">Data sending dunction.</div><div class="ttdef"><b>Definition:</b> Client.cpp:21</div></div>
-<div class="ttc" id="aclass_client_html_a5c0f25e0297ee89169f92a5ef3388340"><div class="ttname"><a href="class_client.html#a5c0f25e0297ee89169f92a5ef3388340">Client::operator=</a></div><div class="ttdeci">Client &amp; operator=(Client &amp;)=delete</div><div class="ttdoc">Operator overload equals.</div></div>
-<div class="ttc" id="aclass_client_html_a67157f7d6f7e246f73153d14a70e9474"><div class="ttname"><a href="class_client.html#a67157f7d6f7e246f73153d14a70e9474">Client::reg</a></div><div class="ttdeci">void reg(QString)</div><div class="ttdoc">Signal reg.</div></div>
-<div class="ttc" id="aclass_client_html_a74788270d5f5c4f5224b0df773c5aac0"><div class="ttname"><a href="class_client.html#a74788270d5f5c4f5224b0df773c5aac0">Client::slot_readFromServer</a></div><div class="ttdeci">void slot_readFromServer()</div><div class="ttdoc">Slot triggered when receiving data from the server.</div><div class="ttdef"><b>Definition:</b> Client.cpp:39</div></div>
+<div class="ttc" id="aclass_client_html_a5b3dca4d9bc051bef944ecd0272f45f1"><div class="ttname"><a href="class_client.html#a5b3dca4d9bc051bef944ecd0272f45f1">Client::sendToServer</a></div><div class="ttdeci">bool sendToServer(QString)</div><div class="ttdoc">A function to send content to the server that accepts a QString to send and returns the result of sen...</div><div class="ttdef"><b>Definition:</b> Client.cpp:21</div></div>
+<div class="ttc" id="aclass_client_html_a5c0f25e0297ee89169f92a5ef3388340"><div class="ttname"><a href="class_client.html#a5c0f25e0297ee89169f92a5ef3388340">Client::operator=</a></div><div class="ttdeci">Client &amp; operator=(Client &amp;)=delete</div><div class="ttdoc">Prohibit the use of the assignment operator for this class.</div></div>
 <div class="ttc" id="aclass_client_html_a840e519ca781888cbd54181572ebe3a7"><div class="ttname"><a href="class_client.html#a840e519ca781888cbd54181572ebe3a7">Client::~Client</a></div><div class="ttdeci">~Client()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> Client.cpp:17</div></div>
-<div class="ttc" id="aclass_client_html_aa90f8a8035116d70045996ec0352db26"><div class="ttname"><a href="class_client.html#aa90f8a8035116d70045996ec0352db26">Client::err</a></div><div class="ttdeci">void err(QString)</div><div class="ttdoc">Signal err.</div></div>
-<div class="ttc" id="aclass_client_html_ae38774e05d0ca96d97d6f7470233cc70"><div class="ttname"><a href="class_client.html#ae38774e05d0ca96d97d6f7470233cc70">Client::auth</a></div><div class="ttdeci">void auth(QStringList)</div><div class="ttdoc">Signal auth.</div></div>
+<div class="ttc" id="aclass_client_html_a8570ae304bd5ba896657004ede9eb5c4"><div class="ttname"><a href="class_client.html#a8570ae304bd5ba896657004ede9eb5c4">Client::get_account_id</a></div><div class="ttdeci">qint64 get_account_id()</div><div class="ttdoc">Function for getting the value of account_id property.</div><div class="ttdef"><b>Definition:</b> Client.cpp:34</div></div>
+<div class="ttc" id="aclass_client_html_aa96cc6e96ef9495a636ee7be0ad3a7ff"><div class="ttname"><a href="class_client.html#aa96cc6e96ef9495a636ee7be0ad3a7ff">Client::set_account_id</a></div><div class="ttdeci">void set_account_id(QString id)</div><div class="ttdoc">Function for assigning a value to the account_id property.</div><div class="ttdef"><b>Definition:</b> Client.cpp:28</div></div>
 <div class="ttc" id="aclass_client_html_ae51af7aa6b8f591496a8f6a4a87a14bf"><div class="ttname"><a href="class_client.html#ae51af7aa6b8f591496a8f6a4a87a14bf">Client::Client</a></div><div class="ttdeci">Client()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> Client.cpp:3</div></div>
-<div class="ttc" id="aclass_client_html_ae60032c9d89d51ffa76963e4cd773f76"><div class="ttname"><a href="class_client.html#ae60032c9d89d51ffa76963e4cd773f76">Client::getInstance</a></div><div class="ttdeci">static Client * getInstance()</div><div class="ttdoc">Get instance function.</div><div class="ttdef"><b>Definition:</b> Client.cpp:9</div></div>
+<div class="ttc" id="aclass_client_html_ae60032c9d89d51ffa76963e4cd773f76"><div class="ttname"><a href="class_client.html#ae60032c9d89d51ffa76963e4cd773f76">Client::getInstance</a></div><div class="ttdeci">static Client * getInstance()</div><div class="ttdoc">Get class instance function that returns a pointer to an instance of the class.</div><div class="ttdef"><b>Definition:</b> Client.cpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

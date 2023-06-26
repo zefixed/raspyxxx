@@ -2,23 +2,20 @@ var indexSectionsWithContent =
 {
   0: "acegilmopqrstuv~",
   1: "celmpqtu",
-  2: "acegilmoprsv~",
-  3: "m"
+  2: "acegilmoprsv~"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "related"
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Functions",
-  3: "Friends"
+  2: "Functions"
 };
 

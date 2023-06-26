@@ -83,46 +83,50 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ee9d238b6be5c0c5972a92acc97c72c"><td class="memItemLeft" align="right" valign="top"><a id="a4ee9d238b6be5c0c5972a92acc97c72c" name="a4ee9d238b6be5c0c5972a92acc97c72c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>add_user</b> (QStringList)</td></tr>
-<tr class="memdesc:a4ee9d238b6be5c0c5972a92acc97c72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to add a user to the database. <br /></td></tr>
+<tr class="memdesc:a4ee9d238b6be5c0c5972a92acc97c72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for adding a user to the database, taking a QStringList of the form ("add", "login", "password", "role_id") and returning the result of adding true or false. <br /></td></tr>
 <tr class="separator:a4ee9d238b6be5c0c5972a92acc97c72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac73cd0dcfacf581c52594a58dacaa281"><td class="memItemLeft" align="right" valign="top"><a id="ac73cd0dcfacf581c52594a58dacaa281" name="ac73cd0dcfacf581c52594a58dacaa281"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>auth_user</b> (QStringList)</td></tr>
-<tr class="memdesc:ac73cd0dcfacf581c52594a58dacaa281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for checking the correctness of user authentication data entry. <br /></td></tr>
+<tr class="memdesc:ac73cd0dcfacf581c52594a58dacaa281"><td class="mdescLeft">&#160;</td><td class="mdescRight">User authorization function taking QStringList of the form ("auth", "login", "password") and returning QString "role_id&amp;id&amp;groups&amp;teachers" if authorization is successful or ("err&amp;arguments", "err&amp;log", "err&amp;pass") if it fails. <br /></td></tr>
 <tr class="separator:ac73cd0dcfacf581c52594a58dacaa281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b9c52224c73124c2d66fc86dfc9dd9f"><td class="memItemLeft" align="right" valign="top"><a id="a1b9c52224c73124c2d66fc86dfc9dd9f" name="a1b9c52224c73124c2d66fc86dfc9dd9f"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>view_schedule</b> (QStringList)</td></tr>
-<tr class="memdesc:a1b9c52224c73124c2d66fc86dfc9dd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function of viewing the schedule by various fields. <br /></td></tr>
+<tr class="memdesc:a1b9c52224c73124c2d66fc86dfc9dd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to view the schedule for different fields that takes a QStringList of the form ("view", "field", "field_id") (field_id may contains "group_id" or "teacher_id") and returns a QString of the form "field&amp;schedule" if successful and "false" if unsuccessful. <br /></td></tr>
 <tr class="separator:a1b9c52224c73124c2d66fc86dfc9dd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbffaf13e1a3917de3b601cd441fd263"><td class="memItemLeft" align="right" valign="top"><a id="abbffaf13e1a3917de3b601cd441fd263" name="abbffaf13e1a3917de3b601cd441fd263"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>view_exception</b> (QStringList)</td></tr>
-<tr class="memdesc:abbffaf13e1a3917de3b601cd441fd263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function of viewing the exception by teacher id. <br /></td></tr>
+<tr class="memdesc:abbffaf13e1a3917de3b601cd441fd263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teacher exception view function that takes a QStringList of the form ("exc", "viev", "teacher_id") and returns a QString of the form "view&amp;exceptions". <br /></td></tr>
 <tr class="separator:abbffaf13e1a3917de3b601cd441fd263"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a850bab695202b59e0a708ae2d8b76674"><td class="memItemLeft" align="right" valign="top"><a id="a850bab695202b59e0a708ae2d8b76674" name="a850bab695202b59e0a708ae2d8b76674"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>add_exception</b> (QStringList)</td></tr>
-<tr class="memdesc:a850bab695202b59e0a708ae2d8b76674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function of adding an exception by teacher id. <br /></td></tr>
+<tr class="memdesc:a850bab695202b59e0a708ae2d8b76674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for assigning exceptions to a teacher that takes a QStringList of the form ("exc", "add", "teacher_id", "exceptions") and returns a QString "add&amp;successful". <br /></td></tr>
 <tr class="separator:a850bab695202b59e0a708ae2d8b76674"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b03b64d103524393899e0708a351c3d"><td class="memItemLeft" align="right" valign="top"><a id="a8b03b64d103524393899e0708a351c3d" name="a8b03b64d103524393899e0708a351c3d"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> ()</td></tr>
-<tr class="separator:a8b03b64d103524393899e0708a351c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a353ad7d5e4db1f662ec70c7f0ffd7eb6"><td class="memItemLeft" align="right" valign="top"><a id="a353ad7d5e4db1f662ec70c7f0ffd7eb6" name="a353ad7d5e4db1f662ec70c7f0ffd7eb6"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (QStringList)</td></tr>
-<tr class="separator:a353ad7d5e4db1f662ec70c7f0ffd7eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0e770acec7f654b49448d1363d0000e"><td class="memItemLeft" align="right" valign="top"><a id="ae0e770acec7f654b49448d1363d0000e" name="ae0e770acec7f654b49448d1363d0000e"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>updt</b> (QStringList)</td></tr>
-<tr class="separator:ae0e770acec7f654b49448d1363d0000e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a9fd655b54d704d4d4c9ca8b1011bc7"><td class="memItemLeft" align="right" valign="top"><a id="a8a9fd655b54d704d4d4c9ca8b1011bc7" name="a8a9fd655b54d704d4d4c9ca8b1011bc7"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>dlt</b> (QStringList)</td></tr>
-<tr class="separator:a8a9fd655b54d704d4d4c9ca8b1011bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace9ab5a7b59cef6f79eabe0dbda411f2"><td class="memItemLeft" align="right" valign="top"><a id="ace9ab5a7b59cef6f79eabe0dbda411f2" name="ace9ab5a7b59cef6f79eabe0dbda411f2"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_get</b> ()</td></tr>
+<tr class="memdesc:ace9ab5a7b59cef6f79eabe0dbda411f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get teachers, groups and disciplines function that returns a QString like "teachers&amp;groups&amp;disciplines". <br /></td></tr>
+<tr class="separator:ace9ab5a7b59cef6f79eabe0dbda411f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ebed3a88dd05c47d8912cdeb3b8b5bc"><td class="memItemLeft" align="right" valign="top"><a id="a8ebed3a88dd05c47d8912cdeb3b8b5bc" name="a8ebed3a88dd05c47d8912cdeb3b8b5bc"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_add</b> (QStringList)</td></tr>
+<tr class="memdesc:a8ebed3a88dd05c47d8912cdeb3b8b5bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to add teachers, groups or disciplines that takes a QStringList of the form ("add", "field", "data") and that returns a QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:a8ebed3a88dd05c47d8912cdeb3b8b5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac79a2c608b57295e4ae8068a8cfe12c"><td class="memItemLeft" align="right" valign="top"><a id="aac79a2c608b57295e4ae8068a8cfe12c" name="aac79a2c608b57295e4ae8068a8cfe12c"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_updt</b> (QStringList)</td></tr>
+<tr class="memdesc:aac79a2c608b57295e4ae8068a8cfe12c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to update teachers, groups or disciplines that takes a QStringList of the form ("update", "field", "data") and returns a QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:aac79a2c608b57295e4ae8068a8cfe12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1424e65614446e8b50a00a3179671fa8"><td class="memItemLeft" align="right" valign="top"><a id="a1424e65614446e8b50a00a3179671fa8" name="a1424e65614446e8b50a00a3179671fa8"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_dlt</b> (QStringList)</td></tr>
+<tr class="memdesc:a1424e65614446e8b50a00a3179671fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to delete teachers, groups or disciplines that takes a QStringList of the form ("delete", "field", "data") and returns a QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:a1424e65614446e8b50a00a3179671fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fe61ac74c514a4132f102e50fa57021"><td class="memItemLeft" align="right" valign="top"><a id="a9fe61ac74c514a4132f102e50fa57021" name="a9fe61ac74c514a4132f102e50fa57021"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>sendQuery</b> (QString qsl)</td></tr>
-<tr class="memdesc:a9fe61ac74c514a4132f102e50fa57021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to execute a database query. <br /></td></tr>
+<tr class="memdesc:a9fe61ac74c514a4132f102e50fa57021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obsolete function. <br /></td></tr>
 <tr class="separator:a9fe61ac74c514a4132f102e50fa57021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b37052f7c6e30d94a14bac7e9c0c512"><td class="memItemLeft" align="right" valign="top"><a id="a9b37052f7c6e30d94a14bac7e9c0c512" name="a9b37052f7c6e30d94a14bac7e9c0c512"></a>
 static <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
-<tr class="memdesc:a9b37052f7c6e30d94a14bac7e9c0c512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a database instance. <br /></td></tr>
+<tr class="memdesc:a9b37052f7c6e30d94a14bac7e9c0c512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get database instance function that returns a pointer to <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a>. <br /></td></tr>
 <tr class="separator:a9b37052f7c6e30d94a14bac7e9c0c512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -133,22 +137,21 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:af28bf532ba7948e51557d235ec7a4aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98811b32894e7347b115f2bc79518177"><td class="memItemLeft" align="right" valign="top"><a id="a98811b32894e7347b115f2bc79518177" name="a98811b32894e7347b115f2bc79518177"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MyPostgresDB</b> (const <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> &amp;)</td></tr>
-<tr class="memdesc:a98811b32894e7347b115f2bc79518177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сopy constructor. <br /></td></tr>
+<tr class="memdesc:a98811b32894e7347b115f2bc79518177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor taking reference to <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a>. <br /></td></tr>
 <tr class="separator:a98811b32894e7347b115f2bc79518177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfffb4743c0087627efb6d5adc640b6f"><td class="memItemLeft" align="right" valign="top"><a id="acfffb4743c0087627efb6d5adc640b6f" name="acfffb4743c0087627efb6d5adc640b6f"></a>
 <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> &amp;)</td></tr>
-<tr class="memdesc:acfffb4743c0087627efb6d5adc640b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator overload =. <br /></td></tr>
+<tr class="memdesc:acfffb4743c0087627efb6d5adc640b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloading the assignment operator for <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> that takes a reference to the current instance of <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a> and returns a reference to a new instance of <a class="el" href="class_my_postgres_d_b.html">MyPostgresDB</a>, allowing the operation "a = b = c". <br /></td></tr>
 <tr class="separator:acfffb4743c0087627efb6d5adc640b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9b9d00642e168d9057cd5f2bdadc96b"><td class="memItemLeft" align="right" valign="top"><a id="ad9b9d00642e168d9057cd5f2bdadc96b" name="ad9b9d00642e168d9057cd5f2bdadc96b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~MyPostgresDB</b> ()</td></tr>
-<tr class="memdesc:ad9b9d00642e168d9057cd5f2bdadc96b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
+<tr class="memdesc:ad9b9d00642e168d9057cd5f2bdadc96b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="separator:ad9b9d00642e168d9057cd5f2bdadc96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a6e91b8c49e1b4b00850ecc17c1e3ff52"><td class="memItemLeft" align="right" valign="top"><a id="a6e91b8c49e1b4b00850ecc17c1e3ff52" name="a6e91b8c49e1b4b00850ecc17c1e3ff52"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_my_postgres_d_b.html#a6e91b8c49e1b4b00850ecc17c1e3ff52">MyPostgresDBDestroyer</a></td></tr>
-<tr class="memdesc:a6e91b8c49e1b4b00850ecc17c1e3ff52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friend class. <br /></td></tr>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>MyPostgresDBDestroyer</b></td></tr>
 <tr class="separator:a6e91b8c49e1b4b00850ecc17c1e3ff52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>

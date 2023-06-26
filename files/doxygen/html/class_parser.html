@@ -84,47 +84,65 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a12234f6cd36b61af4b50c94a179422c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c04ec0795c0c3ceffb1a88523b074da"><td class="memItemLeft" align="right" valign="top"><a id="a6c04ec0795c0c3ceffb1a88523b074da" name="a6c04ec0795c0c3ceffb1a88523b074da"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Parser</b> (QString)</td></tr>
-<tr class="memdesc:a6c04ec0795c0c3ceffb1a88523b074da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializing constructor. <br /></td></tr>
+<tr class="memdesc:a6c04ec0795c0c3ceffb1a88523b074da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializing constructor that takes a QString with "&amp;" delimiters, splits it, and assigns the resulting splitting QStringList to the qsl property. <br /></td></tr>
 <tr class="separator:a6c04ec0795c0c3ceffb1a88523b074da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4209a4a57208a0c0f4dcc68c03e2055f"><td class="memItemLeft" align="right" valign="top"><a id="a4209a4a57208a0c0f4dcc68c03e2055f" name="a4209a4a57208a0c0f4dcc68c03e2055f"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> ()</td></tr>
-<tr class="memdesc:a4209a4a57208a0c0f4dcc68c03e2055f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parsing function that redirects the request to the required function. <br /></td></tr>
+<tr class="memdesc:a4209a4a57208a0c0f4dcc68c03e2055f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parsing function that redirects the request to the desired function and returns a QString with "&amp;" delimiters, which is the result of further functions. <br /></td></tr>
 <tr class="separator:a4209a4a57208a0c0f4dcc68c03e2055f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f2a7263d4ff1b417ebc0be4047e92dd"><td class="memItemLeft" align="right" valign="top"><a id="a5f2a7263d4ff1b417ebc0be4047e92dd" name="a5f2a7263d4ff1b417ebc0be4047e92dd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>reg</b> (QStringList)</td></tr>
-<tr class="memdesc:a5f2a7263d4ff1b417ebc0be4047e92dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that redirects to the registration function. <br /></td></tr>
+<tr class="memitem:a5f2a7263d4ff1b417ebc0be4047e92dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parser.html#a5f2a7263d4ff1b417ebc0be4047e92dd">reg</a> (QStringList)</td></tr>
 <tr class="separator:a5f2a7263d4ff1b417ebc0be4047e92dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5edd4faf2c7a7fc467721425e1d9c363"><td class="memItemLeft" align="right" valign="top"><a id="a5edd4faf2c7a7fc467721425e1d9c363" name="a5edd4faf2c7a7fc467721425e1d9c363"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>auth</b> (QStringList)</td></tr>
-<tr class="memdesc:a5edd4faf2c7a7fc467721425e1d9c363"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that redirects to the authentication function. <br /></td></tr>
+<tr class="memdesc:a5edd4faf2c7a7fc467721425e1d9c363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes a QStringList of the form ("auth", "login", "password") redirecting to the authorization function and returning QString "role_id&amp;id&amp;groups&amp;teachers" if authorization is successful or ("err&amp;arguments", "err&amp;log", "err&amp;pass") if it fails. <br /></td></tr>
 <tr class="separator:a5edd4faf2c7a7fc467721425e1d9c363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f0b1db9588e7ff752aa42256dacf041"><td class="memItemLeft" align="right" valign="top"><a id="a2f0b1db9588e7ff752aa42256dacf041" name="a2f0b1db9588e7ff752aa42256dacf041"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>check_schedule</b> (QStringList)</td></tr>
-<tr class="memdesc:a2f0b1db9588e7ff752aa42256dacf041"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that redirects to the schedule view function. <br /></td></tr>
+<tr class="memdesc:a2f0b1db9588e7ff752aa42256dacf041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes a QStringList of the form ("view", "field", "field_id"), redirects to the schedule view function and returns a QString of the form "field&amp;schedule" if successful and "false" if unsuccessful. <br /></td></tr>
 <tr class="separator:a2f0b1db9588e7ff752aa42256dacf041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca437ff11f7e80188d6d488b83aa654f"><td class="memItemLeft" align="right" valign="top"><a id="aca437ff11f7e80188d6d488b83aa654f" name="aca437ff11f7e80188d6d488b83aa654f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>reschedule</b> (QStringList)</td></tr>
-<tr class="memdesc:aca437ff11f7e80188d6d488b83aa654f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that redirects to the schedule change function. <br /></td></tr>
-<tr class="separator:aca437ff11f7e80188d6d488b83aa654f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49aeff33797ddc9579441c51f9eb089d"><td class="memItemLeft" align="right" valign="top"><a id="a49aeff33797ddc9579441c51f9eb089d" name="a49aeff33797ddc9579441c51f9eb089d"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>exceptions</b> (QStringList)</td></tr>
-<tr class="memdesc:a49aeff33797ddc9579441c51f9eb089d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that redirects to the exception selection function. <br /></td></tr>
+<tr class="memdesc:a49aeff33797ddc9579441c51f9eb089d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes a QStringList of the form ("exc", "view", "teacher_id") or ("exc", "add", "teacher_id", "exceptions"), redirects to a function to view or change teacher exceptions and returns a QString of the form "view&amp;exceptions" or "add&amp;success". <br /></td></tr>
 <tr class="separator:a49aeff33797ddc9579441c51f9eb089d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10fa3af811447a4cdf3d6d4a1827d2c2"><td class="memItemLeft" align="right" valign="top"><a id="a10fa3af811447a4cdf3d6d4a1827d2c2" name="a10fa3af811447a4cdf3d6d4a1827d2c2"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> ()</td></tr>
-<tr class="separator:a10fa3af811447a4cdf3d6d4a1827d2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ee7c5841533af314d10b6d18d7fbd38"><td class="memItemLeft" align="right" valign="top"><a id="a0ee7c5841533af314d10b6d18d7fbd38" name="a0ee7c5841533af314d10b6d18d7fbd38"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (QStringList)</td></tr>
-<tr class="separator:a0ee7c5841533af314d10b6d18d7fbd38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76747cbe78fe4a346acf1b23fca078b6"><td class="memItemLeft" align="right" valign="top"><a id="a76747cbe78fe4a346acf1b23fca078b6" name="a76747cbe78fe4a346acf1b23fca078b6"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>updt</b> (QStringList)</td></tr>
-<tr class="separator:a76747cbe78fe4a346acf1b23fca078b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3baf687c3ef3a3757f59c86c490c6ac"><td class="memItemLeft" align="right" valign="top"><a id="ac3baf687c3ef3a3757f59c86c490c6ac" name="ac3baf687c3ef3a3757f59c86c490c6ac"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>dlt</b> (QStringList)</td></tr>
-<tr class="separator:ac3baf687c3ef3a3757f59c86c490c6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a010552f2f677c6ece846dc5ad992b285"><td class="memItemLeft" align="right" valign="top"><a id="a010552f2f677c6ece846dc5ad992b285" name="a010552f2f677c6ece846dc5ad992b285"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_get</b> ()</td></tr>
+<tr class="memdesc:a010552f2f677c6ece846dc5ad992b285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that redirects to the get teachers, groups and disciplines function and returns QString of the form "teachers&amp;groups&amp;disciplines". <br /></td></tr>
+<tr class="separator:a010552f2f677c6ece846dc5ad992b285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b7e35e25701ed91483662d7abb269a6"><td class="memItemLeft" align="right" valign="top"><a id="a6b7e35e25701ed91483662d7abb269a6" name="a6b7e35e25701ed91483662d7abb269a6"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_add</b> (QStringList)</td></tr>
+<tr class="memdesc:a6b7e35e25701ed91483662d7abb269a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes QStringList forms ("add", "field", "data"), redirects to the function to add teachers, groups or disciplines and returns QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:a6b7e35e25701ed91483662d7abb269a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4195f7d86ed4815672012bc8f64e2c14"><td class="memItemLeft" align="right" valign="top"><a id="a4195f7d86ed4815672012bc8f64e2c14" name="a4195f7d86ed4815672012bc8f64e2c14"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_updt</b> (QStringList)</td></tr>
+<tr class="memdesc:a4195f7d86ed4815672012bc8f64e2c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes QStringList forms ("update", "field", "data"), redirects to the function to update teachers, groups or disciplines and returns QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:a4195f7d86ed4815672012bc8f64e2c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a684ad25e324bd521d5da73a31029d974"><td class="memItemLeft" align="right" valign="top"><a id="a684ad25e324bd521d5da73a31029d974" name="a684ad25e324bd521d5da73a31029d974"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>met_dlt</b> (QStringList)</td></tr>
+<tr class="memdesc:a684ad25e324bd521d5da73a31029d974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes QStringList forms ("delete", "field", "data"), redirects to the function to delete teachers, groups or disciplines and returns QString "successful" or "failed". <br /></td></tr>
+<tr class="separator:a684ad25e324bd521d5da73a31029d974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5f2a7263d4ff1b417ebc0be4047e92dd" name="a5f2a7263d4ff1b417ebc0be4047e92dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2a7263d4ff1b417ebc0be4047e92dd">&#9670;&#160;</a></span>reg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Parser::reg </td>
+          <td>(</td>
+          <td class="paramtype">QStringList&#160;</td>
+          <td class="paramname"><em>reg_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Not in use at the moment Function that takes a QStringList of the form ("reg", "login", "password", "role_id") redirecting to the registration function and returning the registration result true or false </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>D:/git/raspyxxx/server/<a class="el" href="_parser_8h_source.html">Parser.h</a></li>
+<li>D:/git/raspyxxx/server/<a class="el" href="parser_8h_source.html">parser.h</a></li>
 <li>D:/git/raspyxxx/server/Parser.cpp</li>
 </ul>
 </div><!-- contents -->
